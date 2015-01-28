@@ -96,6 +96,8 @@ Starting up an application often takes a few steps of:
 * Loading some external data.
 * Declaring and initializing some variables for use in our app.
 
+We've setup the app a little bit already, importing some libraries and initializing the basic plumbing in the backgroudn, and we won't be loading any external data in our app, so let's move on to declaring, initializing and using our variables.
+
 Our motion poem will contain 100 randomly drawn circles, arranged randomly within the area of our canvas.
 
 The big take-away in this project is **DRY**: Don't repeat yourself!
