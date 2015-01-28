@@ -27,7 +27,8 @@
     "tweenjs": "*",
     "PreloadJS": "~0.6.0",
     "SoundJS": "~0.6.0",
-    "opspark-draw": "~0.2.1",
-    "chance": "~0.7.3"
+    "chance": "~0.7.3",
+    "racket": "~0.0.3",
+    "opspark-draw": "~0.3.6"
   }
 }

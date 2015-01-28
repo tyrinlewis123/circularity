@@ -13,63 +13,72 @@
 	    <link href="css/style.css" rel="stylesheet">
 
 		<!-- all core CreateJS and 3rd party libraries are listed here: -->
-		<script src="bower_components/lodash/dist/lodash.min.js"></script>
+		<script src="bower_components/lodash/lodash.min.js"></script>
 		<script src="bower_components/easeljs/lib/easeljs-0.8.0.min.js"></script>
-		<script src="bower_components/preloadjs/lib/preloadjs-0.6.0.min.js"></script>
-		<script src="bower_components/soundjs/lib/soundjs-0.6.0.min.js"></script>
+		<script src="bower_components/PreloadJS/lib/preloadjs-0.6.0.min.js"></script>
+		<script src="bower_components/SoundJS/lib/soundjs-0.6.0.min.js"></script>
 		<script src="bower_components/opspark-draw/draw.js"></script>
+		<script src="bower_components/racket/racket.js"></script>
 
 	    <!-- our app javascript code -->
 	    <script src="js/opspark.js"></script>
+	    
+	    <style type="text/css">
+	    	/*override default styles here*/
+	    </style>
 	</head>
 	<body>
 		<div>
-			<!-- canvas element that serves as the stage for our app or game -->
 			<canvas id="canvas" width="500" height="500"></canvas>
 		</div>
 		<script id="motion-poem">
 			(function(){
 				'use strict';
-
-				window.opspark = window.opspark || {};
 				
 				var 
 					draw = window.opspark.draw,
-					app = opspark.makeApp(update),
+					physikz = window.opspark.racket.physikz,
+					num = window.opspark.racket.num,
+					
+					app = window.opspark.makeApp({update: update}),
 					canvas = app.canvas, 
-					view = app.view;
-
-				var i, circle;
+					view = app.view,
+					fps = draw.fps('#999');
+				
+				////////////////////////////////////////////////////////////////
+				// ALL CODE GOES BELOW HERE                                   //
+				////////////////////////////////////////////////////////////////
+				
+				var i, circle, radius, line, randomColor;
 
 				i = 0;
 
 				while (i < 100) {
-					var radius = randomIntBetween(5, 20);
+					radius = num.randomIntBetween(5, 20);
+					randomColor = draw.randomColor(255, 255, 255);
+					line = draw.line(-radius, 0, radius, 0, '#999', 2);
+					draw.line(0, -radius, 0, radius, '#999', 2, line);
 					
-					// generate a random color but randomize the palette limiter //
-					var randomColor = draw.randomColor(
-						randomIntBetween(0, 255), 
-						randomIntBetween(0, 255), 
-						randomIntBetween(0, 255));
-
-					var line = draw.line(radius, 0, radius, 0, '#FFF', 2);
-					var circle = draw.circle(radius, randomColor, line);
+					// (radius, color, strokeColor, strokeStyle, xOffset, yOffset, onShape)
+					circle = draw.circle(radius, randomColor, '#999', 1, null, null, line);
 					circle.alpha = Math.random();
 
 					if (circle.alpha < .2) {
-						var blurFilter = new createjs.BlurFilter(5, 5, 1);
-						circle.filters = [blurFilter];
-						circle.cache(-circle.radius, -circle.radius, circle.width, circle.height);
+						draw.blurFilterOn(circle);
 					}
 
-					circle.x = randomIntBetween(0, canvas.width);
-					circle.y = randomIntBetween(0, canvas.height);
+					circle.x = num.randomIntBetween(0, canvas.width);
+					circle.y = num.randomIntBetween(0, canvas.height);
 					view.addChild(circle);
 
-					addRandomDirectionalVelocity(circle, canvas);
+					physikz.addRandomVelocity(circle, canvas);
 
 					i++;
 				}
+				
+				view.addChild(fps);
+				app.addUpdateable(fps);
+				
 
                 function update() {						
 					var circles = view.children;
@@ -77,54 +86,23 @@
 					for (var i = 0; i < circles.length; i++) {
 						circle = circles[i];
 						
-						updateDirectionalVelocity(circle);
+						physikz.updateVelocity(circle);
 
 						if (circle.x - circle.radius > canvas.width) {
 	                        circle.x = -circle.radius;
-	                    }
-	                    else if (circle.x + circle.radius < 0)
-	                    {
+	                    } else if (circle.x + circle.radius < 0) {
 	                        circle.x = canvas.width + circle.radius;
-	                    }
-
-	                    if (circle.y - circle.radius > canvas.height)
-	                    {
+	                    } if (circle.y - circle.radius > canvas.height) {
 	                        circle.y = -circle.radius;
-	                    }
-	                    else if (circle.y < -circle.radius)
-	                    {
+	                    } else if (circle.y < -circle.radius) {
 	                        circle.y = canvas.height + circle.radius;
 	                    }
 					}
                 }
-
-                function addRandomDirectionalVelocity(body, space) {
-					var tx = randomIntBetween(0, space.width);
-            		var ty = randomIntBetween(0, space.height);
-					var dx = Math.abs(tx - body.x);
-		            var dy = Math.abs(ty - body.y);
-		            var angle = Math.atan2(dy, dx);
-		            body.rotation = angle;
-
-		            var r = (Math.round(Math.random()) === 1) ? 1 : -1;
-		            body.rotationalForce = randomIntBetween(1, 3) * r;
-		            var forceX = Math.cos(angle) * (Math.random() * .6);
-		            var forceY = Math.sin(angle) * (Math.random() * .5);
-
-		            body.velocityX = (tx > body.x) ? forceX : -forceX;
-		            body.velocityY = (ty > body.y) ? forceY : -forceY;
-				}
-
-				function updateDirectionalVelocity(body) {
-					body.x += body.velocityX;
-					body.y += body.velocityY;
-					body.rotation += body.rotationalForce;
-				}
-
-                function randomIntBetween(min, max)
-				{
-				    return Math.floor(Math.random() * (max - min + 1) + min);
-				}
+                
+            ////////////////////////////////////////////////////////////////////
+            // NO CODE BELOW HERE                                             //
+			////////////////////////////////////////////////////////////////////
 			})();
 		</script>
 	</body>
