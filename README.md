@@ -127,9 +127,9 @@ Our motion poem will contain 100 randomly drawn circles, arranged randomly withi
 
 We want to draw 100 circles, but we don't want to write the code to do so 100 times.  That would be a silly waste of time and effort, making the code very difficult to maintain.
 
-Every programming language comes with features built-in to help you implement repetative processes, like looping over a list of data, or drawing a circle 100 times.  If we want to do anything more than once, we can use a _loop_, and is most often best practice to do so.
-
 #### Loops To The Rescue
+
+Every programming language comes with features built-in to help you implement repetative processes, like looping over a list of data, or drawing a circle 100 times.  If we want to do anything more than once, we can use a _loop_, and is most often best practice to do so.
 
 JavaScript comes with a number of built in loops, like `for` `for-in` and `while`, and many 3rd party libraries, like _lodash_, have implementations of other types of loops.
 
