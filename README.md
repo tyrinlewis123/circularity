@@ -150,7 +150,7 @@ After executing the code block, the while loop loops-back to check the condition
 
 To break out of the loop, we need the condition to return `false`, and by _incrementing_ our `i` counter on each loop using `i++;`, the value of `i` increases by one on each loop.  `i++;` is shorthand for `i = i + 1;`, and you'll see the `++` or `--` opporators used often in code to accomplish this type of pattern.
 
-In fact, most loops use this exact same pattern: some counter, often set to `0`, then checked against the length of a collection (an Array or Object), and incremented or decremented on each loop, depending on if you want to loop forward or backwards through a collection.
+In fact, most loops use this exact same pattern: some counter checked against the length of a collection (an Array or Object), and incremented or decremented on each loop, depending on if you want to loop forward or backwards through a collection.
 
 So then, looking at the above snippet of code, what would be the result of running that code?
 
@@ -198,7 +198,7 @@ circles = [];
 // other code...
 ````
 
-We want to start shaping our app: we know we want to draw 100 circles, and that the `while` loop is the way go, so let's go ahead and put the while loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add them as a child of our `view`, positioned somewhere randomly within the area of our canvas, all within the `while` loop code block.
+We know we want to draw 100 circles, and that the `while` loop is the way go, so let's go ahead and put the while loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add each of them as children of our `view`, positioned somewhere randomly within the area of our canvas, all within the `while` loop code block.
 
 #### TODO 3 : Stub Out The While Loop
 
