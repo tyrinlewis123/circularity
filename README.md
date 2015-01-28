@@ -202,7 +202,7 @@ We know we want to draw 100 circles, and that the `while` loop is the way go, so
 
 #### TODO 3 : Stub Out The While Loop
 
-We'll get you started, then it's your mission to figure out the rest.  Here's the template code for your `while` statement, find **TODO 3** and put the while loop in place:
+Here's the template code for your `while` statement, find **TODO 3** and put the while loop in place:
 
 ````javascript
 // other code...
