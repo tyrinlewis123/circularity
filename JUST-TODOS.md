@@ -1,4 +1,4 @@
-#### TODO 1 : Declare Our Variables
+### TODO 1 : Declare Our Variables
 
 ````javascript
 // other code...
@@ -8,7 +8,7 @@ var i, radius, color, circle, circles, cross;
 
 // other code...
 ````
-#### TODO 2 : Initialize The Counter and Circles Array
+### TODO 2 : Initialize The Counter and Circles Array
 
 ````javascript
 // other code...
@@ -20,7 +20,7 @@ circles = [];
 // other code...
 ````
 
-#### TODO 3 : Stub Out The While Loop
+### TODO 3 : Stub Out The While Loop
 
 ````javascript
 // other code...
@@ -38,6 +38,28 @@ while (i < 100) {
 // other code...
 ````
 
+### TODO 4 : Initialize Random Radius and Color Every Loop
+
+````javascript
+// other code...
+
+radius = num.randomIntBetween(5, 20);
+color = draw.randomColor(255, 255, 255);
+
+// other code...
+````
+
+### TODO 5 : Draw A Circle
+
+````javascript
+// other code...
+
+// TODO 5 : Draw a circle using the radius and color //
+circle = draw.circle(radius, color, '#999', 1, null, null, cross);
+
+// other code...
+````
+
 #### TODO 6 : Randomly Position the Circle Within the Canvas
 
 ````javascript
@@ -45,6 +67,18 @@ while (i < 100) {
 
 circle.x = num.randomIntBetween(0, canvas.width);
 circle.y = num.randomIntBetween(0, canvas.height);
+
+// other code...
+````
+
+#### TODO 7 : Push to Circles and Add to View
+
+````javascript
+// other code...
+
+// TODO 7 : Push the circle into the circles Array and add it to the view //
+circles.push(circle);
+view.addChild(circle);
 
 // other code...
 ````

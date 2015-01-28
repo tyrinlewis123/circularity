@@ -129,6 +129,8 @@ We want to draw 100 circles, but we don't want to write the code to do so 100 ti
 
 Every programming language comes with features built-in to help you implement repetative processes, like looping over a list of data, or drawing a circle 100 times.  If we want to do anything more than once, we can use a _loop_, and is most often best practice to do so.
 
+#### Loops To The Rescue
+
 JavaScript comes with a number of built in loops, like `for` `for-in` and `while`, and many 3rd party libraries, like _lodash_, have implementations of other types of loops.
 
 We're going to use the `while` loop to accomplish our task.  It works like this:
@@ -252,7 +254,11 @@ Sweet!  Next we need to draw a cirle using the `radius` and `color` we just init
 So, find **TODO 5**, draw a circle using the `draw.cirle(radius, color, strokeColor, strokeStyle, xOffset, yOffset, onShape)` API, assigning to our `cirle` variable. like so:
 
 ````javascript
+// other code...
+
 circle = draw.circle(radius, color, '#999', 1, null, null, line);
+
+// other code...
 ````
 
 Above, we've assigned our newly drawn a circular shape to our `circle` variable, passing in the radomized radius and color.  We also used the color `#999` for the stroke of the cirle - stroke is the border around the shape - with a thickness of `1` pixel.
@@ -276,14 +282,17 @@ To measure the width and height of the canvas, the canvas exposes the properties
 
 Next, you know the API for generating a random integer.  Now, use that API to generate a random `x` and `y` value within the area of the canvas.  So, find **TODO 6** and randomly place the circle within the area of the canvas....
 
-// TODO 6 : Randomly place the circle within the area of the canvas //
-circle.x = num.randomIntBetween(0, canvas.width);
-circle.y = num.randomIntBetween(0, canvas.height);
+Once you've got that in place, move on to **TODO 7**
 
 
+#### TODO 7 : Push to Circles and Add to View
 
-#### TODO 7 : Push the Circle Into The Circles Array and Add It To The View
+````javascript
+// other code...
 
 // TODO 7 : Push the circle into the circles Array and add it to the view //
 circles.push(circle);
 view.addChild(circle);
+
+// other code...
+````
