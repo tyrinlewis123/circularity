@@ -121,11 +121,11 @@ Starting up an application often takes a few steps of:
 * Loading some external data.
 * Declaring and initializing some variables for use in our app.
 
-We've setup the app a little bit already, importing some libraries and initializing the basic plumbing in the backgroudn, and we won't be loading any external data in our app, so let's move on to declaring, initializing and using our variables.
+We've setup the app a little bit already, importing some libraries and initializing the basic plumbing in the background, and we won't be loading any external data in our app, so let's move on to declaring, initializing and using our variables.
 
 Our motion poem will contain 100 randomly drawn circles, arranged randomly within the area of our canvas.  The big take-away in this project is **DRY**: Don't repeat yourself!
 
-We want to draw 100 circles, but we don't want to write the code to do so 100 times.  That would be a silly waste of time and effort, and the code would very difficult to maintain.
+We want to draw 100 circles, but we don't want to write the code to do so 100 times.  That would be a silly waste of time and effort, making the code very difficult to maintain.
 
 Every programming language comes with features built-in to help you implement repetative processes, like looping over a list of data, or drawing a circle 100 times.  If we want to do anything more than once, we can use a _loop_, and is most often best practice to do so.
 
