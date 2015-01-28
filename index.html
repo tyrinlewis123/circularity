@@ -43,36 +43,45 @@
 					app = window.opspark.makeApp({update: update}),
 					canvas = app.canvas, 
 					view = app.view,
-					fps = draw.fps('#999');
+					fps = draw.fps('#000');
 				
 				////////////////////////////////////////////////////////////////
 				// ALL CODE GOES BELOW HERE                                   //
 				////////////////////////////////////////////////////////////////
 				
-				var i, circle, radius, line, randomColor;
-
+				// TODO 1: Declare our varialbes //
+				var i, radius, color, circle, line;
+				
+				// TODO 2: Initialize i to 0 //
 				i = 0;
-
+				
+				// TOOD 3 : Stub out the while loop //
 				while (i < 100) {
+					// YOUR CODE STARTS HERE //
+					
+					// TODO 4: Initialize a randomly generated radius and color //
 					radius = num.randomIntBetween(5, 20);
-					randomColor = draw.randomColor(255, 255, 255);
+					color = draw.randomColor(255, 255, 255);
+					
 					line = draw.line(-radius, 0, radius, 0, '#999', 2);
 					draw.line(0, -radius, 0, radius, '#999', 2, line);
 					
-					// (radius, color, strokeColor, strokeStyle, xOffset, yOffset, onShape)
-					circle = draw.circle(radius, randomColor, '#999', 1, null, null, line);
-					circle.alpha = Math.random();
-
-					if (circle.alpha < .2) {
-						draw.blurFilterOn(circle);
-					}
-
+					// TODO 5 : draw a circle using the radius and color //
+					circle = draw.circle(radius, color, '#999', 1, null, null, line);
+					
 					circle.x = num.randomIntBetween(0, canvas.width);
 					circle.y = num.randomIntBetween(0, canvas.height);
 					view.addChild(circle);
 
+					circle.alpha = Math.random();
+					if (circle.alpha < .2) {
+						draw.blurFilterOn(circle);
+					}
 					physikz.addRandomVelocity(circle, canvas);
-
+					
+					
+					// YOUR CODE ENDS HERE //
+					// i++ increments our counter - leave this as the last statement in the while loop //
 					i++;
 				}
 				
