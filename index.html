@@ -50,7 +50,7 @@
 				////////////////////////////////////////////////////////////////
 				
 				// TODO 1: Declare our varialbes //
-				var i, radius, color, circle, circles, cross;
+				var i, circle, circles;
 				
 				// TODO 2: Initialize i to 0 //
 				i = 0;
@@ -60,32 +60,26 @@
 				while (i < 100) {
 					// YOUR CODE STARTS HERE //
 					
-					// TODO 4: Initialize a randomly generated radius and color //
-					radius = num.randomIntBetween(5, 20);
-					color = draw.randomColor(255, 255, 255);
+					// TOOD 4 : Create a radomized circle within the area of the canvas //
+					circle = draw.randomCircleInArea(canvas, true, true, '#999');
 					
-					// BONUS //
-					cross = draw.line(-radius, 0, radius, 0, '#999', 2);
-					draw.line(0, -radius, 0, radius, '#999', 2, cross);
+					// TODO 5 : Add a blur filter to circles with alpha less than .2 //
+					if (circle.alpha < .2) {
+						draw.blurFilterOn(circle);
+					}
 					
-					// TODO 5 : Draw a circle using the radius and color //
-					circle = draw.circle(radius, color, '#999', 1, null, null, cross);
-					
-					// TODO 6 : Randomly place the circle within the area of the canvas //
-					circle.x = num.randomIntBetween(0, canvas.width);
-					circle.y = num.randomIntBetween(0, canvas.height);
-					
-					// TODO 7 : Push the circle into the circles Array and add it to the view //
-					circles.push(circle);
+					// TODO 6 : Add the circle to the view //
 					view.addChild(circle);
-
-					// physikz.addRandomVelocity(circle, canvas);
-					// circle.alpha = Math.random();
-					// if (circle.alpha < .2) {
-					// 	draw.blurFilterOn(circle);
-					// }
+					
+					// TODO 7 : Push the circle into the circles Array //
+					circles.push(circle);
+					
+					// TODO 8 : Add random velocity to the circle within the area of the canvas //
+					physikz.addRandomVelocity(circle, canvas);
+					
 					
 					// YOUR CODE ENDS HERE //
+					
 					// increment our counter - leave this as the last statement in the while loop //
 					i++;
 				}
@@ -94,21 +88,21 @@
 				app.addUpdateable(fps);
 
                 function update() {						
-					// for (var i = 0; i < circles.length; i++) {
-					// 	circle = circles[i];
+					for (var i = 0; i < circles.length; i++) {
+						circle = circles[i];
 						
-					// 	physikz.updateVelocity(circle);
+						physikz.updatePosition(circle);
 
-					// 	if (circle.x - circle.radius > canvas.width) {
-	    //                     circle.x = -circle.radius;
-	    //                 } else if (circle.x + circle.radius < 0) {
-	    //                     circle.x = canvas.width + circle.radius;
-	    //                 } if (circle.y - circle.radius > canvas.height) {
-	    //                     circle.y = -circle.radius;
-	    //                 } else if (circle.y < -circle.radius) {
-	    //                     circle.y = canvas.height + circle.radius;
-	    //                 }
-					// }
+						// if (circle.x - circle.radius > canvas.width) {
+	     //                   circle.x = -circle.radius;
+	     //               } else if (circle.x + circle.radius < 0) {
+	     //                   circle.x = canvas.width + circle.radius;
+	     //               } if (circle.y - circle.radius > canvas.height) {
+	     //                   circle.y = -circle.radius;
+	     //               } else if (circle.y < -circle.radius) {
+	     //                   circle.y = canvas.height + circle.radius;
+	     //               }
+					}
                 }
                 
             ////////////////////////////////////////////////////////////////////

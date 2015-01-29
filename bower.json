@@ -22,13 +22,13 @@
     "tests"
   ],
   "dependencies": {
-    "lodash": "~2.4.1",
+    "lodash": "~3.0.0",
     "easeljs": "~0.8.0",
     "tweenjs": "*",
     "PreloadJS": "~0.6.0",
     "SoundJS": "~0.6.0",
     "chance": "~0.7.3",
-    "racket": "~0.0.3",
-    "opspark-draw": "~0.3.6"
+    "racket": "~0.0.4",
+    "opspark-draw": "~0.3.11"
   }
 }

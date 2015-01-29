@@ -30,6 +30,7 @@ while (i < 100) {
     // YOUR CODE STARTS HERE //
     
     
+    
     // YOUR CODE ENDS HERE //
     // increment our counter - leave this as the last statement in the while loop //
     i++;
@@ -38,47 +39,76 @@ while (i < 100) {
 // other code...
 ````
 
-### TODO 4 : Initialize Random Radius and Color Every Loop
+### TODO 4 : Generate a radomized circle
 
 ````javascript
 // other code...
 
-radius = num.randomIntBetween(5, 20);
-color = draw.randomColor(255, 255, 255);
+// TOOD 4 : Create a radomized circle within the area of the canvas //
+circle = draw.randomCircleInArea(canvas, true, true, '#999');
 
 // other code...
 ````
 
-### TODO 5 : Draw A Circle
-
+### TODO 5 : Add a Blur Filter to Some Circles
 ````javascript
 // other code...
 
-// TODO 5 : Draw a circle using the radius and color //
-circle = draw.circle(radius, color, '#999', 1, null, null, cross);
+// TODO 5 : Add a blur filter to circles with alpha less than .2 //
+if (circle.alpha < .2) {
+	draw.blurFilterOn(circle);
+}
 
 // other code...
 ````
 
-#### TODO 6 : Randomly Position the Circle Within the Canvas
+### TODO 6 : Add the Circle to the View
 
 ````javascript
 // other code...
 
-circle.x = num.randomIntBetween(0, canvas.width);
-circle.y = num.randomIntBetween(0, canvas.height);
-
-// other code...
-````
-
-#### TODO 7 : Push to Circles and Add to View
-
-````javascript
-// other code...
-
-// TODO 7 : Push the circle into the circles Array and add it to the view //
-circles.push(circle);
+// TODO 6 : Add the circle to the view //
 view.addChild(circle);
 
 // other code...
 ````
+
+#### TODO 7 : Push the Circle into the Circles Array
+
+````javascript
+// other code...
+
+// TODO 7 : Push the circle into the circles Array //
+circles.push(circle);
+
+// other code...
+````
+
+#### TODO 8 : Add Random Velocity to the Circle
+
+````javascript
+// other code...
+
+// TODO 7 : Add random velocity to the circle within the area of the canvas //
+physikz.addRandomVelocity(circle, canvas);
+
+// other code...
+````
+
+
+### Manually Radomizing the Circle 
+
+// TODO A: Initialize a randomly generated radius and color //
+radius = num.randomIntBetween(5, 20);
+color = draw.randomColor(255, 255, 255);
+
+// TODO B : Create a cross shape //
+cross = draw.line(-radius, 0, radius, 0, '#999', 2);
+draw.line(0, -radius, 0, radius, '#999', 2, cross);
+
+// TODO C : Draw a circle using the radius and color //
+circle = draw.circle(radius, color, '#999', 1, null, null, cross);
+
+// TODO D : Randomly place the circle within the area of the canvas //
+circle.x = num.randomIntBetween(0, canvas.width);
+circle.y = num.randomIntBetween(0, canvas.height);
