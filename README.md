@@ -330,7 +330,7 @@ Alrighty, to run the app, YOU MUST open the file at:
 
 And with the `index.html` tab selected in the editor (see A), you can simply press the green play button (see B).
 
-This will start an Apache web server in a new tab of the Console View, the bottom window pane of the Cloud9 IDE.  Once Apache has booted, you can click the URL `https://line-crawler-jfraboni.c9.io/index.html` (see C) - this will open a new tab with the appliation running.
+This will start an Apache web server in a new tab of the Console View, the bottom window pane of the Cloud9 IDE.  Once Apache has booted, you can click the URL `https://circularity-jfraboni.c9.io/index.html` (see C) - this will open a new tab with the appliation running.
 
 <img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/run-app.png">
 
