@@ -14,17 +14,17 @@ A motion poem using random number generation and velocity applied to circles...
     - [Type of App : Web](#type-of-app--web)
   - [Lesson Steps](#lesson-steps)
     - [Initializing Our App](#initializing-our-app)
+      - [Loops To The Rescue](#loops-to-the-rescue)
+      - [Code Blocks](#code-blocks)
     - [Variable Declaration](#variable-declaration)
       - [TODO 1 : Declare Our Variables](#todo-1--declare-our-variables)
     - [Variable Initialization](#variable-initialization)
       - [TODO 2 : Initialize The Counter and Circles Array](#todo-2--initialize-the-counter-and-circles-array)
-      - [TODO 3 : Stub Out The While Loop](#todo-3--stub-out-the-while-loop)
-    - [Figure It Out](#figure-it-out)
-      - [TODO 4 : Initialize Random Radius and Color Every Loop](#todo-4--initialize-random-radius-and-color-every-loop)
-    - [TODO 5 : Draw A Circle](#todo-5--draw-a-circle)
-    - [Figure It Out](#figure-it-out-1)
-      - [TODO 6 : Randomly Position the Circle Within the Canvas](#todo-6--randomly-position-the-circle-within-the-canvas)
-      - [TODO 7 : Push the Circle Into The Circles Array and Add It To The View](#todo-7--push-the-circle-into-the-circles-array-and-add-it-to-the-view)
+      - [TODO 3 : Generate a Radomized Circle](#todo-3--generate-a-radomized-circle)
+    - [Update our Variables](#update-our-variables)
+      - [TODO 4 : Pull Out The Current Circle from the Circles Array](#todo-4--pull-out-the-current-circle-from-the-circles-array)
+      - [TODO 5 : Keep The Current Circle Within the Bounds of the Canvas](#todo-5--keep-the-current-circle-within-the-bounds-of-the-canvas)
+      - [Run the App](#run-the-app)
 
 ## Installation
 
@@ -373,29 +373,9 @@ Use the Array syntax to pull out the circle at index `i`.
 
 Try using an `if` and `else-if` conditional statement to check the value of the circle's `x` and `y` coordinate to keep the circle within the bounds of the circle. 
 
-````javascript
-// other code ...
+Keep in mind:
 
-// TODO 9 : pull out one circle at at time from the circles Array //
-circle = circles[i];
-
-// other code ...
-````
-
-````javascript
-// other code ...
-
-// TODO 10 : Update the position of the circle //
-physikz.updatePosition(circle);
-
-// other code ...
-````
+* We know the canvas has properties proportional properties of `canvas.width` and `canvas.height`, which we can use to find the edges of the canvas.
+* The circle is centered around its own x and y position, so we can find where its outer edges are located within the canvas by adding or subtracting its radius from its own x or y value.
 
 ####Run the App
-
-### Figure It Out
-
-Alrighty, your turn!  Will help you:
-
-* We need to keep each circle within the area of the canvas.  We know the canvas has properties proportional properties of `canvas.width` and `canvas.height`, which we can use to find the edges of the canvas.
-* The circle is centered around its own x and y position, so we can find where its outer edges are located within the canvas by adding or subtracting its radius from its own x or y value.
