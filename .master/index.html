@@ -49,15 +49,24 @@
 				////////////////////////////////////////////////////////////////
 				
 				// TODO 1: Declare our varialbes //
-				
+				var i, circle, circles;
 				
 				// TODO 2: Initialize i to 0 //
-				
+				i = 0;
+				circles = [];
 				
 				
 				while (i < 100) {
 					// TODO 3 : YOUR CODE STARTS HERE //////////////////////////
+					circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
 					
+					if (circle.alpha < .2) {
+						draw.blurFilterOn(circle);
+					}
+					
+					physikz.addRandomVelocity(circle, canvas);
+					circles.push(circle);
+					view.addChild(circle);
 					
 					// TODO 3 : YOUR CODE ENDS HERE ////////////////////////////
 					
@@ -77,13 +86,35 @@
 
                 function update() {
 					for (var i = 0; i < circles.length; i++) {
+						////////////////////////////////////////////////////////
+						// ALTERNATIVELY : USE OUR LITTLE physikz LIBRARY     //
+						////////////////////////////////////////////////////////
+						//physikz.updateRadialPositionInArea(circles[i], canvas);
+						
 						// TODO 4 : pull out one circle at at time from the circles Array //
+						circle = circles[i];
 						
-						// TODO 5 : YOUR CODE STARTS HERE //////////////////////
+						////////////////////////////////////////////////////////
+						// TODO 5 SOLUTION                                    //
+						////////////////////////////////////////////////////////
 						
+						// TODO 5 : YOUR CODE STARTS HERE //
 						
-	                    
-	     				// YOUR TODO 5 CODE ENDS HERE //////////////////////////
+						var radius = circle.radius;
+						var areaWidth = canvas.width + radius;
+						var areaHeight = canvas.height + radius;
+						
+						if (circle.x > areaWidth) {
+                            circle.x = -circle.radius;
+                        } else if (circle.x < -circle.radius) {
+                            circle.x = areaWidth;
+                        } if (circle.y > areaHeight) {
+                            circle.y = -circle.radius;
+                        } else if (circle.y < -circle.radius) {
+                            circle.y = areaHeight;
+                        }
+                        
+         				// YOUR TODO 5 CODE ENDS HERE //
 					}
                 }
                 

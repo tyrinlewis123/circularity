@@ -80,6 +80,7 @@ Some concepts you'll learn are:
 * Function invocation and passing arguments to functions.
 * The While loop.
 * Conditional statements - making decisions in code.
+* Recognizing code blocks.
 * Random number generation.
 * Pair programming.
 
@@ -154,7 +155,45 @@ In fact, most loops use this exact same pattern: some counter checked against th
 
 So then, looking at the above snippet of code, what would be the result of running that code?
 
-Great stuff, we're going to use the `while` loop to draw our cirles.  Before we get there, let's first declare our app's required variables.
+#### Code Blocks
+
+Blocks of code belong to functions, loops and conditional statements.  Code blocks are always encased within the braces `{ // code block... }`, and the code inside them is always indented by one tab.  The `{ }` braces around code blocks might seem confusing because these braces also represent Object literals.  You will, however, come to knowing when they stand for an Object, and when they represent a code block: it has everything to do with the _keyword_ that preceeds the braces.
+
+For example:
+
+````javascript
+var myObject = {nameFirst: 'John'};
+````
+
+Above, the keyword `var` tells you you're creating a variable, and the assignment opporator, `=`, points to an object literal, `{nameFirst: 'John'};`  The braces in this case encapsulate the key/value pairs of the object, in this case, `nameFirst` and `'John'`.
+
+Where as:
+
+````javascript
+var i = 0;
+
+while (i < 100) {
+    console.log(i);
+    i++;
+}
+````
+
+In this last example, the keyword `while` tells us we're opening a `while` loop, so the `{ }` braces that follow it represent the _body_ or _code block_ of the `while` loop.  The code inside these braces is the _block_ of code that will be executed each time the condition of `while (i < 100)` is `true`.
+
+This is the same pattern with function definitions:
+
+````javascript
+
+function add(a, b) {
+    return a + b;
+}
+````
+
+Same thing here, the keyword `function` tells us we're declaring a function, and the `{ }` braces that follow it represent the _body_ or _code block_ of the `function`.  The code inside these braces is the _block_ of code that will be executed each time the function is invoked.
+
+You should alway pay attention to blocks of code and their `{ }` braces _ you MUST always have an opening AND closing brace, otherwise the JavaScript interpreter will throw an error or your IDE will complain.
+
+Great stuff, we're going to use the `while` loop to draw and initialize our circles.  Before we get there, let's first declare our app's required variables.
 
 ***
 
@@ -166,9 +205,9 @@ For our app, the things we'll need are:
 
 * `i`: a counter for our while loop.
 * `circle`: we will use this variable to hold the circle shape we create using the `draw` library.
-* `circles`: we'll need an Array to hold all of our circles so we can loop through them all and update each.
+* `circles`: this variable will be an Array to hold all of our circles so we can loop through them all and update each.
 
-Ok, we can take care of declaring our varialbes all in one statement > find **TODO 1** and declare our varialbes like so:
+Ok, we can take care of declaring our varialbes all in one statement: Find **TODO 1** and declare our varialbes like so:
 
 ````javascript
 // other code...
@@ -195,87 +234,91 @@ circles = [];
 // other code...
 ````
 
-We know we want to draw 100 circles, and that the `while` loop is the way go, so let's go ahead and put the while loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add each of them as children of our `view`, positioned somewhere randomly within the area of our canvas, all within the `while` loop code block.
+Excellent!  Now witness the power of computation:
 
-#### TODO 3 : Stub Out The While Loop
+We know we want to draw 100 circles, and that the `while` loop is the way go, so let's go ahead and put the while loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add each of them as children of our `view`, positioned somewhere randomly within the area of our canvas - we'll do all of this initializing within the code block of the `while` loop.
 
-Here's the template code for your `while` statement, find **TODO 3** and put the while loop in place:
+We've stub out the while loop for you; it looks like this:
 
 ````javascript
 // other code...
 
-// TOOD 3 : // TOOD 3 : Stub out the while loop //
 while (i < 100) {
-    // YOUR CODE STARTS HERE //
+    // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
     
     
     
-    // YOUR CODE ENDS HERE //
+    // TODO 3 : YOUR CODE ENDS HERE ////////////////////////////
+					
+	/*
+	 * IMPORTANT NOTE: 
+	 * The statement i++; increments our counter by 1 on each loop.
+	 * If we did not do this, the conditional check of while (i < 100)
+	 * would never return false, and we would loop forever!
+	 *
+	 * Leave this as the last statement in the while loop
+	 */
+    i++;
+}
+
+// other code...
+````
+Ok, now, _inside_ the code block of the `while` loop, we're going to initialize our `circle` shape!
+
+#### TODO 3 : Generate a Radomized Circle
+
+Implement the following code such that your `while` loop now looks like this:
+
+````javascript
+// other code...
+while (i < 100) {
+    // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
+    circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
+					
+    if (circle.alpha < .2) {
+    	draw.blurFilterOn(circle);
+    }
     
-    // increment our counter - leave this as the last statement in the while loop //
+    physikz.addRandomVelocity(circle, canvas);
+    circles.push(circle);
+    view.addChild(circle);
+    
+    // TODO 3 : YOUR CODE ENDS HERE ////////////////////////////
+					
+	/*
+	 * IMPORTANT NOTE: 
+	 * The statement i++; increments our counter by 1 on each loop.
+	 * If we did not do this, the conditional check of while (i < 100)
+	 * would never return false, and we would loop forever!
+	 *
+	 * Leave this as the last statement in the while loop
+	 */
     i++;
 }
 
 // other code...
 ````
 
-#### TODO 4 : Generate a Radomized Circle
+First, we're going to use the API of our `draw` utility to draw a `randomCircleInArea()`.  This method will draw a circle random in its color, radius, transparency and position, _and_ add a cross shape to the circle.  Why the cross shape?  You'll see...
 
-````javascript
-// other code...
+The API of this function is:
 
-// TOOD 4 : Create a radomized circle within the area of the canvas //
-circle = draw.randomCircleInArea(canvas, true, true, '#999');
+    randomCircleInArea(area, randomizeAlpha, addCross, borderColor, borderThickness, randomRadialProps)
 
-// other code...
-````
+...and we're passing in the arguments:
 
-#### TODO 5 : Add a Blur Filter to Some Circles
-````javascript
-// other code...
+    circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
+    
+The area in this case is the `canvas`, so our cirlce will be given a randomly generated x and y coordinate within the area of our canvas.  Next we pass in two boolean values of `true`, which means we want to randomize its transparency (alpha) and add a cross shape to our circle.  Finally, the last two values, `'#999', 2`, represent the color and thickness of the circle's border.Circularity
 
-// TODO 5 : Add a blur filter to circles with alpha less than .2 //
-if (circle.alpha < .2) {
-	draw.blurFilterOn(circle);
-}
+Next, we check `if (circle.alpha < .2)`, which says _if_ the transparency of the circle happens to be less than .2, which would be almost fully transparent, we use again our `draw` utility to add a blur filter to our circle.  This will produce a neat effect on the circles such that those almost transparent will appear to be _off in the distance_.
 
-// other code...
-````
+After this, we create some magic:  We pass in our newly created `circle` and the area of the `canvas` to the `addRandomVelocity()` method of the `physikz` library, and this will add some randomly generated velocity properties, giving our circle a speed and direction within the area of our canvas:
 
-#### TODO 6 : Add the Circle to the View
+    physikz.addRandomVelocity(circle, canvas);
 
-````javascript
-// other code...
+Finally, we `push` our initialized circle into the the circles Array.  `push` is part of the API of a JavaScript Array, and this is the method we use to add elements to an Array.  We do this for all our circles created within the `while` loop, so we can have all the circles collected into a list which we can loop through at a later time, and update the properties of each circle.  In doing so, we can easily update the `x` and `y` properties of 
 
-// TODO 6 : Add the circle to the view //
-view.addChild(circle);
-
-// other code...
-````
-
-####Run the App
-
-#### TODO 7 : Push the Circle into the Circles Array
-
-````javascript
-// other code...
-
-// TODO 7 : Push the circle into the circles Array //
-circles.push(circle);
-
-// other code...
-````
-
-#### TODO 8 : Add Random Velocity to the Circle
-
-````javascript
-// other code...
-
-// TODO 7 : Add random velocity to the circle within the area of the canvas //
-physikz.addRandomVelocity(circle, canvas);
-
-// other code...
-````
 
 ***
 
@@ -286,17 +329,49 @@ Awesome, let's do some fun stuff with our circles now.
 Find the `update()` function; the rest of our work will take place within this function.  Right now, it's stubbed out like this:
 
 ````javascript
-function update() {						
-	for (var i = 0; i < circles.length; i++) {
-	    // YOUR CODE STARTS HERE //
-	
-	
-	    // YOUR CODE ENDS HERE //
-	}
-}
+function update() {
+    for (var i = 0; i < circles.length; i++) {
+        // TODO 4 : pull out one circle at at time from the circles Array //
+        
+        
+        physikz.updatePosition(circle);
+        
+        
+        // TODO 5 : YOUR CODE STARTS HERE //////////////////////
+    
+    
+    
+         // YOUR TODO 5 CODE ENDS HERE //////////////////////////
+        }
+    }
 ````
 
-#### TODO 9 : 
+The thing to notice here is that we're utilizing another type of loop: the `for` loop.  The syntax of loop looks like this:
+
+````javascript
+for (var i = 0; i < circles.length; i++) {
+    // this is the code block or body of the for loop //
+}
+````
+Following the keyword `for` the first part of the for loop within parenthesis, `(var i = 0; i < circles.length; i++)`, configures the condition for the loop.  In fact, there's three parts to it:
+
+* var i = 0; : This initializes a counter i to 0.
+* i < circles.length; : This statement is the condition against which we check on each loop.  If i is less than the length of the circles Array, the code block for the for loop will execute.
+* i++ : This statement increments the counter i.  We could loop backwards, in which case we'd do something like i--.
+
+Finally, we have our code block within the braces `{ }`.
+
+All your code for TODO 4 and 5 will go _within_ the code block of this `for` loop, so keep that in mind!
+
+It's your job to fill out **TODO 4** and **TODO 5**!
+
+#### TODO 4 : Pull Out The Current Circle from the Circles Array
+
+Use the Array syntax to pull out the circle at index `i`.
+
+#### TODO 5 : Keep The Current Circle Within the Bounds of the Canvas
+
+Try using an `if` and `else-if` conditional statement to check the value of the circle's `x` and `y` coordinate to keep the circle within the bounds of the circle. 
 
 ````javascript
 // other code ...
