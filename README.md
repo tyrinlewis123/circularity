@@ -1,8 +1,6 @@
 Circularity
 ===
 
-A motion poem using random number generation and velocity applied to circles...
-
 **Table of Contents**
 
 - [Circularity](#circularity)
@@ -20,11 +18,13 @@ A motion poem using random number generation and velocity applied to circles...
       - [TODO 1 : Declare Our Variables](#todo-1--declare-our-variables)
     - [Variable Initialization](#variable-initialization)
       - [TODO 2 : Initialize The Counter and Circles Array](#todo-2--initialize-the-counter-and-circles-array)
-      - [TODO 3 : Generate a Radomized Circle](#todo-3--generate-a-radomized-circle)
+      - [TODO 3 : Generate a Randomized Circle](#todo-3--generate-a-randomized-circle)
+    - [Run the App](#run-the-app)
     - [Update our Variables](#update-our-variables)
       - [TODO 4 : Pull Out The Current Circle from the Circles Array](#todo-4--pull-out-the-current-circle-from-the-circles-array)
       - [TODO 5 : Keep The Current Circle Within the Bounds of the Canvas](#todo-5--keep-the-current-circle-within-the-bounds-of-the-canvas)
-      - [Run the App](#run-the-app)
+
+A motion poem using random number generation and velocity applied to circles...
 
 ## Installation
 
@@ -124,7 +124,7 @@ Starting up an application often takes a few steps of:
 
 We've setup the app a little bit already, importing some libraries and initializing the basic plumbing in the background, and we won't be loading any external data in our app, so let's move on to declaring, initializing and using our variables.
 
-Our motion poem will contain 100 randomly drawn circles, arranged randomly within the area of our canvas.  The big take-away in this project is **DRY**: Don't repeat yourself!
+Our motion poem will contain 100 randomly drawn circles, arranged randomly within the area of our canvas.  The big takeaway in this project is **DRY**: Don't repeat yourself!
 
 We want to draw 100 circles, but we don't want to write the code to do so 100 times.  That would be a silly waste of time and effort, making the code very difficult to maintain.
 
@@ -149,7 +149,7 @@ The while loops checks first if a condition is `true`: `while (i < 100)`.  So wh
 
 After executing the code block, the while loop loops-back to check the condition again, and will continue to loop until that condition is `false`.
 
-To break out of the loop, we need the condition to return `false`, and by _incrementing_ our `i` counter on each loop using `i++;`, the value of `i` increases by one on each loop.  `i++;` is shorthand for `i = i + 1;`, and you'll see the `++` or `--` opporators used often in code to accomplish this type of pattern.
+To break out of the loop, we need the condition to return `false`, and by _incrementing_ our `i` counter on each loop using `i++;`, the value of `i` increases by one on each loop.  `i++;` is shorthand for `i = i + 1;`, and you'll see the `++` or `--` operators used often in code to accomplish this type of pattern.
 
 In fact, most loops use this exact same pattern: some counter checked against the length of a collection (an Array or Object), and incremented or decremented on each loop, depending on if you want to loop forward or backwards through a collection.
 
@@ -157,7 +157,9 @@ So then, looking at the above snippet of code, what would be the result of runni
 
 #### Code Blocks
 
-Blocks of code belong to functions, loops and conditional statements.  Code blocks are always encased within the braces `{ // code block... }`, and the code inside them is always indented by one tab.  The `{ }` braces around code blocks might seem confusing because these braces also represent Object literals.  You will, however, come to knowing when they stand for an Object, and when they represent a code block: it has everything to do with the _keyword_ that preceeds the braces.
+Blocks of code belong to functions, loops and conditional statements.
+
+Code blocks are always encased within the braces `{ // code block... }`, and the code inside them is always indented by one tab.  The `{ }` braces around code blocks might seem confusing because these braces also represent Object literals.  You will, however, come to knowing when they stand for an Object, and when they represent a code block: it has everything to do with the _keyword_ that precedes the braces.
 
 For example:
 
@@ -167,7 +169,7 @@ var myObject = {nameFirst: 'John'};
 
 Above, the keyword `var` tells you you're creating a variable, and the assignment opporator, `=`, points to an object literal, `{nameFirst: 'John'};`  The braces in this case encapsulate the key/value pairs of the object, in this case, `nameFirst` and `'John'`.
 
-Where as:
+Whereas:
 
 ````javascript
 var i = 0;
@@ -207,12 +209,12 @@ For our app, the things we'll need are:
 * `circle`: we will use this variable to hold the circle shape we create using the `draw` library.
 * `circles`: this variable will be an Array to hold all of our circles so we can loop through them all and update each.
 
-Ok, we can take care of declaring our varialbes all in one statement: Find **TODO 1** and declare our varialbes like so:
+Ok, we can take care of declaring our variables all in one statement: Find **TODO 1** and declare our variables like so:
 
 ````javascript
 // other code...
 
-// TODO 1: Declare our varialbes //
+// TODO 1: Declare our variables //
 var i, circle, circles;
 
 // other code...
@@ -265,7 +267,7 @@ while (i < 100) {
 ````
 Ok, now, _inside_ the code block of the `while` loop, we're going to initialize our `circle` shape!
 
-#### TODO 3 : Generate a Radomized Circle
+#### TODO 3 : Generate a Randomized Circle
 
 Implement the following code such that your `while` loop now looks like this:
 
@@ -309,7 +311,7 @@ The API of this function is:
 
     circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
     
-The area in this case is the `canvas`, so our cirlce will be given a randomly generated x and y coordinate within the area of our canvas.  Next we pass in two boolean values of `true`, which means we want to randomize its transparency (alpha) and add a cross shape to our circle.  Finally, the last two values, `'#999', 2`, represent the color and thickness of the circle's border.Circularity
+The area in this case is the `canvas`, so our circle will be given a randomly generated x and y coordinate within the area of our canvas.  Next we pass in two boolean values of `true`, which means we want to randomize its transparency (alpha) and add a cross shape to our circle.  Finally, the last two values, `'#999', 2`, represent the color and thickness of the circle's border.Circularity
 
 Next, we check `if (circle.alpha < .2)`, which says _if_ the transparency of the circle happens to be less than .2, which would be almost fully transparent, we use again our `draw` utility to add a blur filter to our circle.  This will produce a neat effect on the circles such that those almost transparent will appear to be _off in the distance_.
 
@@ -319,12 +321,38 @@ After this, we create some magic:  We pass in our newly created `circle` and the
 
 Finally, we `push` our initialized circle into the the circles Array.  `push` is part of the API of a JavaScript Array, and this is the method we use to add elements to an Array.  We do this for all our circles created within the `while` loop, so we can have all the circles collected into a list which we can loop through at a later time, and update the properties of each circle.  In doing so, we can easily update the `x` and `y` properties of 
 
+###Run the App
+
+
+Alrighty, to run the app, YOU MUST open the file at:
+
+    index.http
+
+And with the `index.html` tab selected in the editor (see A), you can simply press the green play button (see B).
+
+This will start an Apache web server in a new tab of the Console View, the bottom window pane of the Cloud9 IDE.  Once Apache has booted, you can click the URL `https://line-crawler-jfraboni.c9.io/index.html` (see C) - this will open a new tab with the appliation running.
+
+<img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/run-app.png">
+
+You can _split_ your tabs to keep the app running side by side your code while you continue to work.  First, _right-click_ the tab with the running app (see A), then select `Split Pane in Two Columns` (see B): 
+
+<img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/split-tabs.png">
+
+This will give you this setup:
+
+<img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/side-by-side.png">
+
+As you save your future work, changes to your code will be reflected in the app > you don't have to press "Run" again - as long as the Apache web server is still running - you need only press the refresh button on the tab with the app running in it, like so:
+
+<img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/refresh-html.png">
+
+***
 
 ***
 
 ### Update our Variables
 
-Awesome, let's do some fun stuff with our circles now.
+Awesome, let's do some fun stuff with our circles now.  Remember that in our motion poem apps, our `update()` method is called 60 times per second, so it gives us the perfect place to update properties of our display objects in order to create the illusion of motion, otherwise known as, _animation_!
 
 Find the `update()` function; the rest of our work will take place within this function.  Right now, it's stubbed out like this:
 
@@ -378,4 +406,3 @@ Keep in mind:
 * We know the canvas has properties proportional properties of `canvas.width` and `canvas.height`, which we can use to find the edges of the canvas.
 * The circle is centered around its own x and y position, so we can find where its outer edges are located within the canvas by adding or subtracting its radius from its own x or y value.
 
-####Run the App
