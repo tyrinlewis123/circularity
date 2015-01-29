@@ -326,7 +326,7 @@ Finally, we `push` our initialized circle into the the circles Array.  `push` is
 
 Alrighty, to run the app, YOU MUST open the file at:
 
-    index.http
+    index.html
 
 And with the `index.html` tab selected in the editor (see A), you can simply press the green play button (see B).
 
