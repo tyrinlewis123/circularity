@@ -1,6 +1,8 @@
 Circularity
 ===
 
+A motion poem using random number generation and velocity applied to circles...
+
 **Table of Contents**
 
 - [Circularity](#circularity)
@@ -23,8 +25,8 @@ Circularity
     - [Update our Variables](#update-our-variables)
       - [TODO 4 : Pull Out The Current Circle from the Circles Array](#todo-4--pull-out-the-current-circle-from-the-circles-array)
       - [TODO 5 : Keep The Current Circle Within the Bounds of the Canvas](#todo-5--keep-the-current-circle-within-the-bounds-of-the-canvas)
-
-A motion poem using random number generation and velocity applied to circles...
+  - [Just Code TODOs](#just-code-todos)
+  - [Just Code TODOs in Google Presentation](#just-code-todos-in-google-presentation)
 
 ## Installation
 
@@ -229,7 +231,7 @@ Sweet, next let's _initialize_ our counter and the circles Array.  Find **TODO 2
 ````javascript
 // other code...
 
-// TODO 2: Initialize i to 0 //
+// TODO 2: Initialize our variables //
 i = 0;
 circles = [];
 
@@ -406,3 +408,12 @@ Keep in mind:
 * We know the canvas has properties proportional properties of `canvas.width` and `canvas.height`, which we can use to find the edges of the canvas.
 * The circle is centered around its own x and y position, so we can find where its outer edges are located within the canvas by adding or subtracting its radius from its own x or y value.
 
+## Just Code TODOs
+
+[Just Code TODOs](https://github.com/OperationSpark/circularity/blob/master/JUST-TODOS.md)
+
+## Just Code TODOs in Google Presentation
+
+<a href="https://docs.google.com/presentation/d/1eRYV5JL5_LMO29NDf-_EgbNoDWlABkbwwSRS8ClDDsg/edit?usp=sharing" target="_blank">Code Presentation</a>
+
+&copy; Operation Spark 2015

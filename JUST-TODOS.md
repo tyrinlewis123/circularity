@@ -3,11 +3,12 @@
 ````javascript
 // other code...
 
-// TODO 1: Declare our varialbes //
-var i, radius, color, circle, circles, cross;
+// TODO 1: Declare our variables //
+var i, circle, circles;
 
 // other code...
 ````
+
 ### TODO 2 : Initialize The Counter and Circles Array
 
 ````javascript
