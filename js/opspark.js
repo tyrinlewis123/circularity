@@ -1,6 +1,5 @@
 (function (window) {
     window.opspark = window.opspark || {};
-    var draw = window.opspark.draw;
     
     window.opspark.makeApp = function (updateable) {
         var 
@@ -45,7 +44,7 @@
         function resizeCanvas(e) {
             _canvas.width = window.innerWidth;
             _canvas.height = window.innerHeight;
-            if (e) { _app.update(e) };
+            if (e) { _app.update(e) }
         }
         resizeCanvas();
         
@@ -55,5 +54,5 @@
         createjs.Ticker.on('tick', _app.update);
 
         return _app;
-    }
+    };
 }(window));

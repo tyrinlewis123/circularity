@@ -3,6 +3,8 @@ Circularity
 
 A motion poem using random number generation and velocity applied to circles...
 
+Also at: http://bit.ly/op-spark-circularity
+
 **Table of Contents**
 
 - [Circularity](#circularity)
