@@ -209,6 +209,7 @@ while (i < 100) {
     // YOUR CODE STARTS HERE //
     
     
+    
     // YOUR CODE ENDS HERE //
     
     // increment our counter - leave this as the last statement in the while loop //
@@ -218,7 +219,7 @@ while (i < 100) {
 // other code...
 ````
 
-### TODO 4 : Generate a radomized circle
+#### TODO 4 : Generate a Radomized Circle
 
 ````javascript
 // other code...
@@ -229,7 +230,7 @@ circle = draw.randomCircleInArea(canvas, true, true, '#999');
 // other code...
 ````
 
-### TODO 5 : Add a Blur Filter to Some Circles
+#### TODO 5 : Add a Blur Filter to Some Circles
 ````javascript
 // other code...
 
@@ -241,7 +242,7 @@ if (circle.alpha < .2) {
 // other code...
 ````
 
-### TODO 6 : Add the Circle to the View
+#### TODO 6 : Add the Circle to the View
 
 ````javascript
 // other code...
@@ -251,6 +252,8 @@ view.addChild(circle);
 
 // other code...
 ````
+
+####Run the App
 
 #### TODO 7 : Push the Circle into the Circles Array
 
@@ -274,6 +277,50 @@ physikz.addRandomVelocity(circle, canvas);
 // other code...
 ````
 
+***
+
+### Update our Variables
+
+Awesome, let's do some fun stuff with our circles now.
+
+Find the `update()` function; the rest of our work will take place within this function.  Right now, it's stubbed out like this:
+
+````javascript
+function update() {						
+	for (var i = 0; i < circles.length; i++) {
+	    // YOUR CODE STARTS HERE //
+	
+	
+	    // YOUR CODE ENDS HERE //
+	}
+}
+````
+
+#### TODO 9 : 
+
+````javascript
+// other code ...
+
+// TODO 9 : pull out one circle at at time from the circles Array //
+circle = circles[i];
+
+// other code ...
+````
+
+````javascript
+// other code ...
+
+// TODO 10 : Update the position of the circle //
+physikz.updatePosition(circle);
+
+// other code ...
+````
+
+####Run the App
+
 ### Figure It Out
 
-Alrighty, your turn!
+Alrighty, your turn!  Will help you:
+
+* We need to keep each circle within the area of the canvas.  We know the canvas has properties proportional properties of `canvas.width` and `canvas.height`, which we can use to find the edges of the canvas.
+* The circle is centered around its own x and y position, so we can find where its outer edges are located within the canvas by adding or subtracting its radius from its own x or y value.

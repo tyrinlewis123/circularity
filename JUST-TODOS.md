@@ -39,7 +39,7 @@ while (i < 100) {
 // other code...
 ````
 
-### TODO 4 : Generate a radomized circle
+### TODO 4 : Generate a Radomized Circle
 
 ````javascript
 // other code...

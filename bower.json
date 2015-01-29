@@ -28,7 +28,7 @@
     "PreloadJS": "~0.6.0",
     "SoundJS": "~0.6.0",
     "chance": "~0.7.3",
-    "racket": "~0.0.4",
-    "opspark-draw": "~0.3.11"
+    "racket": "~0.0.5",
+    "opspark-draw": "~0.3.12"
   }
 }

@@ -38,7 +38,6 @@
 				var 
 					draw = window.opspark.draw,
 					physikz = window.opspark.racket.physikz,
-					num = window.opspark.racket.num,
 					
 					app = window.opspark.makeApp({update: update}),
 					canvas = app.canvas, 
@@ -61,7 +60,7 @@
 					// YOUR CODE STARTS HERE //
 					
 					// TOOD 4 : Create a radomized circle within the area of the canvas //
-					circle = draw.randomCircleInArea(canvas, true, true, '#999');
+					circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
 					
 					// TODO 5 : Add a blur filter to circles with alpha less than .2 //
 					if (circle.alpha < .2) {
@@ -77,7 +76,6 @@
 					// TODO 8 : Add random velocity to the circle within the area of the canvas //
 					physikz.addRandomVelocity(circle, canvas);
 					
-					
 					// YOUR CODE ENDS HERE //
 					
 					// increment our counter - leave this as the last statement in the while loop //
@@ -87,21 +85,33 @@
 				view.addChild(fps);
 				app.addUpdateable(fps);
 
-                function update() {						
+                function update() {
 					for (var i = 0; i < circles.length; i++) {
-						circle = circles[i];
+						// YOUR CODE STARTS HERE //
 						
-						physikz.updatePosition(circle);
+						// TODO 9 : pull out one circle at at time from the circles Array //
+						//circle = circles[i];
+						physikz.updateRadialPositionInArea(circles[i], canvas);
+						
+						// var radius = circle.radius;
+						// var areaWidth = canvas.width + radius;
+						// var areaHeight = canvas.height + radius;
+						
+						// // TODO 10 : Update the position of the circle //
+						// physikz.updatePosition(circle);
 
-						// if (circle.x - circle.radius > canvas.width) {
+						// // // TODO 11 : Keep the circle within the bounds of the canvas //
+						// if (circle.x > areaWidth) {
 	     //                   circle.x = -circle.radius;
-	     //               } else if (circle.x + circle.radius < 0) {
-	     //                   circle.x = canvas.width + circle.radius;
-	     //               } if (circle.y - circle.radius > canvas.height) {
+	     //               } else if (circle.x < -circle.radius) {
+	     //                   circle.x = areaWidth;
+	     //               } if (circle.y > areaHeight) {
 	     //                   circle.y = -circle.radius;
 	     //               } else if (circle.y < -circle.radius) {
-	     //                   circle.y = canvas.height + circle.radius;
+	     //                   circle.y = areaHeight;
 	     //               }
+	                    
+	     				// YOUR CODE ENDS HERE //
 					}
                 }
                 
