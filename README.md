@@ -139,7 +139,7 @@ We want to draw 100 circles, but we don't want to write the code to do so 100 ti
 
 Every programming language comes with features built-in to help you implement repetative processes, like looping over a list of data, or drawing a circle 100 times.  If we want to do anything more than once, we can use a _loop_, and is most often best practice to do so.
 
-JavaScript comes with a number of built in loops, like `for` `for-in` and `while`, and many 3rd party libraries, like _lodash_, have implementations of other types of loops.
+JavaScript comes with a number of built in loops, like `for` `for-in` and `while`, and many 3rd party libraries, like <a href="https://lodash.com/">_lodash_</a>, have implementations of other types of loops.
 
 We're going to use the `while` loop to accomplish our task.  It works like this:
 
