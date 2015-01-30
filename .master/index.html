@@ -88,11 +88,16 @@
 					for (var i = 0; i < circles.length; i++) {
 						////////////////////////////////////////////////////////
 						// ALTERNATIVELY : USE OUR LITTLE physikz LIBRARY     //
+						//                                                    //
+						// BUT YOU'll NEED TO REMOVE ANY OTHER FOR LOOP CODE  //
 						////////////////////////////////////////////////////////
 						//physikz.updateRadialPositionInArea(circles[i], canvas);
 						
+						
 						// TODO 4 : pull out one circle at at time from the circles Array //
 						circle = circles[i];
+						
+						physikz.updatePosition(circle);
 						
 						////////////////////////////////////////////////////////
 						// TODO 5 SOLUTION                                    //
