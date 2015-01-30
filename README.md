@@ -48,7 +48,7 @@ Create a new Cloud9 workspace and clone the project from github.com:
 
 3. Wait for the workspace to finish spooling (while spooling up, you'll see a spinning gear on the newly created workspace in the sidebar), and once the workspace is completed, click the green button, "START EDITING".
 
-    <img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/start-editing.png">
+    <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/start-editing.png">
 
 4. Now, when the workspace is loaded, select the command-line in the bottom window pane, and enter the command `bower install`, then press `Enter`, like this:
 
