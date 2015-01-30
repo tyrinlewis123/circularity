@@ -361,7 +361,7 @@ Find the `update()` function; the rest of our work will take place within this f
 ````javascript
 function update() {
     for (var i = 0; i < circles.length; i++) {
-        // TODO 4 : Access one circle at at time from the circles Array //
+        // TODO 4 : Access one circle at time from the circles Array //
         
         
         physikz.updatePosition(circle);
