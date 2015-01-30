@@ -345,7 +345,7 @@ Once this tab opens, we recommend popping out the tab into Chrome, into a separa
 
 <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/popout.png">
 
-This will give you the app running in a separate Chrome tab.  As you save your future work, changes to your code will be reflected in the app > you don't have to press "Run" again - as long as the Apache web server is still running - you need only press the refresh button on the Chrome tab with the app running in it, like so:
+This will give you the app running in a separate Chrome tab.  As you save your future work, changes to your code will be reflected in the app > you don't have to press "Run" again - as long as the Apache web server is still running - you need only press the refresh button on the Chrome tab with the app running in it.  In this image, we also have the Chrome debugger console open, which will tell you if there's any problems with your code.  Have a look:
 
 <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/chrome.png">
 
