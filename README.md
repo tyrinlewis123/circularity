@@ -395,7 +395,7 @@ All your code for TODO 4 and 5 will go _within_ the code block of this `for` loo
 
 It's your job to fill out **TODO 4** and **TODO 5**!
 
-#### TODO 4 : Pull Out The Current Circle from the Circles Array
+#### TODO 4 : Access The Current Circle from the Circles Array
 
 Use the Array syntax to pull out the circle at index `i`.
 
