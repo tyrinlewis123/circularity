@@ -166,7 +166,7 @@ So then, looking at the above snippet of code, what would be the result of runni
 
 Blocks of code belong to functions, loops and conditional statements.
 
-Code blocks are always encased within the braces `{ // code block... }`, and the code inside them is always indented by one tab.  The `{ }` braces around code blocks might seem confusing because these braces also represent Object literals.  You will, however, come to knowing when they stand for an Object, and when they represent a code block: it has everything to do with the _keyword_ that precedes the braces.
+Code blocks are always encased within the braces `{ // code block... }`, and the code inside them is always indented by one tab.  The `{ }` braces around code blocks might seem confusing because these braces also represent Object literals.  You will, however, come to know when they stand for an Object, and when they represent a code block: it has everything to do with the _keyword_ that precedes the braces.
 
 For example:
 
