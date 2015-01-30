@@ -54,9 +54,7 @@ Create a new Cloud9 workspace and clone the project from github.com:
 
     <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/bower-install.png">
 
-    You'll see some test flying by on the command-line as some required files are installed... 
-
-    and when complete, you'll see something like this:
+    You'll see some test flying by on the command-line as some required files are installed... and when complete, you'll see something like this:
     
     <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/bower-installed.png">
 
