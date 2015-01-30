@@ -52,13 +52,13 @@ Create a new Cloud9 workspace and clone the project from github.com:
 
 4. Now, when the workspace is loaded, select the command-line in the bottom window pane, and enter the command `bower install`, then press `Enter`, like this:
 
-    <img src="https://raw.githubusercontent.com/OperationSpark/using-c9/master/img/motion-poem-install-bower.png">
+    <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/bower-install.png">
 
     You'll see some test flying by on the command-line as some required files are installed... 
 
     and when complete, you'll see something like this:
     
-    <img src="https://raw.githubusercontent.com/OperationSpark/using-c9/master/img/bower-done.png">
+    <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/bower-installed.png">
 
 Nice, you're in business...
 
@@ -78,14 +78,15 @@ Some concepts you'll learn are:
 
 
 * Drawing with CreateJS and our draw utility.
-* RGB color.
 * Leveraging the power of built-in and 3rd party API (DRY), like Math and opspark-draw.
 * Variable declaration and initialization.
 * Function invocation and passing arguments to functions.
-* The While loop.
+* The while and for loop.
 * Conditional statements - making decisions in code.
 * Recognizing code blocks.
-* Random number generation.
+* Calculating coordinates in a cartesian system.
+* Calculating boundaries.
+* Animating.
 * Pair programming.
 
 ### Entering Code
@@ -94,9 +95,13 @@ As we work through the app, you'll find `// TODO //` notes in our `app.js` file,
 
 So, to complete a lesson step, _find_ the `TODO` place marker in the appropriate JavaScript file:
 
+**EXAMPLE**
+
 <img src="https://raw.githubusercontent.com/OperationSpark/using-c9/master/img/find-todo.png">
 
 ...then put your cursor on the line below the `TODO`, and enter the code from the current lesson step:
+
+**EXAMPLE**
 
 <img src="https://raw.githubusercontent.com/OperationSpark/using-c9/master/img/todo-done.png">
 
@@ -336,21 +341,16 @@ And with the `index.html` tab selected in the editor (see A), you can simply pre
 
 This will start an Apache web server in a new tab of the Console View, the bottom window pane of the Cloud9 IDE.  Once Apache has booted, you can click the URL `https://circularity-jfraboni.c9.io/index.html` (see C) - this will open a new tab with the appliation running.
 
-<img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/run-app.png">
+<img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/run-app.png">
 
-You can _split_ your tabs to keep the app running side by side your code while you continue to work.  First, _right-click_ the tab with the running app (see A), then select `Split Pane in Two Columns` (see B): 
+Once this tab opens, we recommend popping out the tab into Chrome, into a separate browser tab.  To do so, click on the popout button on the right side of the preview tab (see A), like so:
 
-<img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/split-tabs.png">
+<img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/popout.png">
 
-This will give you this setup:
+This will give you the app running in a separate Chrome tab.  As you save your future work, changes to your code will be reflected in the app > you don't have to press "Run" again - as long as the Apache web server is still running - you need only press the refresh button on the Chrome tab with the app running in it, like so:
 
-<img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/side-by-side.png">
+<img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/chrome.png">
 
-As you save your future work, changes to your code will be reflected in the app > you don't have to press "Run" again - as long as the Apache web server is still running - you need only press the refresh button on the tab with the app running in it, like so:
-
-<img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/refresh-html.png">
-
-***
 
 ***
 
