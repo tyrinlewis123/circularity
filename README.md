@@ -44,7 +44,7 @@ Create a new Cloud9 workspace and clone the project from github.com:
     
     Then, in the environment selection box, select "HTML5" (see B).  Finally, click the green button "Create" (see C).
     
-    <img src="https://raw.githubusercontent.com/OperationSpark/line-crawler/master/img/clone-workspace.png">
+    <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/clone-workspace.png">
 
 3. Wait for the workspace to finish spooling (while spooling up, you'll see a spinning gear on the newly created workspace in the sidebar), and once the workspace is completed, click the green button, "START EDITING".
 
