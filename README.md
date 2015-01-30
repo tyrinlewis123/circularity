@@ -174,7 +174,7 @@ For example:
 var myObject = {nameFirst: 'John'};
 ````
 
-Above, the keyword `var` tells you you're creating a variable, and the assignment opporator, `=`, points to an object literal, `{nameFirst: 'John'};`  The braces in this case encapsulate the key/value pairs of the object, in this case, `nameFirst` and `'John'`.
+Above, the keyword `var` tells you you're creating a variable, and the assignment opporator, `=`, points to an object literal, `{nameFirst: 'John'};`  The braces in this case encapsulate the key/value pairs of the Object, in this case, `nameFirst` and `'John'`.
 
 Whereas:
 
