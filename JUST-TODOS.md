@@ -55,7 +55,7 @@ while (i < 100) {
 // other code...
 ````
 
-#### TODO 4 : Pull out the Circles Individually
+#### TODO 4 : Access The Current Circle from the Circles Array
 
 Solve:
 

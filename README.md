@@ -25,7 +25,7 @@ Also at: http://bit.ly/op-spark-circularity
       - [TODO 3 : Generate a Randomized Circle](#todo-3--generate-a-randomized-circle)
     - [Run the App](#run-the-app)
     - [Update our Variables](#update-our-variables)
-      - [TODO 4 : Pull Out The Current Circle from the Circles Array](#todo-4--pull-out-the-current-circle-from-the-circles-array)
+      - [TODO 4 : Access The Current Circle from the Circles Array Array](#todo-4--access-the-current-circle-from-the-circles-array)
       - [TODO 5 : Update the Position of the Circle](#todo-5--update-the-position-of-the-circle)
       - [TODO 6 : Keep The Current Circle Within the Bounds of the Canvas](#todo-6--keep-the-current-circle-within-the-bounds-of-the-canvas)
   - [Just Code TODOs](#just-code-todos)
