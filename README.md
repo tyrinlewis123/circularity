@@ -26,7 +26,8 @@ Also at: http://bit.ly/op-spark-circularity
     - [Run the App](#run-the-app)
     - [Update our Variables](#update-our-variables)
       - [TODO 4 : Pull Out The Current Circle from the Circles Array](#todo-4--pull-out-the-current-circle-from-the-circles-array)
-      - [TODO 5 : Keep The Current Circle Within the Bounds of the Canvas](#todo-5--keep-the-current-circle-within-the-bounds-of-the-canvas)
+      - [TODO 5 : Update the Position of the Circle](#todo-5--update-the-position-of-the-circle)
+      - [TODO 6 : Keep The Current Circle Within the Bounds of the Canvas](#todo-6--keep-the-current-circle-within-the-bounds-of-the-canvas)
   - [Just Code TODOs](#just-code-todos)
   - [Just Code TODOs in Google Presentation](#just-code-todos-in-google-presentation)
 
@@ -425,13 +426,13 @@ So, above, we used _Array syntax_ to access the second element of the `friends` 
 So, we know our that when we created our circles, each `circle` was pushed into our Array of `circles`, and we know that our `for-loop` is incrementing an index, `i` on each loop, once for each element in the `circles` Array. So, using the Array syntax we discussed earlier in the lesson, what do we need to do to pull-out and assign an individual `circle` as we loop over the Array of `circles`?
 
 ````javascript
-// other code…
+// other code...
 
 
 // TODO 4 : Access one circle at time from the circles Array //
 circle = ???
 
-// other code…
+// other code...
 ````
 
 #### TODO 5 : Update the Position of the Circle
@@ -439,11 +440,15 @@ circle = ???
 Okay, now we have our circle, let's use the `updatePosition()` API of the `physikz` library to update the position of the circle:
 
 ````javascript
+// other code...
+
 // TODO 5 : Update the circle's position //
 physikz.updatePosition(circle)
+
+// other code...
 ````
 
-#### TODO 6 : Keep the Circles on the Canvas
+#### TODO 6 : Keep The Current Circle Within the Bounds of the Canvas
 
 We need to check each circle's position as we loop through the Array of `circles` to keep the circles coming back onto the `canvas`.
 

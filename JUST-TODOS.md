@@ -79,7 +79,7 @@ physikz.updatePosition(circle)
 ````
 
 
-#### TODO 6 : Keep the Circles on the Canvas
+#### TODO 6 : Keep The Current Circle Within the Bounds of the Canvas
 
 We need to check each circle's position as we loop through the Array of `circles` to keep the circles coming back onto the `canvas`.
 
