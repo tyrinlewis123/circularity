@@ -406,7 +406,9 @@ It's time to do a little problem solving:
 
 Use the Array syntax to pull out the circle at index `i`.
 
-Arrays are _zero-indexed_ lists of objects.  Basically, an Array acts as a container, into which we can throw objects, like strings, numbers, or circles. We call the things we throw into Arrays, _items_ or _elements_, as in, the _elements_ of our Array.  To retrieve an individual _element_ from an Array, which can use _Array syntax_, which uses the name of the Array, followed by square brackets that enclose a number representing the position of the element.  `[someNumber]` and we can retrieve the.
+Arrays are _zero-indexed_ lists of objects.  Basically, an Array acts as a container, into which we can throw objects, like strings, numbers, or circles. We call the things we throw into Arrays, _items_ or _elements_, as in, the _elements_ of our Array.
+
+To retrieve an individual _element_ from an Array, we can use _Array syntax_, which uses the name of the Array, followed by square brackets that enclose a number representing the position of the element.
 
 So, if we literally created an Array like this:
 
