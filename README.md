@@ -200,7 +200,7 @@ function add(a, b) {
 
 Same thing here, the keyword `function` tells us we're declaring a function, and the `{ }` braces that follow it represent the _body_ or _code block_ of the `function`.  The code inside these braces is the _block_ of code that will be executed each time the function is invoked.
 
-You should alway pay attention to blocks of code and their `{ }` braces _ you MUST always have an opening AND closing brace, otherwise the JavaScript interpreter will throw an error or your IDE will complain.
+Pay close attention to blocks of code and their `{ }` braces: you MUST always have an opening AND closing brace, otherwise the JavaScript interpreter will throw an error or your IDE will complain.
 
 Great stuff, we're going to use the `while` loop to draw and initialize our circles.  Before we get there, let's first declare our app's required variables.
 
@@ -354,26 +354,32 @@ This will give you the app running in a separate Chrome tab.  As you save your f
 
 ### Update our Variables
 
-Awesome, let's do some fun stuff with our circles now.  Remember that in our motion poem apps, our `update()` method is called 60 times per second, so it gives us the perfect place to update properties of our display objects in order to create the illusion of motion, otherwise known as, _animation_!
+Awesome, let's do some fun stuff with our circles now.  Remember that in our _motion poem_ apps (the series of apps to which this app belongs), our `update()` method is called 60 times per second, so it gives us the perfect place to update properties of our display objects in order to create the illusion of motion, otherwise known as, _animation_!
 
-Find the `update()` function; the rest of our work will take place within this function.  Right now, it's stubbed out like this:
+Given this, the rest of our work will take place within the `update()` function.  Right now, it's stubbed out like this:
 
 ````javascript
 function update() {
     for (var i = 0; i < circles.length; i++) {
         // TODO 4 : Access one circle at time from the circles Array //
         
+        // TODO 5 : Update the circles position //
         
-        physikz.updatePosition(circle);
+        // TODO 6 : YOUR CODE STARTS HERE //////////////////////
         
-        
-        // TODO 5 : YOUR CODE STARTS HERE //////////////////////
-    
-    
-    
-         // YOUR TODO 5 CODE ENDS HERE //////////////////////////
+        if ( / * test for right-side * / ) {
+            // your code to place circle exactly off the stage at the left-side //
+        } else if ( / * test for left-side * / ) {
+            // your code to place circle exactly off the stage at the right-side //
+        } if ( / * test for top * / ) {
+            // code to place circle exactly off the stage at the bottom //
+        } else if ( / * test for bottom * / ) {
+            // your code to place circle exactly off the stage at the top //
         }
+        
+        // YOUR TODO 6 CODE ENDS HERE //////////////////////////
     }
+}
 ````
 
 The thing to notice here is that we're utilizing another type of loop: the `for` loop.  The syntax of loop looks like this:
@@ -391,22 +397,105 @@ Following the keyword `for` the first part of the for loop within parenthesis, `
 
 Finally, we have our code block within the braces `{ }`.
 
-All your code for TODO 4 and 5 will go _within_ the code block of this `for` loop, so keep that in mind!
+All your code for TODO 4, TODO 5 and TODO 6 will go _within_ the code block of this `for` loop, so keep that in mind!
 
-It's your job to fill out **TODO 4** and **TODO 5**!
+It's time to do a little problem solving:
 
 #### TODO 4 : Access The Current Circle from the Circles Array
 
 Use the Array syntax to pull out the circle at index `i`.
 
-#### TODO 5 : Keep The Current Circle Within the Bounds of the Canvas
+Arrays are _zero-indexed_ lists of objects.  Basically, an Array acts as a container, into which we can throw objects, like strings, numbers, or circles. We call the things we throw into Arrays, _items_ or _elements_, as in, the _elements_ of our Array.  To retrieve an individual _element_ from an Array, which can use _Array syntax_, which uses the name of the Array, followed by square brackets that enclose a number representing the position of the element.  `[someNumber]` and we can retrieve the.
 
-Try using an `if` and `else-if` conditional statement to check the value of the circle's `x` and `y` coordinate to keep the circle within the bounds of the circle. 
+So, if we literally created an Array like this:
 
-Keep in mind:
+````javascript
+var friends = ['John', 'Max', 'George', 'Ben', 'Steve', 'Brian'];
+````
 
-* We know the canvas has properties proportional properties of `canvas.width` and `canvas.height`, which we can use to find the edges of the canvas.
-* The circle is centered around its own x and y position, so we can find where its outer edges are located within the canvas by adding or subtracting its radius from its own x or y value.
+Then we can access the elements of the `friends` Array like so:
+
+````javascript
+var name = friends[1];
+console.log(name); // prints Max
+````
+
+So, above, we used _Array syntax_ to access the second element of the `friends` Array, `friends[1]`, which equates to `Max`.
+
+So, we know our that when we created our circles, each `circle` was pushed into our Array of `circles`, and we know that our `for-loop` is incrementing an index, `i` on each loop, once for each element in the `circles` Array. So, using the Array syntax we discussed earlier in the lesson, what do we need to do to pull-out and assign an individual `circle` as we loop over the Array of `circles`?
+
+````javascript
+// other code…
+
+
+// TODO 4 : Access one circle at time from the circles Array //
+circle = ???
+
+// other code…
+````
+
+#### TODO 5 : Update the Position of the Circle
+
+Okay, now we have our circle, let's use the `updatePosition()` API of the `physikz` library to update the position of the circle:
+
+````javascript
+// TODO 5 : Update the circle's position //
+physikz.updatePosition(circle)
+````
+
+#### TODO 6 : Keep the Circles on the Canvas
+
+We need to check each circle's position as we loop through the Array of `circles` to keep the circles coming back onto the `canvas`.
+
+So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border.
+
+So, write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
+
+The best way to start this is to hack away, testing one border at a time!
+
+To do this, you'll have to lean on what you know:
+
+    canvas.width    // The the width of our canvas.
+    canvas.height   // The height of our canvas.
+    circle.x        // The circle's position along the x-axis, good for testing the right and left side borders.
+    circle.y        // The circle's position along the y-axis, good for testing the top and bottom borders.
+    circle.radius   // Each circle is of a different size, so the radius will provide this information to you. ALSO, the circle is centered around its own x and y position, so we can find where its outer edges are located within the canvas by adding or subtracting its radius from its own x or y value.  But you'll see this as you hack away to acheive the expected results.
+
+We've _stubbed_ a chain of `if`, `else-if` statements for you, all you need to do is replace the comments between the `()` parentheses with your check for that particular border:
+
+So, for example, replace:
+
+    / * test for right-side * /
+    
+With:
+
+    circle.x > canvas.width + circle.radius
+
+So that your `if` statement looks like:
+
+````javascript
+if (circle.x > canvas.width + circle.radius) {
+    // your code to place circle exactly off the stage at the left-side //
+}
+````
+
+The full stub code for our `if`, `else-if` statements is here:
+
+````javascript
+// TODO 6 : YOUR CODE STARTS HERE //////////////////////
+
+if ( / * test for right-side * / ) {
+    // your code to place circle exactly off the stage at the left-side //
+} else if ( / * test for left-side * / ) {
+    // your code to place circle exactly off the stage at the right-side //
+} if ( / * test for top * / ) {
+    // code to place circle exactly off the stage at the bottom //
+} else if ( / * test for bottom * / ) {
+    // your code to place circle exactly off the stage at the top //
+}
+
+// YOUR TODO 6 CODE ENDS HERE //////////////////////////
+````
 
 ## Just Code TODOs
 
