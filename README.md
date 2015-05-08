@@ -495,7 +495,9 @@ if ( / * test for right-side * / ) {
     // your code to place circle exactly off the stage at the left-side //
 } else if ( / * test for left-side * / ) {
     // your code to place circle exactly off the stage at the right-side //
-} if ( / * test for top * / ) {
+}
+
+if ( / * test for top * / ) {
     // code to place circle exactly off the stage at the bottom //
 } else if ( / * test for bottom * / ) {
     // your code to place circle exactly off the stage at the top //
