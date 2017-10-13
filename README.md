@@ -80,7 +80,7 @@ Some concepts you'll learn are:
 * Leveraging the power of built-in and 3rd party API (DRY), like Math and opspark-draw.
 * Variable declaration and initialization.
 * Function invocation and passing arguments to functions.
-* The while and for loop.
+* The for loop.
 * Conditional statements - making decisions in code.
 * Recognizing code blocks.
 * Calculating coordinates in a cartesian system.
@@ -142,26 +142,31 @@ Every programming language comes with features built-in to help you implement re
 
 JavaScript comes with a number of built in loops, like `for` `for-in` and `while`, and many 3rd party libraries, like <a href="https://lodash.com/">_lodash_</a>, have implementations of other types of loops.
 
-We're going to use the `while` loop to accomplish our task.  It works like this:
+
+We're going to use the `for` loop to accomplish our task.  It works like this:
 
 ````javascript
-var i = 0;
-
-while (i < 100) {
+for (var i = 0; i < 100; i++) {
     console.log(i);
-    i++;
 }
 ````
 
-The while loops checks first if a condition is `true`: `while (i < 100)`.  So while `i` is _less than_ `100`, the code block between the braces `{ //... }` will execute.
+The for loop is a great tool to repeat a `{ code block }` a specific number of times. After the keyword `for` is the configuration of the loop inside parentheses. Here is where you define how the loops starts, when it ends, and how you want to move on from one loop to the next. There are three parts to it:
 
-After executing the code block, the while loop loops-back to check the condition again, and will continue to loop until that condition is `false`.
+* **initialization** : `var i = 0;`
+	* a variable `i` is initialized to act as a counter to keep track of how many times we have run our loop. We start at 0.
+* **stop condition** : `i < 100;`
+	* This statement is the condition against which we check on each loop. If `i` is less than 100, the code block for the loop will execute.
+* **post condition** : `i++;`
+	* This statement _increments_ (adds 1 to) the `i` variable and is executed after each run of the loop.
+	* NOTE: `i++;` is shorthand for `i = i + 1;`, and you'll see the `++` or `--` operators used often in code to accomplish this type of pattern.
 
-To break out of the loop, we need the condition to return `false`, and by _incrementing_ our `i` counter on each loop using `i++;`, the value of `i` increases by one on each loop.  `i++;` is shorthand for `i = i + 1;`, and you'll see the `++` or `--` operators used often in code to accomplish this type of pattern.
+Finally, we have our code block within the braces `{ }`.
 
-In fact, most loops use this exact same pattern: some counter checked against the length of a collection (an Array or Object), and incremented or decremented on each loop, depending on if you want to loop forward or backwards through a collection.
+When all of these are put together our for loop will execute the code block as long as the `i` variable is less than 100. The `i` variable starts at 1 and, because we increment it after each loop, will increase until the stop condition is no longer true - at which point the loop will stop. 
 
 So then, looking at the above snippet of code, what would be the result of running that code?
+
 
 #### Code Blocks
 
@@ -180,15 +185,12 @@ Above, the keyword `var` tells you you're creating a variable, and the assignmen
 Whereas:
 
 ````javascript
-var i = 0;
-
-while (i < 100) {
+for (var i = ; i < 100; i++) {
     console.log(i);
-    i++;
 }
 ````
 
-In this last example, the keyword `while` tells us we're opening a `while` loop, so the `{ }` braces that follow it represent the _body_ or _code block_ of the `while` loop.  The code inside these braces is the _block_ of code that will be executed each time the condition of `while (i < 100)` is `true`.
+In this last example, the keyword `for` tells us we're opening a `for` loop, so the `{ }` braces that follow it represent the _body_ or _code block_ of the `for` loop.  The code inside these braces is the _block_ of code that will be executed each time the condition of `i < 100` is `true`.
 
 This is the same pattern with function definitions:
 
@@ -203,7 +205,7 @@ Same thing here, the keyword `function` tells us we're declaring a function, and
 
 Pay close attention to blocks of code and their `{ }` braces: you MUST always have an opening AND closing brace, otherwise the JavaScript interpreter will throw an error or your IDE will complain.
 
-Great stuff, we're going to use the `while` loop to draw and initialize our circles.  Before we get there, let's first declare our app's required variables.
+Great stuff, we're going to use the `for` loop to draw and initialize our circles.  Before we get there, let's first declare our app's required variables.
 
 ***
 
@@ -213,7 +215,7 @@ Great stuff, we're going to use the `while` loop to draw and initialize our circ
 
 For our app, the things we'll need are:
 
-* `i`: a counter for our while loop.
+* `i`: a counter for our for loop.
 * `circle`: we will use this variable to hold the circle shape we create using the `draw` library.
 * `circles`: this variable will be an Array to hold all of our circles so we can loop through them all and update each.
 
@@ -246,42 +248,31 @@ circles = [];
 
 Excellent!  Now witness the power of computation:
 
-We know we want to draw 100 circles, and that the `while` loop is the way go, so let's go ahead and put the while loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add each of them as children of our `view`, positioned somewhere randomly within the area of our canvas - we'll do all of this initializing within the code block of the `while` loop.
+We know we want to draw 100 circles, and that the `for` loop is the way go, so let's go ahead and put the for loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add each of them as children of our `view`, positioned somewhere randomly within the area of our canvas - we'll do all of this initializing within the code block of the `for` loop.
 
-We've stub out the while loop for you; it looks like this:
+We've stub out the for loop for you; it looks like this:
 
 ````javascript
 // other code...
 
-while (i < 100) {
+for (i = 0; i < 100; i++) {
     // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
     
     
     
-    // TODO 3 : YOUR CODE ENDS HERE ////////////////////////////
-					
-	/*
-	 * IMPORTANT NOTE: 
-	 * The statement i++; increments our counter by 1 on each loop.
-	 * If we did not do this, the conditional check of while (i < 100)
-	 * would never return false, and we would loop forever!
-	 *
-	 * Leave this as the last statement in the while loop
-	 */
-    i++;
 }
 
 // other code...
 ````
-Ok, now, _inside_ the code block of the `while` loop, we're going to initialize our `circle` shape!
+Ok, now, _inside_ the code block of the `for` loop, we're going to initialize our `circle` shape!
 
 #### TODO 3 : Generate a Randomized Circle
 
-Implement the following code such that your `while` loop now looks like this:
+Implement the following code such that your `for` loop now looks like this:
 
 ````javascript
 // other code...
-while (i < 100) {
+for (i = 0; i < 100; i++) {
     // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
     circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
 					
@@ -292,18 +283,6 @@ while (i < 100) {
     physikz.addRandomVelocity(circle, canvas);
     circles.push(circle);
     view.addChild(circle);
-    
-    // TODO 3 : YOUR CODE ENDS HERE ////////////////////////////
-					
-	/*
-	 * IMPORTANT NOTE: 
-	 * The statement i++; increments our counter by 1 on each loop.
-	 * If we did not do this, the conditional check of while (i < 100)
-	 * would never return false, and we would loop forever!
-	 *
-	 * Leave this as the last statement in the while loop
-	 */
-    i++;
 }
 
 // other code...
@@ -327,7 +306,7 @@ After this, we create some magic:  We pass in our newly created `circle` and the
 
     physikz.addRandomVelocity(circle, canvas);
 
-Finally, we `push` our initialized circle into the the circles Array.  `push` is part of the API of a JavaScript Array, and this is the method we use to add elements to an Array.  We do this for all our circles created within the `while` loop, so we can have all the circles collected into a list which we can loop through at a later time, and update the properties of each circle.  In doing so, we can easily update the `x` and `y` properties of 
+Finally, we `push` our initialized circle into the the circles Array.  `push` is part of the API of a JavaScript Array, and this is the method we use to add elements to an Array.  We do this for all our circles created within the `for` loop, so we can have all the circles collected into a list which we can loop through at a later time, and update the properties of each circle.  In doing so, we can easily update the `x` and `y` properties of 
 
 ### Run the App
 
@@ -383,24 +362,9 @@ function update() {
 }
 ````
 
-The thing to notice here is that we're utilizing another type of loop: the `for` loop.  The syntax of loop looks like this:
-
-````javascript
-for (var i = 0; i < circles.length; i++) {
-    // this is the code block or body of the for loop //
-}
-````
-Following the keyword `for` the first part of the for loop within parenthesis, `(var i = 0; i < circles.length; i++)`, configures the condition for the loop.  In fact, there's three parts to it:
-
-* var i = 0; : This initializes a counter i to 0.
-* i < circles.length; : This statement is the condition against which we check on each loop.  If i is less than the length of the circles Array, the code block for the for loop will execute.
-* i++ : This statement increments the counter i.  We could loop backwards, in which case we'd do something like i--.
-
-Finally, we have our code block within the braces `{ }`.
+The thing to notice here is that we are again using the `for` loop but in a different way. Instead of incrementing the value of i until it is less than 100 we are doing so until it is less than circles.length... It's time to do a little problem solving: 
 
 All your code for TODO 4, TODO 5 and TODO 6 will go _within_ the code block of this `for` loop, so keep that in mind!
-
-It's time to do a little problem solving:
 
 #### TODO 4 : Access The Current Circle from the Circles Array
 
