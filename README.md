@@ -329,7 +329,7 @@ After this, we create some magic:  We pass in our newly created `circle` and the
 
 Finally, we `push` our initialized circle into the the circles Array.  `push` is part of the API of a JavaScript Array, and this is the method we use to add elements to an Array.  We do this for all our circles created within the `while` loop, so we can have all the circles collected into a list which we can loop through at a later time, and update the properties of each circle.  In doing so, we can easily update the `x` and `y` properties of 
 
-###Run the App
+### Run the App
 
 
 Alrighty, to run the app, YOU MUST open the file at:
