@@ -51,30 +51,28 @@
                 
                 // TODO 2: Initialize our variables //
                 
-                
-                while (i < 100) {
+                /* 
+                 * For-loops let us execute a block of code a set number of times.
+                 * Using the count variable we can keep track of how many times we have run the loop.
+                 * Here we want to run our loop 100 times to create 100 circles.
+                 */
+                for (var count = 1; count <= 100; count++) {
                     // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
                     
                     
                     
                     
-                    // TODO 3 : YOUR CODE ENDS HERE ////////////////////////////
-                    
-                    /*
-                     * IMPORTANT NOTE: 
-                     * The statement i++; increments our counter by 1 on each loop.
-                     * If we did not do this, the conditional check of while (i < 100)
-                     * would never return false, and we would loop forever!
-                     *
-                     * Leave this as the last statement in the while loop
-                     */
-                    i++;
                 }
                 
                 view.addChild(fps);
                 app.addUpdateable(fps);
 
                 function update() {
+                    /* 
+                     * For-loops also provide a convenient way to access elements of an Array one at a time.
+                     * We can use the variable i (short for index) as a placeholder for the numbered index we want to access
+                     * Like so: array[i]. 
+                     */
                     for (var i = 0; i < circles.length; i++) {
                         // TODO 4 : Access one circle at time from the circles Array //
                         
@@ -84,16 +82,20 @@
                         
                         // TODO 6 : YOUR CODE STARTS HERE //////////////////////
                         
-                        if ( / * test for right-side * / ) {
+                        if ( / * test for the circle exiting the right-side * / ) {
                             // your code to place circle exactly off the stage at the left-side //
-                        } else if ( / * test for left-side * / ) {
+                            
+                        } else if ( / * test for the circle exiting the left-side * / ) {
                             // your code to place circle exactly off the stage at the right-side //
+                            
                         }
                         
-                        if ( / * test for top * / ) {
+                        if ( / * test for the circle exiting the top * / ) {
                             // code to place circle exactly off the stage at the bottom //
-                        } else if ( / * test for bottom * / ) {
+                            
+                        } else if ( / * test for the circle exiting the bottom * / ) {
                             // your code to place circle exactly off the stage at the top //
+                            
                         }
                         
                         // YOUR TODO 6 CODE ENDS HERE //////////////////////////
