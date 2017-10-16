@@ -163,7 +163,7 @@ The for loop is a great tool to repeat a `{ code block }` a specific number of t
 
 Finally, we have our code block within the braces `{ }`.
 
-When all of these are put together our for loop will execute the code block as long as the `i` variable is less than 100. The `i` variable starts at 1 and, because we increment it after each loop, will increase until the stop condition is no longer true - at which point the loop will stop. 
+When all of these are put together our for loop will execute the code block as long as the `i` variable is less than 100. The `i` variable starts at 0 and, because we increment it after each loop, will increase until the stop condition is no longer true - at which point the loop will stop. 
 
 So then, looking at the above snippet of code, what would be the result of running that code?
 
