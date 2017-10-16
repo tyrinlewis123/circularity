@@ -151,7 +151,7 @@ for (var i = 0; i < 100; i++) {
 }
 ````
 
-The for loop is a great tool to repeat a `{ code block }` a specific number of times. After the keyword `for` is the configuration of the loop inside parentheses. Here is where you define how the loops starts, when it ends, and how you want to move on from one loop to the next. There are three parts to it:
+The for loop is a great tool to repeat a `{ code block }` a specific number of times. After the keyword `for` are parentheses where you setup your for loop. Here is where you define how the loops starts, when it ends, and how you want to move on from one loop to the next. There are three parts to it:
 
 * **initialization** : `var i = 0;`
 	* a variable `i` is initialized to act as a counter to keep track of how many times we have run our loop. We start at 0.
