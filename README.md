@@ -418,7 +418,7 @@ physikz.updatePosition(circle)
 
 We need to check each circle's position as we loop through the Array of `circles` to keep the circles coming back onto the `canvas`.
 
-So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border.
+So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border. We can do this by changing the circle's y property like so: `circle.y = newPositionY;`
 
 So, write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
 
