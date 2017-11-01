@@ -415,6 +415,10 @@ circle = ???
 // other code...
 ````
 
+Why are we doing this?
+
+We are doing this so that we don't have to keep referring to an individual circle using bracket notation. Instead of circles[?] we can just use circle.
+
 #### TODO 5 : Update the Position of the Circle
 
 Okay, now we have our circle, let's use the `updatePosition()` API of the `physikz` library to update the position of the circle:
