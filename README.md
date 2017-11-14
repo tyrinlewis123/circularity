@@ -45,7 +45,7 @@ NOTE: If you receive an error that says, `os install command not found` the opsp
 * open up the index.html file and press Run at the top of your workspace. You will be editing this file.
 
 
-## Installation without 'os install'
+## (SKIP IF ALREADY INSTALLED) Installation without 'os install'
 
 Create a new Cloud9 workspace and clone the project from github.com:
 
@@ -434,11 +434,11 @@ physikz.updatePosition(circle)
 
 #### TODO 6 : Keep The Current Circle Within the Bounds of the Canvas
 
-We need to check each circle's position as we loop through the Array of `circles` to keep the circles coming back onto the `canvas`.
+We need to check each circle's x and y position as we loop through the Array of `circles` to keep the circles inside the `canvas` (the screen).
 
-So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border. We can do this by changing the circle's y property like so: `circle.y = newPositionY;` where `newPositionY` is what you want the circle's new y location to be.
+So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border. We can do this by changing the circle's y property like so: `circle.y = newPositionY;` where `newPositionY` is the coordinate where you want the circle's new y location to be.
 
-So, write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
+Write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
 
 The best way to start this is to hack away, testing one border at a time!
 
