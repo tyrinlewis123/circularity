@@ -261,7 +261,7 @@ circles = [];
 // other code...
 ````
 
-### TODO 3: Create a for-loop
+### TODO 3: Create a for loop
 Excellent!  Now witness the power of computation:
 
 We know we want to draw 100 circles, and that the `for` loop is the way go, so let's go ahead and put the for loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add each of them as children of our `view`, positioned somewhere randomly within the area of our canvas - we'll do all of this initializing within the code block of the `for` loop.
