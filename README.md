@@ -22,12 +22,13 @@ Also at: http://bit.ly/op-spark-circularity
       - [TODO 1 : Declare Our Variables](#todo-1--declare-our-variables)
     - [Variable Initialization](#variable-initialization)
       - [TODO 2 : Initialize The Counter and Circles Array](#todo-2--initialize-the-counter-and-circles-array)
-      - [TODO 3 : Generate a Randomized Circle](#todo-3--generate-a-randomized-circle)
+      - [TODO 3 : Create a for loop](#todo-3--create-a-for-loop)
+      - [TODO 4 : Generate a Randomized Circle](#todo-4--generate-a-randomized-circle)
     - [Run the App](#run-the-app)
     - [Update our Variables](#update-our-variables)
-      - [TODO 4 : Access The Current Circle from the Circles Array Array](#todo-4--access-the-current-circle-from-the-circles-array)
-      - [TODO 5 : Update the Position of the Circle](#todo-5--update-the-position-of-the-circle)
-      - [TODO 6 : Keep The Current Circle Within the Bounds of the Canvas](#todo-6--keep-the-current-circle-within-the-bounds-of-the-canvas)
+      - [TODO 5 : Access The Current Circle from the Circles Array Array](#todo-5--access-the-current-circle-from-the-circles-array)
+      - [TODO 6 : Update the Position of the Circle](#todo-6--update-the-position-of-the-circle)
+      - [TODO 7 : Keep The Current Circle Within the Bounds of the Canvas](#todo-7--keep-the-current-circle-within-the-bounds-of-the-canvas)
   - [Just Code TODOs](#just-code-todos)
   - [Just Code TODOs in Google Presentation](#just-code-todos-in-google-presentation)
 
@@ -260,17 +261,18 @@ circles = [];
 // other code...
 ````
 
+### TODO 3: Create a for-loop
 Excellent!  Now witness the power of computation:
 
 We know we want to draw 100 circles, and that the `for` loop is the way go, so let's go ahead and put the for loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add each of them as children of our `view`, positioned somewhere randomly within the area of our canvas - we'll do all of this initializing within the code block of the `for` loop.
 
-We've stub out the for loop for you; it looks like this:
+We've provided an outline of the for loop for you; it looks like this:
 
 ````javascript
 // other code...
 
-for (i = 0; i < 100; i++) {
-    // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
+for (i = start; i < end; i++) {
+    // TODO 4 : YOUR CODE STARTS HERE //////////////////////////
     
     
     
@@ -278,16 +280,17 @@ for (i = 0; i < 100; i++) {
 
 // other code...
 ````
-Ok, now, _inside_ the code block of the `for` loop, we're going to initialize our `circle` shape!
+What should the start and end value be to make this loop run 100 times?
 
-#### TODO 3 : Generate a Randomized Circle
+#### TODO 4 : Generate a Randomized Circle
+Ok, now, _inside_ the code block of the `for` loop, we're going to initialize our `circle` shape!
 
 Implement the following code such that your `for` loop now looks like this:
 
 ````javascript
 // other code...
 for (i = 0; i < 100; i++) {
-    // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
+    // TODO 4 : YOUR CODE STARTS HERE //////////////////////////
     circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
 					
     if (circle.alpha < .2) {
@@ -355,11 +358,11 @@ Given this, the rest of our work will take place within the `update()` function.
 ````javascript
 function update() {
     for (var i = 0; i < circles.length; i++) {
-        // TODO 4 : Access one circle at time from the circles Array //
+        // TODO 5 : Access one circle at time from the circles Array //
         
-        // TODO 5 : Update the circles position //
+        // TODO 6 : Update the circles position //
         
-        // TODO 6 : YOUR CODE STARTS HERE //////////////////////
+        // TODO 7 : YOUR CODE STARTS HERE //////////////////////
         
         if ( / * test for right-side * / ) {
             // your code to place circle exactly off the stage at the left-side //
@@ -371,16 +374,16 @@ function update() {
             // your code to place circle exactly off the stage at the top //
         }
         
-        // YOUR TODO 6 CODE ENDS HERE //////////////////////////
+        // YOUR TODO 7 CODE ENDS HERE //////////////////////////
     }
 }
 ````
 
 The thing to notice here is that we are again using the `for` loop but in a different way. Instead of incrementing the value of i until it is less than 100 we are doing so until it is less than circles.length... It's time to do a little problem solving: 
 
-All your code for TODO 4, TODO 5 and TODO 6 will go _within_ the code block of this `for` loop, so keep that in mind!
+All your code for TODO 5, TODO 6 and TODO 7 will go _within_ the code block of this `for` loop, so keep that in mind!
 
-#### TODO 4 : Access The Current Circle from the Circles Array
+#### TODO 5 : Access The Current Circle from the Circles Array
 
 Use the Array syntax to pull out the circle at index `i`.
 
@@ -409,7 +412,7 @@ So, we know our that when we created our circles, each `circle` was pushed into 
 // other code...
 
 
-// TODO 4 : Access one circle at time from the circles Array //
+// TODO 5 : Access one circle at time from the circles Array //
 circle = ???
 
 // other code...
@@ -419,20 +422,20 @@ Why are we doing this?
 
 We are doing this so that we don't have to keep referring to an individual circle using bracket notation. Instead of circles[?] we can just use circle.
 
-#### TODO 5 : Update the Position of the Circle
+#### TODO 6 : Update the Position of the Circle
 
 Okay, now we have our circle, let's use the `updatePosition()` API of the `physikz` library to update the position of the circle:
 
 ````javascript
 // other code...
 
-// TODO 5 : Update the circle's position //
+// TODO 6 : Update the circle's position //
 physikz.updatePosition(circle)
 
 // other code...
 ````
 
-#### TODO 6 : Keep The Current Circle Within the Bounds of the Canvas
+#### TODO 7 : Keep The Current Circle Within the Bounds of the Canvas
 
 We need to check each circle's x and y position as we loop through the Array of `circles` to keep the circles inside the `canvas` (the screen).
 
@@ -471,7 +474,7 @@ if (circle.x > canvas.width + circle.radius) {
 The full stub code for our `if`, `else-if` statements is here:
 
 ````javascript
-// TODO 6 : YOUR CODE STARTS HERE //////////////////////
+// TODO 7 : YOUR CODE STARTS HERE //////////////////////
 
 if ( / * test for right-side * / ) {
     // your code to place circle exactly off the stage at the left-side //
@@ -485,7 +488,7 @@ if ( / * test for top * / ) {
     // your code to place circle exactly off the stage at the top //
 }
 
-// YOUR TODO 6 CODE ENDS HERE //////////////////////////
+// YOUR TODO 7 CODE ENDS HERE //////////////////////////
 ````
 
 ## Just Code TODOs
