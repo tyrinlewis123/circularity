@@ -391,22 +391,31 @@ Arrays are _zero-indexed_ lists of objects.  Basically, an Array acts as a conta
 
 To retrieve an individual _element_ from an Array, we can use _Array syntax_, which uses the name of the Array, followed by square brackets that enclose a number representing the position of the element.
 
-So, if we literally created an Array like this:
+So, if we created an Array like this:
 
 ````javascript
 var friends = ['John', 'Max', 'George', 'Ben', 'Steve', 'Brian'];
 ````
 
-Then we can access the elements of the `friends` Array like so:
+Then we wanted to access the first element of the `friends` Array we would do so like so:
 
 ````javascript
-var name = friends[1];
-console.log(name); // prints Max
+var firstFriend = friends[0];
+console.log("my first friend is " + firstFriend);    //-> logs "my first friend is John"
 ````
+Because Arrays are _zero-indexed_, the first element is at index 0, the second element is at index 1, and so on. The next element will always have an index that is 1 greater than the one before. 
 
-So, above, we used _Array syntax_ to access the second element of the `friends` Array, `friends[1]`, which equates to `Max`.  Because Arrays are _zero-indexed_, the first element is at index 0, the second element is at index 1, and so on.
+Suppose we want to print out every member of this friends list! Using the fact that the index increases by 1 from element to element, we can use a for loop to create a counter variable that will increase by 1 on each loop. Then, using Array syntax we can pull out a single element with the counter variable as our index! **Note:`i` is the standard name for the counter variable in a for loop. why?** 
 
-So, we know our that when we created our circles, each `circle` was pushed into our Array of `circles`, and we know that our `for-loop` is incrementing an index, `i` on each loop, once for each element in the `circles` Array. So, using the Array syntax we discussed earlier in the lesson, what do we need to do to pull-out and assign an individual `circle` as we loop over the Array of `circles`?
+```javascript
+for (i = 0; i < friends.length; i++) {
+	var friend = friends[i];
+	console.log(friend);
+}
+```
+In the example above, we use the stop condition `i < friends.length`. How do we know that this will stop after printing out all elements of the `friends` array?
+
+We want to do something similar with our `circles` array. We first need to pull out a single circle from the array and store it in `circle`. Using array syntax, what should the circle be assigned to?
 
 ````javascript
 // other code...
@@ -417,10 +426,6 @@ circle = ???
 
 // other code...
 ````
-
-Why are we doing this?
-
-We are doing this so that we don't have to keep referring to an individual circle using bracket notation. Instead of circles[?] we can just use circle.
 
 #### TODO 6 : Update the Position of the Circle
 
