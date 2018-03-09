@@ -23,7 +23,7 @@ Also at: http://bit.ly/op-spark-circularity
       - [TODO 2 : Draw a circle](#todo-2--draw-a-circle)
       - [TODO 3 : Draw many circles](#todo-3--draw-many-circles)
       - [TODO 4 : Push each circle into the circles array](#todo-4--push-each-circle-into-the-circles-array)
-    - [Update our Variables](#update-our-variables)
+    - [Animate Our Circles](#animate-our-circles)
       - [TODO 5 : Pull out one circle at a time from our array](#todo-5--pull-out-one-circle-at-a-time-from-our-array)
       - [TODO 6 : Update the Position of the Circle](#todo-6--update-the-position-of-the-circle)
       - [TODO 7 : Keep The Current Circle Within the Bounds of the Canvas](#todo-7--keep-the-current-circle-within-the-bounds-of-the-canvas)
