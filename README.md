@@ -205,7 +205,7 @@ for (var counter = 0; counter < 100; counter++) {
 
 Now that we have a place to keep our circles together, we want to push each circle we create into this array.
 
-Find **TODO 5** in the `drawCircle` function and add the following code:
+Find **TODO 4** in the `drawCircle` function and add the following code:
 
     circles.push(circle);
     
