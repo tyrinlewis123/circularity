@@ -192,7 +192,7 @@ Finally, to get it to appear on the screen we add the circle as a *child* of `vi
 
 Now, Call this function 3 times to see 3 circles appear on the screen - pretty, right? But we want to draw 100 circles! If we were to call this function 100 times in our code, it would violate the **DRY Rule: D**ont **R**epeat **Y**ourself.
 
-A for loop should do the job! Below **TODO 3** create a for loop that will loop 100 times and call the drawCircle function. Here is the basic outline of a for loop:
+A for loop should do the job! Below **TODO 3** create a for loop that will loop 100 times and call the `drawCircle` function. Here is the basic outline of a for loop:
 
 
 ````javascript
@@ -203,7 +203,7 @@ for (var counter = 0; counter < 100; counter++) {
     
 #### TODO 4: Push each circle into the circles array
 
-Now that we have a place to keep our circles together, we want to push each circle we create into this array.
+In order to keep our circles together, we can keep them stored in an array. To save each array we create in the `circles` array, we can use the `.push()` method.
 
 Find **TODO 4** in the `drawCircle` function and add the following code:
 
