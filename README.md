@@ -21,10 +21,10 @@ Also at: http://bit.ly/op-spark-circularity
     - [TODOs](#todos)
       - [TODO 1 : Declare Our Variables](#todo-1--declare-our-variables)
       - [TODO 2 : Draw a circle](#todo-2--draw-a-circle)
-      - [TODO 3 : Draw 100 Circles](#todo-3--draww-100-circles)
+      - [TODO 3 : Draw many circles](#todo-3--draw-many-circles)
       - [TODO 4 : Push each circle into the circles array](#todo-4--push-each-circle-into-the-circles-array)
     - [Update our Variables](#update-our-variables)
-      - [TODO 5 : Access The Current Circle from the Circles Array Array](#todo-5--access-the-current-circle-from-the-circles-array)
+      - [TODO 5 : Pull out one circle at a time from our array](#todo-5--pull-out-one-circle-at-a-time-from-our-array)
       - [TODO 6 : Update the Position of the Circle](#todo-6--update-the-position-of-the-circle)
       - [TODO 7 : Keep The Current Circle Within the Bounds of the Canvas](#todo-7--keep-the-current-circle-within-the-bounds-of-the-canvas)
 
@@ -188,7 +188,7 @@ We temporarily store the output of the function in `circle`. We then use the `ph
 
 Finally, to get it to appear on the screen we add the circle as a *child* of `view` (Think of the parent <-> child relationship of HTML elements!).
 
-#### TODO 3 : Draw 100 Circles
+#### TODO 3 : Draw many circles
 
 Now, Call this function 3 times to see 3 circles appear on the screen - pretty, right? But we want to draw 100 circles! If we were to call this function 100 times in our code, it would violate the **DRY Rule: D**ont **R**epeat **Y**ourself.
 
