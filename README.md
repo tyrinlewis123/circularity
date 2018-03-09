@@ -20,16 +20,14 @@ Also at: http://bit.ly/op-spark-circularity
       - [Code Blocks](#code-blocks)
     - [TODOs](#todos)
       - [TODO 1 : Declare Our Variables](#todo-1--declare-our-variables)
-    - [Variable Initialization](#variable-initialization)
-      - [TODO 2 : Initialize The Counter and Circles Array](#todo-2--initialize-the-counter-and-circles-array)
-      - [TODO 3 : Generate a Randomized Circle](#todo-3--generate-a-randomized-circle)
-    - [Run the App](#run-the-app)
+      - [TODO 2 : Draw a circle](#todo-2--draw-a-circle)
+      - [TODO 3 : Draw 100 Circles](#todo-3--draww-100-circles)
+      - [TODO 4 : Create an array to hold our circles](#todo-4--create-an-array-to-hold-our-circles)
+      - [TODO 5 : Push each circle into the circles array](#todo-5--push-each-circle-into-the-circles-array)
     - [Update our Variables](#update-our-variables)
-      - [TODO 4 : Access The Current Circle from the Circles Array Array](#todo-4--access-the-current-circle-from-the-circles-array)
-      - [TODO 5 : Update the Position of the Circle](#todo-5--update-the-position-of-the-circle)
-      - [TODO 6 : Keep The Current Circle Within the Bounds of the Canvas](#todo-6--keep-the-current-circle-within-the-bounds-of-the-canvas)
-  - [Just Code TODOs](#just-code-todos)
-  - [Just Code TODOs in Google Presentation](#just-code-todos-in-google-presentation)
+      - [TODO 6 : Access The Current Circle from the Circles Array Array](#todo-4--access-the-current-circle-from-the-circles-array)
+      - [TODO 7 : Update the Position of the Circle](#todo-5--update-the-position-of-the-circle)
+      - [TODO 8 : Keep The Current Circle Within the Bounds of the Canvas](#todo-6--keep-the-current-circle-within-the-bounds-of-the-canvas)
 
 ## Installation
 NOTE: If you receive an error that says, `os install command not found` the opspark CLI is not installed. To install it, enter the command `npm intall -g opspark` in your bash terminal. 
@@ -176,6 +174,7 @@ We will want to draw many circles in this project so putting the code to draw on
 function drawCircle() {
     // TODO 2: Draw a circle //
     circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
+    physikz.addRandomVelocity(circle, canvas);
     view.addChild(circle);
     
     // other code...
@@ -185,9 +184,11 @@ function drawCircle() {
 
     randomCircleInArea(area, randomizeAlpha, addCross, borderColor, borderThickness, randomRadialProps)
     
-We temporarily store the output of thie function in `circle`. Then, to get it to appear on the screen we add the circle as a *child* of `view` (Think of the parent <-> child relationship of HTML elements!).
+We temporarily store the output of the function in `circle`. We then use the `physikz` library, a library of functions that provide motion to canvas drawings, to add a random velocity and direction to our circle.
 
-#### TODO 3 : Draw 100 Circles!
+Finally, to get it to appear on the screen we add the circle as a *child* of `view` (Think of the parent <-> child relationship of HTML elements!).
+
+#### TODO 3 : Draw 100 Circles
 
 Now, Call this function 3 times to see 3 circles appear on the screen - pretty, right? But we want to draw 100 circles! If we were to call this function 100 times in our code, it would violate the **DRY Rule: D**ont **R**epeat **Y**ourself.
 
@@ -200,86 +201,38 @@ for (var counter = 0; counter < 100; counter++) {
 }
 ````
 
-#### TODO 3 : Generate a Randomized Circle
+#### TODO 4 : Create an array to hold our circles
 
-Implement the following code such that your `for` loop now looks like this:
+In order to keep track of all of our circles we need a place to keep them. An array should work!
 
-````javascript
-// other code...
-for (i = 0; i < 100; i++) {
-    // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
-    circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
-					
-    if (circle.alpha < .2) {
-    	draw.blurFilterOn(circle);
-    }
+Below **TODO 1** create an empty array like so:
+
+    var circles = [];
     
-    physikz.addRandomVelocity(circle, canvas);
+#### TODO 5: Push each circle into the circles array
+
+Now that we have a place to keep our circles together, we want to push each circle we create into this array.
+
+Find **TODO 5** in the `drawCircle` function and add the following code:
+
     circles.push(circle);
-    view.addChild(circle);
-}
-
-// other code...
-````
-
-First, we're going to use the API of our `draw` utility to draw a `randomCircleInArea()`.  This method will draw a circle random in its color, radius, transparency and position, _and_ add a cross shape to the circle.  Why the cross shape?  You'll see...
-
-The API of this function is:
-
-    randomCircleInArea(area, randomizeAlpha, addCross, borderColor, borderThickness, randomRadialProps)
-
-...and we're passing in the arguments:
-
-    circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
     
-The area in this case is the `canvas`, so our circle will be given a randomly generated x and y coordinate within the area of our canvas.  Next we pass in two boolean values of `true`, which means we want to randomize its transparency (alpha) and add a cross shape to our circle.  Finally, the last two values, `'#999', 2`, represent the color and thickness of the circle's border.Circularity
+Now, every time a new circle is made, it will be automatically added to the array of circles!
 
-Next, we check `if (circle.alpha < .2)`, which says _if_ the transparency of the circle happens to be less than .2, which would be almost fully transparent, we use again our `draw` utility to add a blur filter to our circle.  This will produce a neat effect on the circles such that those almost transparent will appear to be _off in the distance_.
+### Animate Our Circles
 
-After this, we create some magic:  We pass in our newly created `circle` and the area of the `canvas` to the `addRandomVelocity()` method of the `physikz` library, and this will add some randomly generated velocity properties, giving our circle a speed and direction within the area of our canvas:
+Awesome, let's do some fun stuff with our circles now.  Remember that our `update()` method is called 60 times per second, so it gives us the perfect place to update properties of our display objects in order to create the illusion of motion, otherwise known as, _animation_!
 
-    physikz.addRandomVelocity(circle, canvas);
-
-Finally, we `push` our initialized circle into the the circles Array.  `push` is part of the API of a JavaScript Array, and this is the method we use to add elements to an Array.  We do this for all our circles created within the `for` loop, so we can have all the circles collected into a list which we can loop through at a later time, and update the properties of each circle.  In doing so, we can easily update the `x` and `y` properties of 
-
-### Run the App
-
-
-Alrighty, to run the app, YOU MUST open the file at:
-
-    index.html
-
-And with the `index.html` tab selected in the editor (see A), you can simply press the green play button (see B).
-
-This will start an Apache web server in a new tab of the Console View, the bottom window pane of the Cloud9 IDE.  Once Apache has booted, you can click the URL `https://circularity-jfraboni.c9.io/index.html` (see C) - this will open a new tab with the appliation running.
-
-<img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/run-app.png">
-
-Once this tab opens, we recommend popping out the tab into Chrome, into a separate browser tab.  To do so, click on the popout button on the right side of the preview tab (see A), like so:
-
-<img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/popout.png">
-
-This will give you the app running in a separate Chrome tab.  As you save your future work, changes to your code will be reflected in the app > you don't have to press "Run" again - as long as the Apache web server is still running - you need only press the refresh button on the Chrome tab with the app running in it.  In this image, we also have the Chrome debugger console open, which will tell you if there's any problems with your code.  Have a look:
-
-<img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/chrome.png">
-
-
-***
-
-### Update our Variables
-
-Awesome, let's do some fun stuff with our circles now.  Remember that in our _motion poem_ apps (the series of apps to which this app belongs), our `update()` method is called 60 times per second, so it gives us the perfect place to update properties of our display objects in order to create the illusion of motion, otherwise known as, _animation_!
-
-Given this, the rest of our work will take place within the `update()` function.  Right now, it's stubbed out like this:
+Given this, much of the work will take place within the `update()` function.  Right now, it's stubbed out like this:
 
 ````javascript
 function update() {
     for (var i = 0; i < circles.length; i++) {
-        // TODO 4 : Access one circle at time from the circles Array //
+        // TODO 6 : Access one circle at time from the circles Array //
         
-        // TODO 5 : Update the circles position //
+        // TODO 7 : Update the circles position //
         
-        // TODO 6 : YOUR CODE STARTS HERE //////////////////////
+        // TODO 8 : YOUR CODE STARTS HERE //////////////////////
         
         if ( / * test for right-side * / ) {
             // your code to place circle exactly off the stage at the left-side //
@@ -291,16 +244,14 @@ function update() {
             // your code to place circle exactly off the stage at the top //
         }
         
-        // YOUR TODO 6 CODE ENDS HERE //////////////////////////
+        // YOUR TODO 8 CODE ENDS HERE //////////////////////////
     }
 }
 ````
 
 The thing to notice here is that we are again using the `for` loop but in a different way. Instead of incrementing the value of i until it is less than 100 we are doing so until it is less than circles.length... It's time to do a little problem solving: 
 
-All your code for TODO 4, TODO 5 and TODO 6 will go _within_ the code block of this `for` loop, so keep that in mind!
-
-#### TODO 4 : Access The Current Circle from the Circles Array
+#### TODO 6: Pull out one circle at a time from our array
 
 Use the Array syntax to pull out the circle at index `i`.
 
@@ -329,26 +280,26 @@ So, we know our that when we created our circles, each `circle` was pushed into 
 // other code...
 
 
-// TODO 4 : Access one circle at time from the circles Array //
+// TODO 6 : Access one circle at time from the circles Array //
 circle = ???
 
 // other code...
 ````
 
-#### TODO 5 : Update the Position of the Circle
+#### TODO 7 : Update the Position of the Circle
 
 Okay, now we have our circle, let's use the `updatePosition()` API of the `physikz` library to update the position of the circle:
 
 ````javascript
 // other code...
 
-// TODO 5 : Update the circle's position //
+// TODO 7 : Update the circle's position //
 physikz.updatePosition(circle)
 
 // other code...
 ````
 
-#### TODO 6 : Keep The Current Circle Within the Bounds of the Canvas
+#### TODO 8 : Keep The Current Circle Within the Bounds of the Canvas
 
 We need to check each circle's position as we loop through the Array of `circles` to keep the circles coming back onto the `canvas`.
 
@@ -387,7 +338,7 @@ if (circle.x > canvas.width + circle.radius) {
 The full stub code for our `if`, `else-if` statements is here:
 
 ````javascript
-// TODO 6 : YOUR CODE STARTS HERE //////////////////////
+// TODO 8 : YOUR CODE STARTS HERE //////////////////////
 
 if ( / * test for right-side * / ) {
     // your code to place circle exactly off the stage at the left-side //
@@ -401,15 +352,7 @@ if ( / * test for top * / ) {
     // your code to place circle exactly off the stage at the top //
 }
 
-// YOUR TODO 6 CODE ENDS HERE //////////////////////////
+// YOUR TODO 8 CODE ENDS HERE //////////////////////////
 ````
-
-## Just Code TODOs
-
-[Just Code TODOs](https://github.com/OperationSpark/circularity/blob/master/JUST-TODOS.md)
-
-## Just Code TODOs in Google Presentation
-
-<a href="https://docs.google.com/presentation/d/1eRYV5JL5_LMO29NDf-_EgbNoDWlABkbwwSRS8ClDDsg/edit?usp=sharing" target="_blank">Code Presentation</a>
 
 &copy; Operation Spark 2015
