@@ -18,7 +18,7 @@ Also at: http://bit.ly/op-spark-circularity
     - [Initializing Our App](#initializing-our-app)
       - [Loops To The Rescue](#loops-to-the-rescue)
       - [Code Blocks](#code-blocks)
-    - [Variable Declaration](#variable-declaration)
+    - [TODOs](#todos)
       - [TODO 1 : Declare Our Variables](#todo-1--declare-our-variables)
     - [Variable Initialization](#variable-initialization)
       - [TODO 2 : Initialize The Counter and Circles Array](#todo-2--initialize-the-counter-and-circles-array)
@@ -32,34 +32,15 @@ Also at: http://bit.ly/op-spark-circularity
   - [Just Code TODOs in Google Presentation](#just-code-todos-in-google-presentation)
 
 ## Installation
+NOTE: If you receive an error that says, `os install command not found` the opspark CLI is not installed. To install it, enter the command `npm intall -g opspark` in your bash terminal. 
 
-Create a new Cloud9 workspace and clone the project from github.com:
-
-1. From your Cloud9 Dashboard, find in the upper left corner and click the green button, "Create New Workspace" > "Clone From URL":
-
-    <img src="https://raw.githubusercontent.com/OperationSpark/using-c9/master/img/clone-new-workspace.png">
-
-2. In the "Source URL" form input, copy and paste in the following URL (see A):
-    
-        https://github.com/OperationSpark/circularity.git
-    
-    Then, in the environment selection box, select "HTML5" (see B).  Finally, click the green button "Create" (see C).
-    
-    <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/clone-workspace.png">
-
-3. Wait for the workspace to finish spooling (while spooling up, you'll see a spinning gear on the newly created workspace in the sidebar), and once the workspace is completed, click the green button, "START EDITING".
-
-    <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/start-editing.png">
-
-4. Now, when the workspace is loaded, select the command-line in the bottom window pane, and enter the command `bower install`, then press `Enter`, like this:
-
-    <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/bower-install.png">
-
-    You'll see some test flying by on the command-line as some required files are installed... and when complete, you'll see something like this:
-    
-    <img src="https://raw.githubusercontent.com/OperationSpark/circularity/master/img/bower-installed.png">
-
-Nice, you're in business...
+* Make sure your github and cloud9 accounts are linked to Greenlight
+* Open your first website workspace
+* go to your bash terminal (located at the bottom of the cloud9 workspace) and type in the command **os install**. Hit enter.
+* If prompted, login with your github credentials
+* Use your arrow keys to highlight your course and hit enter. hit enter again to confirm.
+* Use your arrow keys to highlight circularity and hit enter. hit enter again to confirm.
+* open up the index.html file and press Run at the top of your workspace. You will be editing this file.
 
 ***
 
@@ -168,51 +149,13 @@ When all of these are put together our for loop will execute the code block as l
 So then, looking at the above snippet of code, what would be the result of running that code?
 
 
-#### Code Blocks
-
-Blocks of code belong to functions, loops and conditional statements.
-
-Code blocks are always encased within the braces `{ // code block... }`, and the code inside them is always indented by one tab.  The `{ }` braces around code blocks might seem confusing because these braces also represent Object literals.  You will, however, come to know when they stand for an Object, and when they represent a code block: it has everything to do with the _keyword_ that precedes the braces, as well as what we do within the code block.
-
-For example:
-
-````javascript
-var myObject = {nameFirst: 'John'};
-````
-
-Above, the keyword `var` tells you you're creating a variable, and the assignment opporator, `=`, points to an object literal, `{nameFirst: 'John'};`  The braces in this case encapsulate the key/value pairs of the Object, in this case, `nameFirst` and `'John'`.
-
-Whereas:
-
-````javascript
-for (var i = ; i < 100; i++) {
-    console.log(i);
-}
-````
-
-In this last example, the keyword `for` tells us we're opening a `for` loop, so the `{ }` braces that follow it represent the _body_ or _code block_ of the `for` loop.  The code inside these braces is the _block_ of code that will be executed each time the condition of `i < 100` is `true`.
-
-This is the same pattern with function definitions:
-
-````javascript
-
-function add(a, b) {
-    return a + b;
-}
-````
-
-Same thing here, the keyword `function` tells us we're declaring a function, and the `{ }` braces that follow it represent the _body_ or _code block_ of the `function`.  The code inside these braces is the _block_ of code that will be executed each time the function is invoked.
-
-Pay close attention to blocks of code and their `{ }` braces: you MUST always have an opening AND closing brace, otherwise the JavaScript interpreter will throw an error or your IDE will complain.
-
-Great stuff, we're going to use the `for` loop to draw and initialize our circles.  Before we get there, let's first declare our app's required variables.
-
 ***
-## Lesson Steps
+
+### TODOs
 
 #### TODO 1 : Declare Our Variables
 
-The goal of this project is to create 100 animated circles. Before we get ahead of ourselves, let's create one circle so let's declare a variable to hold that circle! We will deal with initializing it later.
+The goal of this project is to create 100 animated circles. Before we get ahead of ourselves, let's create one circle. Declare a variable to hold that circle (we will deal with initializing it later):
 
 Find **TODO 1** and declare our circle variable like so:
 
