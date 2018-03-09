@@ -201,7 +201,7 @@ for (var counter = 0; counter < 100; counter++) {
 }
 ````
     
-#### TODO 4: Push each circle into the circles array
+#### TODO 4 : Push each circle into the circles array
 
 In order to keep our circles together, we can keep them stored in an array. To save each array we create in the `circles` array, we can use the `.push()` method.
 
@@ -243,7 +243,7 @@ function update() {
 
 The thing to notice here is that we are again using the `for` loop but in a different way. Instead of incrementing the value of i until it is less than 100 we are doing so until it is less than circles.length... It's time to do a little problem solving: 
 
-#### TODO 5: Pull out one circle at a time from our array
+#### TODO 5 : Pull out one circle at a time from our array
 
 Use the Array syntax to pull out the circle at index `i`.
 
