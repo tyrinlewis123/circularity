@@ -22,31 +22,16 @@ Also at: http://bit.ly/op-spark-circularity
       - [TODO 1 : Declare Our Variables](#todo-1--declare-our-variables)
     - [Variable Initialization](#variable-initialization)
       - [TODO 2 : Initialize The Counter and Circles Array](#todo-2--initialize-the-counter-and-circles-array)
-      - [TODO 3 : Create a for loop](#todo-3--create-a-for-loop)
-      - [TODO 4 : Generate a Randomized Circle](#todo-4--generate-a-randomized-circle)
+      - [TODO 3 : Generate a Randomized Circle](#todo-3--generate-a-randomized-circle)
     - [Run the App](#run-the-app)
     - [Update our Variables](#update-our-variables)
-      - [TODO 5 : Access The Current Circle from the Circles Array Array](#todo-5--access-the-current-circle-from-the-circles-array)
-      - [TODO 6 : Update the Position of the Circle](#todo-6--update-the-position-of-the-circle)
-      - [TODO 7 : Keep The Current Circle Within the Bounds of the Canvas](#todo-7--keep-the-current-circle-within-the-bounds-of-the-canvas)
+      - [TODO 4 : Access The Current Circle from the Circles Array Array](#todo-4--access-the-current-circle-from-the-circles-array)
+      - [TODO 5 : Update the Position of the Circle](#todo-5--update-the-position-of-the-circle)
+      - [TODO 6 : Keep The Current Circle Within the Bounds of the Canvas](#todo-6--keep-the-current-circle-within-the-bounds-of-the-canvas)
   - [Just Code TODOs](#just-code-todos)
   - [Just Code TODOs in Google Presentation](#just-code-todos-in-google-presentation)
 
-## Installation 
-
-## Let's get started - installing bouncing box with `os install`
-NOTE: If you receive an error that says, `os install command not found` the opspark CLI is not installed. To install it, enter the command `npm intall -g opspark` in your bash terminal. 
-
-* Make sure your github and cloud9 accounts are linked to Greenlight
-* Open your first website workspace
-* go to your bash terminal (located at the bottom of the cloud9 workspace) and type in the command **os install**. Hit enter.
-* If prompted, login with your github credentials
-* Use your arrow keys to highlight your course and hit enter. hit enter again to confirm.
-* Use your arrow keys to highlight bouncing-box and hit enter. hit enter again to confirm.
-* open up the index.html file and press Run at the top of your workspace. You will be editing this file.
-
-
-## (SKIP IF ALREADY INSTALLED) Installation without 'os install'
+## Installation
 
 Create a new Cloud9 workspace and clone the project from github.com:
 
@@ -223,74 +208,63 @@ Pay close attention to blocks of code and their `{ }` braces: you MUST always ha
 Great stuff, we're going to use the `for` loop to draw and initialize our circles.  Before we get there, let's first declare our app's required variables.
 
 ***
-
-### Variable Declaration
+## Lesson Steps
 
 #### TODO 1 : Declare Our Variables
 
-For our app, the things we'll need are:
+The goal of this project is to create 100 animated circles. Before we get ahead of ourselves, let's create one circle so let's declare a variable to hold that circle! We will deal with initializing it later.
 
-* `i`: a counter for our for loop.
-* `circle`: we will use this variable to hold the circle shape we create using the `draw` library.
-* `circles`: this variable will be an Array to hold all of our circles so we can loop through them all and update each.
-
-Ok, we can take care of declaring our variables all in one statement: Find **TODO 1** and declare our variables like so:
+Find **TODO 1** and declare our circle variable like so:
 
 ````javascript
 // other code...
 
 // TODO 1: Declare our variables //
-var i, circle, circles;
+var circle;
 
 // other code...
 ````
 
-### Variable Initialization
+#### TODO 2 : Draw a circle
 
-#### TODO 2 : Initialize The Counter and Circles Array
-
-Sweet, next let's _initialize_ our counter and the circles Array.  Find **TODO 2** and initialize our counter `i` to `0` and the circles variable to `[]`, an empty Array:
+We will want to draw many circles in this project so putting the code to draw one circle inside a **function** will make the code much more re-usable! We've created the outline of a function for you called `drawCircle`. Add the following code under **TODO: 2**:
 
 ````javascript
-// other code...
-
-// TODO 2: Initialize our variables //
-i = 0;
-circles = [];
-
-// other code...
-````
-
-#### TODO 3: Create a for loop
-Excellent!  Now witness the power of computation:
-
-We know we want to draw 100 circles, and that the `for` loop is the way go, so let's go ahead and put the for loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add each of them as children of our `view`, positioned somewhere randomly within the area of our canvas - we'll do all of this initializing within the code block of the `for` loop.
-
-We've provided an outline of the for loop for you; it looks like this:
-
-````javascript
-// other code...
-
-for (i = start; i < end; i++) {
-    // TODO 4 : YOUR CODE STARTS HERE //////////////////////////
+function drawCircle() {
+    // TODO 2: Draw a circle //
+    circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
+    view.addChild(circle);
     
-    
-    
+    // other code...
 }
-
-// other code...
 ````
-What should the start and end value be to make this loop run 100 times?
+`draw` is a library of functions that allow us to draw various shapes on our `canvas`. This method, `draw.randomCircleInArea` will draw a circle of random size, color, and location within the screen along with a few other settings. Check out the API:
 
-#### TODO 4 : Generate a Randomized Circle
-Ok, now, _inside_ the code block of the `for` loop, we're going to initialize our `circle` shape!
+    randomCircleInArea(area, randomizeAlpha, addCross, borderColor, borderThickness, randomRadialProps)
+    
+We temporarily store the output of thie function in `circle`. Then, to get it to appear on the screen we add the circle as a *child* of `view` (Think of the parent <-> child relationship of HTML elements!).
+
+#### TODO 3 : Draw 100 Circles!
+
+Now, Call this function 3 times to see 3 circles appear on the screen - pretty, right? But we want to draw 100 circles! If we were to call this function 100 times in our code, it would violate the **DRY Rule: D**ont **R**epeat **Y**ourself.
+
+A for loop should do the job! Below **TODO 3** create a for loop that will loop 100 times and call the drawCircle function. Here is the basic outline of a for loop:
+
+
+````javascript
+for (var counter = 0; counter < 100; counter++) {
+    // do something
+}
+````
+
+#### TODO 3 : Generate a Randomized Circle
 
 Implement the following code such that your `for` loop now looks like this:
 
 ````javascript
 // other code...
 for (i = 0; i < 100; i++) {
-    // TODO 4 : YOUR CODE STARTS HERE //////////////////////////
+    // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
     circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
 					
     if (circle.alpha < .2) {
@@ -358,11 +332,11 @@ Given this, the rest of our work will take place within the `update()` function.
 ````javascript
 function update() {
     for (var i = 0; i < circles.length; i++) {
-        // TODO 5 : Access one circle at time from the circles Array //
+        // TODO 4 : Access one circle at time from the circles Array //
         
-        // TODO 6 : Update the circles position //
+        // TODO 5 : Update the circles position //
         
-        // TODO 7 : YOUR CODE STARTS HERE //////////////////////
+        // TODO 6 : YOUR CODE STARTS HERE //////////////////////
         
         if ( / * test for right-side * / ) {
             // your code to place circle exactly off the stage at the left-side //
@@ -374,16 +348,16 @@ function update() {
             // your code to place circle exactly off the stage at the top //
         }
         
-        // YOUR TODO 7 CODE ENDS HERE //////////////////////////
+        // YOUR TODO 6 CODE ENDS HERE //////////////////////////
     }
 }
 ````
 
 The thing to notice here is that we are again using the `for` loop but in a different way. Instead of incrementing the value of i until it is less than 100 we are doing so until it is less than circles.length... It's time to do a little problem solving: 
 
-All your code for TODO 5, TODO 6 and TODO 7 will go _within_ the code block of this `for` loop, so keep that in mind!
+All your code for TODO 4, TODO 5 and TODO 6 will go _within_ the code block of this `for` loop, so keep that in mind!
 
-#### TODO 5 : Access The Current Circle from the Circles Array
+#### TODO 4 : Access The Current Circle from the Circles Array
 
 Use the Array syntax to pull out the circle at index `i`.
 
@@ -391,62 +365,53 @@ Arrays are _zero-indexed_ lists of objects.  Basically, an Array acts as a conta
 
 To retrieve an individual _element_ from an Array, we can use _Array syntax_, which uses the name of the Array, followed by square brackets that enclose a number representing the position of the element.
 
-So, if we created an Array like this:
+So, if we literally created an Array like this:
 
 ````javascript
 var friends = ['John', 'Max', 'George', 'Ben', 'Steve', 'Brian'];
 ````
 
-Then we wanted to access the first element of the `friends` Array we would do so like so:
+Then we can access the elements of the `friends` Array like so:
 
 ````javascript
-var firstFriend = friends[0];
-console.log("my first friend is " + firstFriend);    //-> logs "my first friend is John"
+var name = friends[1];
+console.log(name); // prints Max
 ````
-Because Arrays are _zero-indexed_, the first element is at index 0, the second element is at index 1, and so on. The next element will always have an index that is 1 greater than the one before. 
 
-Suppose we want to print out every member of this friends list! Using the fact that the index increases by 1 from element to element, we can use a for loop to create a counter variable that will increase by 1 on each loop. Then, using Array syntax we can pull out a single element with the counter variable as our index! **Note:`i` is the standard name for the counter variable in a for loop. why?** 
+So, above, we used _Array syntax_ to access the second element of the `friends` Array, `friends[1]`, which equates to `Max`.  Because Arrays are _zero-indexed_, the first element is at index 0, the second element is at index 1, and so on.
 
-```javascript
-for (i = 0; i < friends.length; i++) {
-	var friend = friends[i];
-	console.log(friend);
-}
-```
-In the example above, we use the stop condition `i < friends.length`. How do we know that this will stop after printing out all elements of the `friends` array?
-
-We want to do something similar with our `circles` array. We first need to pull out a single circle from the array and store it in `circle`. Using array syntax, what should the circle be assigned to?
+So, we know our that when we created our circles, each `circle` was pushed into our Array of `circles`, and we know that our `for-loop` is incrementing an index, `i` on each loop, once for each element in the `circles` Array. So, using the Array syntax we discussed earlier in the lesson, what do we need to do to pull-out and assign an individual `circle` as we loop over the Array of `circles`?
 
 ````javascript
 // other code...
 
 
-// TODO 5 : Access one circle at time from the circles Array //
+// TODO 4 : Access one circle at time from the circles Array //
 circle = ???
 
 // other code...
 ````
 
-#### TODO 6 : Update the Position of the Circle
+#### TODO 5 : Update the Position of the Circle
 
 Okay, now we have our circle, let's use the `updatePosition()` API of the `physikz` library to update the position of the circle:
 
 ````javascript
 // other code...
 
-// TODO 6 : Update the circle's position //
+// TODO 5 : Update the circle's position //
 physikz.updatePosition(circle)
 
 // other code...
 ````
 
-#### TODO 7 : Keep The Current Circle Within the Bounds of the Canvas
+#### TODO 6 : Keep The Current Circle Within the Bounds of the Canvas
 
-We need to check each circle's x and y position as we loop through the Array of `circles` to keep the circles inside the `canvas` (the screen).
+We need to check each circle's position as we loop through the Array of `circles` to keep the circles coming back onto the `canvas`.
 
-So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border. We can do this by changing the circle's y property like so: `circle.y = newPositionY;` where `newPositionY` is the coordinate where you want the circle's new y location to be.
+So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border.
 
-Write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
+So, write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
 
 The best way to start this is to hack away, testing one border at a time!
 
@@ -479,7 +444,7 @@ if (circle.x > canvas.width + circle.radius) {
 The full stub code for our `if`, `else-if` statements is here:
 
 ````javascript
-// TODO 7 : YOUR CODE STARTS HERE //////////////////////
+// TODO 6 : YOUR CODE STARTS HERE //////////////////////
 
 if ( / * test for right-side * / ) {
     // your code to place circle exactly off the stage at the left-side //
@@ -493,7 +458,7 @@ if ( / * test for top * / ) {
     // your code to place circle exactly off the stage at the top //
 }
 
-// YOUR TODO 7 CODE ENDS HERE //////////////////////////
+// YOUR TODO 6 CODE ENDS HERE //////////////////////////
 ````
 
 ## Just Code TODOs
