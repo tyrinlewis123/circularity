@@ -22,12 +22,11 @@ Also at: http://bit.ly/op-spark-circularity
       - [TODO 1 : Declare Our Variables](#todo-1--declare-our-variables)
       - [TODO 2 : Draw a circle](#todo-2--draw-a-circle)
       - [TODO 3 : Draw 100 Circles](#todo-3--draww-100-circles)
-      - [TODO 4 : Create an array to hold our circles](#todo-4--create-an-array-to-hold-our-circles)
-      - [TODO 5 : Push each circle into the circles array](#todo-5--push-each-circle-into-the-circles-array)
+      - [TODO 4 : Push each circle into the circles array](#todo-4--push-each-circle-into-the-circles-array)
     - [Update our Variables](#update-our-variables)
-      - [TODO 6 : Access The Current Circle from the Circles Array Array](#todo-4--access-the-current-circle-from-the-circles-array)
-      - [TODO 7 : Update the Position of the Circle](#todo-5--update-the-position-of-the-circle)
-      - [TODO 8 : Keep The Current Circle Within the Bounds of the Canvas](#todo-6--keep-the-current-circle-within-the-bounds-of-the-canvas)
+      - [TODO 5 : Access The Current Circle from the Circles Array Array](#todo-5--access-the-current-circle-from-the-circles-array)
+      - [TODO 6 : Update the Position of the Circle](#todo-6--update-the-position-of-the-circle)
+      - [TODO 7 : Keep The Current Circle Within the Bounds of the Canvas](#todo-7--keep-the-current-circle-within-the-bounds-of-the-canvas)
 
 ## Installation
 NOTE: If you receive an error that says, `os install command not found` the opspark CLI is not installed. To install it, enter the command `npm intall -g opspark` in your bash terminal. 
@@ -153,15 +152,16 @@ So then, looking at the above snippet of code, what would be the result of runni
 
 #### TODO 1 : Declare Our Variables
 
-The goal of this project is to create 100 animated circles. Before we get ahead of ourselves, let's create one circle. Declare a variable to hold that circle (we will deal with initializing it later):
+The goal of this project is to create 100 animated circles. Before we get ahead of ourselves, let's create one circle. Declare a variable to hold that circle (we will deal with initializing it later). Also we want to create an empty array to hold our circles, more on that later:
 
-Find **TODO 1** and declare our circle variable like so:
+Find **TODO 1** and declare our variables like so:
 
 ````javascript
 // other code...
 
 // TODO 1: Declare our variables //
 var circle;
+var circles = [];
 
 // other code...
 ````
@@ -200,16 +200,8 @@ for (var counter = 0; counter < 100; counter++) {
     // do something
 }
 ````
-
-#### TODO 4 : Create an array to hold our circles
-
-In order to keep track of all of our circles we need a place to keep them. An array should work!
-
-Below **TODO 1** create an empty array like so:
-
-    var circles = [];
     
-#### TODO 5: Push each circle into the circles array
+#### TODO 4: Push each circle into the circles array
 
 Now that we have a place to keep our circles together, we want to push each circle we create into this array.
 
@@ -228,11 +220,11 @@ Given this, much of the work will take place within the `update()` function.  Ri
 ````javascript
 function update() {
     for (var i = 0; i < circles.length; i++) {
-        // TODO 6 : Access one circle at time from the circles Array //
+        // TODO 5 : Access one circle at time from the circles Array //
         
-        // TODO 7 : Update the circles position //
+        // TODO 6 : Update the circles position //
         
-        // TODO 8 : YOUR CODE STARTS HERE //////////////////////
+        // TODO 7 : YOUR CODE STARTS HERE //////////////////////
         
         if ( / * test for right-side * / ) {
             // your code to place circle exactly off the stage at the left-side //
@@ -251,7 +243,7 @@ function update() {
 
 The thing to notice here is that we are again using the `for` loop but in a different way. Instead of incrementing the value of i until it is less than 100 we are doing so until it is less than circles.length... It's time to do a little problem solving: 
 
-#### TODO 6: Pull out one circle at a time from our array
+#### TODO 5: Pull out one circle at a time from our array
 
 Use the Array syntax to pull out the circle at index `i`.
 
@@ -280,26 +272,26 @@ So, we know our that when we created our circles, each `circle` was pushed into 
 // other code...
 
 
-// TODO 6 : Access one circle at time from the circles Array //
+// TODO 5 : Access one circle at time from the circles Array //
 circle = ???
 
 // other code...
 ````
 
-#### TODO 7 : Update the Position of the Circle
+#### TODO 6 : Update the Position of the Circle
 
 Okay, now we have our circle, let's use the `updatePosition()` API of the `physikz` library to update the position of the circle:
 
 ````javascript
 // other code...
 
-// TODO 7 : Update the circle's position //
+// TODO 6 : Update the circle's position //
 physikz.updatePosition(circle)
 
 // other code...
 ````
 
-#### TODO 8 : Keep The Current Circle Within the Bounds of the Canvas
+#### TODO 7 : Keep The Current Circle Within the Bounds of the Canvas
 
 We need to check each circle's position as we loop through the Array of `circles` to keep the circles coming back onto the `canvas`.
 
@@ -338,7 +330,7 @@ if (circle.x > canvas.width + circle.radius) {
 The full stub code for our `if`, `else-if` statements is here:
 
 ````javascript
-// TODO 8 : YOUR CODE STARTS HERE //////////////////////
+// TODO 7 : YOUR CODE STARTS HERE //////////////////////
 
 if ( / * test for right-side * / ) {
     // your code to place circle exactly off the stage at the left-side //
@@ -352,7 +344,7 @@ if ( / * test for top * / ) {
     // your code to place circle exactly off the stage at the top //
 }
 
-// YOUR TODO 8 CODE ENDS HERE //////////////////////////
+// YOUR TODO 7 CODE ENDS HERE //////////////////////////
 ````
 
 &copy; Operation Spark 2015
