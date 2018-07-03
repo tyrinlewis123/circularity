@@ -198,6 +198,8 @@ A computer screen is nothing more than a cartesian graph with an *x-axis* and a 
 
 The *origin*, where the x-axis and y-axis intersect at 0, is always located in the top left corner of the browser window. As you move accross the screen from left to right, x values of pixels increase. As you move down the screen from top to bottom, the y values of pixels increases. 
 
+<img src="img/screenBounds.png" height="300px">
+
 Imagine you had two images: Image-A is located at x/y position (100, 500) and Image-B is located at x/y position (300, 200). Where are they positioned relative to each other? Image-A has a smaller x-value so it would be to the left of Image-B. However, it has the larger y-value, therefore it will be below Image-B. 
 
 Good! Now that we understand how the coordinates of the screen work we have to understand one more concept: where the window ends! It wouldn't be particularly interesting if we perfectly set up our images relative to each other but half of them aren't even in view. However, since the size of a browser window can be resized this value will never be the same. Therefore, we must use a *variable*! In our program we have done this for you by providing the values: 
@@ -206,8 +208,6 @@ Good! Now that we understand how the coordinates of the screen work we have to u
     canvas.height   // The height of our canvas.
 
 The `canvas` is a data type known as an Object (we'll learn more about this later) which represents the blank screen and allows us to add drawings to it. The canvas has 2 very important *properties* `.width` and `.height` that provide us with the coordinates for where the window ends. Using this data, along with the knowing where our origin is, we can easily tell whether or not an image is in view by checking the image's x/y position to see if it contained within the box (0, 0) -> (canvas.width, canvas.height). 
-
-<img src="img/screenBounds.png" height="300px">
 
 ***
 
