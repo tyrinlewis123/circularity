@@ -117,12 +117,28 @@ We want to draw 100 circles, but we don't want to write the code to do so 100 ti
 
 #### Loops To The Rescue
 
-Every programming language comes with features built-in to help you implement repetative processes, like looping over a list of data, or drawing a circle 100 times.  If we want to do anything more than once, we can use a _loop_, and is most often best practice to do so.
+Every programming language comes with features built-in to help you implement repetative processes, like looping over a list of data, or drawing a circle 100 times.  If we want to do anything more than once, we can use a _loop_, and is most often best practice to do so. 
 
-JavaScript comes with a number of built in loops, like `for` `for-in` and `while`, and many 3rd party libraries, like <a href="https://lodash.com/">_lodash_</a>, have implementations of other types of loops.
+Loops are a great tool to repeat a `{ code block }` a specific number of times and JavaScript comes with a number of built in loops, like `for`, `for-in`, and `while`. Additionally, many 3rd party libraries, like <a href="https://lodash.com/">_lodash_</a>, have implementations of other types of loops. We're going to use the `while` and `for` loops to accomplish our tasks for this project. 
 
+### While Loops
+Let's start with a `while` loop. To get a while loop to run 100 times we may write something like this:
 
-We're going to use the `for` loop to accomplish our task.  It works like this:
+````javascript
+var count = 0;
+while(count < 100) {
+    // code you want repeated
+    count++;
+}
+````
+
+A `while` loop runs as long as a **condition** is `true`, stopping once the condition becomes `false`. In the example above, 
+the loop runs while `count < 100`. This loops make use of a **counter variable** which keeps track of the number of loops that have been completed. When using a counter variable we must first *instantiate* it before the loop: `var count = 0;` and then *update* it within the loop: `count++;`. On each repitition of the loop, the counter variable will increment (increase by 1) until it reaches 100 at which point the condition will evaluate to `false` and the loop will stop!
+
+Failing to update a counter variable within a loop results in an **infinite loop** - a loop whose condition is forever `true` and therefore never stops. Creating an infinite loop consumes all available memory as the program runs and ultimately will crash the program. **This is bad**. 
+
+### For Loops
+Another kind of loop we will use is the `for` loop. The for loops takes the counting pattern used in the previous example and condenses it into one line. To create a for loop that runs 100 times we may write something like this:
 
 ````javascript
 for (var i = 0; i < 100; i++) {
@@ -130,7 +146,7 @@ for (var i = 0; i < 100; i++) {
 }
 ````
 
-The for loop is a great tool to repeat a `{ code block }` a specific number of times. After the keyword `for` are parentheses where you setup your for loop. Here is where you define how the loops starts, when it ends, and how you want to move on from one loop to the next. There are three parts to it:
+After the keyword `for` are parentheses where you setup your for loop. Here is where you define how the loops starts, when it ends, and how you want to move on from one loop to the next. There are three parts to it:
 
 * **initialization** : `var i = 0;`
 	* a variable `i` is initialized to act as a counter to keep track of how many times we have run our loop. We start at 0.
@@ -144,8 +160,54 @@ Finally, we have our code block within the braces `{ }`.
 
 When all of these are put together our for loop will execute the code block as long as the `i` variable is less than 100. The `i` variable starts at 0 and, because we increment it after each loop, will increase until the stop condition is no longer true - at which point the loop will stop. 
 
-So then, looking at the above snippet of code, what would be the result of running that code?
+So then, looking at the above snippet of code, what would be the result of running that code? How is the for loop similar and/or different from a while loop?
 
+### Iterating over an Array
+
+For-loops also provide a convenient way to access elements of an Array one at a time. Arrays are *zero-indexed* lists of data. Basically, an Array acts as a container, into which we can throw objects, like strings, numbers, or circles. We call the things we throw into Arrays, _items_ or _elements_, as in, the _elements_ of our Array. Arrays are contained within square brackets `[ ]` and are stored in variables.
+
+````javascript
+var friends = ['John', 'Max', 'George', 'Ben', 'Steve', 'Brian'];
+````
+
+To retrieve an individual _element_ from an Array, we can use *Bracket Notation*, which uses the name of the Array, followed by square brackets that enclose a number representing the position of the element.
+
+So, we can access the elements of the `friends` Array like so:
+
+````javascript
+var name = friends[1];
+console.log(name); // prints Max
+````
+
+So, above, we used *Bracket Notation* to access the second element of the `friends` Array, `friends[1]`, which equates to `Max` and then log that value to the console. Because Arrays are zero-indexed, the first element is at index 0, the second element is at index 1, and so on.
+
+When we want to access _every_ value within an array, this is called *iterating*. Iterating is the process of accessing each value of an Array using a for loop. This works by using the counter variable of a for loop (often named `i` - short for index) as a placeholder for the numbered index we want to access like so: 
+
+````javascript
+for (var i = 0; i < friends.length; i++) {
+    var name = friends[i]. 
+    console.log(name); // prints a different friend's name on each loop
+}
+````
+
+As the value of `i` changes within the loop, so too will the value of `name` as it gets assigned to a new element within the Array `friends`. Notice that the stop condition of our loop has changed as well. We want to access every value of our array whose indexes range from `0` to `friends.length - 1`. Study the way that the for loop above has been set up to understand how we accomplish this.
+
+### Cartesian Coordinates
+
+A computer screen is nothing more than a cartesian graph with an *x-axis* and a *y-axis* measured in units of *pixels*. A computer screen may be composed of millions of pixels so understanding this coordinate system is vital to accurately place animations on the screen. 
+
+The *origin*, where the x-axis and y-axis intersect at 0, is always located in the top left corner of the browser window. As you move accross the screen from left to right, x values of pixels increase. As you move down the screen from top to bottom, the y values of pixels increases. 
+
+Imagine you had two images: Image-A is located at x/y position (100, 500) and Image-B is located at x/y position (300, 200). Where are they positioned relative to each other? Image-A has a smaller x-value so it would be to the left of Image-B. However, it has the larger y-value, therefore it will be below Image-B. 
+
+Good! Now that we understand how the coordinates of the screen work we have to understand one more concept: where the window ends! It wouldn't be particularly interesting if we perfectly set up our images relative to each other but half of them aren't even in view. However, since the size of a browser window can be resized this value will never be the same. Therefore, we must use a *variable*! In our program we have done this for you by providing the values: 
+ 
+    canvas.width    // The the width of our canvas.
+    canvas.height   // The height of our canvas.
+
+The `canvas` is a data type known as an Object (we'll learn more about this later) which represents the blank screen and allows us to add drawings to it. The canvas has 2 very important *properties* `.width` and `.height` that provide us with the coordinates for where the window ends. Using this data, along with the knowing where our origin is, we can easily tell whether or not an image is in view by checking the image's x/y position to see if it contained within the box (0, 0) -> (canvas.width, canvas.height). 
+
+<img src="img/screenBounds.png" height="300px">
 
 ***
 
