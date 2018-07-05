@@ -231,10 +231,10 @@ var circles = [];
 
 #### TODO 2 : Draw a circle
 
-We will want to draw many circles in this project so putting the code to draw one circle inside a **function** will make the code much more re-usable! We've created the outline of a function for you called `drawCircle`. Add the following code under **TODO: 2**:
+We will want to draw many circles in this project so putting the code to draw one circle inside a **function** will make the code much more re-usable! We've created the a variable for you called `drawCircle` to hold our function . Modify the code under **TODO: 2** and assign `drawCircle` to a function with the following code block:
 
 ````javascript
-function drawCircle() {
+var drawCircle = function() {
     // TODO 2: Draw a circle //
     circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
     physikz.addRandomVelocity(circle, canvas);
