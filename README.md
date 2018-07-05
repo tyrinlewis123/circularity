@@ -251,9 +251,9 @@ We temporarily store the output of the function in `circle`. We then use the `ph
 
 Finally, to get it to appear on the screen we add the circle as a *child* of `view` (Think of the parent <-> child relationship of HTML elements!).
 
-#### TODO 3 : Draw many circles
-
 Now, Call this function 3 times to see 3 circles appear on the screen - pretty, right? But we want to draw 100 circles! If we were to call this function 100 times in our code, it would violate the **DRY Rule: D**ont **R**epeat **Y**ourself.
+
+#### TODO 3 : Draw many circles
 
 A for loop should do the job! Below **TODO 3** create a for loop that will loop 100 times and call the `drawCircle` function. Here is the basic outline of a for loop:
 
