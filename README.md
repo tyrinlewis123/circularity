@@ -192,23 +192,6 @@ for (var i = 0; i < friends.length; i++) {
 
 As the value of `i` changes within the loop, so too will the value of `name` as it gets assigned to a new element within the Array `friends`. Notice that the stop condition of our loop has changed as well. We want to access every value of our array whose indexes range from `0` to `friends.length - 1`. Study the way that the for loop above has been set up to understand how we accomplish this.
 
-### Cartesian Coordinates
-
-A computer screen is nothing more than a cartesian graph with an *x-axis* and a *y-axis* measured in units of *pixels*. A computer screen may be composed of millions of pixels so understanding this coordinate system is vital to accurately place animations on the screen. 
-
-The *origin*, where the x-axis and y-axis intersect at 0, is always located in the top left corner of the browser window. As you move accross the screen from left to right, x values of pixels increase. As you move down the screen from top to bottom, the y values of pixels increases. 
-
-<img src="img/screenBounds.png" height="300px">
-
-Imagine you had two images: Image-A is located at x/y position (100, 500) and Image-B is located at x/y position (300, 200). Where are they positioned relative to each other? Image-A has a smaller x-value so it would be to the left of Image-B. However, it has the larger y-value, therefore it will be below Image-B. 
-
-Good! Now that we understand how the coordinates of the screen work we have to understand one more concept: where the window ends! It wouldn't be particularly interesting if we perfectly set up our images relative to each other but half of them aren't even in view. However, since the size of a browser window can be resized this value will never be the same. Therefore, we must use a *variable*! In our program we have done this for you by providing the values: 
- 
-    canvas.width    // The the width of our canvas.
-    canvas.height   // The height of our canvas.
-
-The `canvas` is a data type known as an Object (we'll learn more about this later) which represents the blank screen and allows us to add drawings to it. The canvas has 2 very important *properties* `.width` and `.height` that provide us with the coordinates for where the window ends. Using this data, along with the knowing where our origin is, we can easily tell whether or not an image is in view by checking the image's x/y position to see if it contained within the box (0, 0) -> (canvas.width, canvas.height). 
-
 ***
 
 ### TODOs
@@ -255,20 +238,21 @@ Now, Call this function 3 times to see 3 circles appear on the screen - pretty, 
 
 #### TODO 3 : Draw many circles
 
-A for loop should do the job! Below **TODO 3** create a for loop that will loop 100 times and call the `drawCircle` function. Here is the basic outline of a for loop:
-
+A for loop should do the job! Here is the basic outline of a for loop that runs 10 times:
 
 ````javascript
-for (var counter = 0; counter < 100; counter++) {
+for (var counter = 0; counter < 10; counter++) {
     // do something
 }
 ````
+
+Below **TODO 3** create a for loop that will loop 100 times and call the `drawCircle` function each time. 
     
 #### TODO 4 : Push each circle into the circles array
 
 In order to keep our circles together, we can keep them stored in an array. To save each array we create in the `circles` array, we can use the `.push()` method.
 
-Find **TODO 4** in the `drawCircle` function and add the following code:
+Inside the `drawCircle` function deefinition add the following code at the bottom:
 
     circles.push(circle);
     
@@ -353,6 +337,23 @@ physikz.updatePosition(circle)
 
 // other code...
 ````
+
+#### Cartesian Coordinates
+
+A computer screen is nothing more than a cartesian graph with an *x-axis* and a *y-axis* measured in units of *pixels*. A computer screen may be composed of millions of pixels so understanding this coordinate system is vital to accurately place animations on the screen. 
+
+The *origin*, where the x-axis and y-axis intersect at 0, is always located in the top left corner of the browser window. As you move accross the screen from left to right, x values of pixels increase. As you move down the screen from top to bottom, the y values of pixels increases. 
+
+<img src="img/screenBounds.png" height="300px">
+
+Imagine you had two images: Image-A is located at x/y position (100, 500) and Image-B is located at x/y position (300, 200). Where are they positioned relative to each other? Image-A has a smaller x-value so it would be to the left of Image-B. However, it has the larger y-value, therefore it will be below Image-B. 
+
+Good! Now that we understand how the coordinates of the screen work we have to understand one more concept: where the window ends! It wouldn't be particularly interesting if we perfectly set up our images relative to each other but half of them aren't even in view. However, since the size of a browser window can be resized this value will never be the same. Therefore, we must use a *variable*! In our program we have done this for you by providing the values: 
+ 
+    canvas.width    // The the width of our canvas.
+    canvas.height   // The height of our canvas.
+
+The `canvas` is a data type known as an Object (we'll learn more about this later) which represents the blank screen and allows us to add drawings to it. The canvas has 2 very important *properties* `.width` and `.height` that provide us with the coordinates for where the window ends. Using this data, along with the knowing where our origin is, we can easily tell whether or not an image is in view by checking the image's x/y position to see if it contained within the box (0, 0) -> (canvas.width, canvas.height). 
 
 #### TODO 7 : Keep The Current Circle Within the Bounds of the Canvas
 
