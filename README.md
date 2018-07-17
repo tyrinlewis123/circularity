@@ -212,9 +212,9 @@ var circles = [];
 // other code...
 ````
 
-#### TODO 2 : Draw a circle
+#### TODO 2 : Create a function to draw a circle
 
-We will want to draw many circles in this project so putting the code to draw one circle inside a **function** will make the code much more re-usable! We've created the a variable for you called `drawCircle` to hold our function . Modify the code under **TODO: 2** and assign `drawCircle` to a function with the following code block:
+We will want to draw many circles in this project so putting the code to draw one circle inside a **function** will make the code much more re-usable! We've created the a variable for you called `drawCircle` to hold our function. Modify the code under **TODO: 2** and assign `drawCircle` to a function with the following code block:
 
 ````javascript
 var drawCircle = function() {
@@ -222,83 +222,42 @@ var drawCircle = function() {
     circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
     physikz.addRandomVelocity(circle, canvas);
     view.addChild(circle);
-    
+    circles.push(circle);
     // other code...
 }
 ````
+
+##### What does this function actually do?
+
 `draw` is a library of functions that allow us to draw various shapes on our `canvas`. This method, `draw.randomCircleInArea` will draw a circle of random size, color, and location within the screen along with a few other settings. Check out the API:
 
     randomCircleInArea(area, randomizeAlpha, addCross, borderColor, borderThickness, randomRadialProps)
     
 We temporarily store the output of the function in `circle`. We then use the `physikz` library, a library of functions that provide motion to canvas drawings, to add a random velocity and direction to our circle.
 
-Finally, to get it to appear on the screen we add the circle as a *child* of `view` (Think of the parent <-> child relationship of HTML elements!).
+To get the circle to appear on the screen we add the circle as a *child* of `view` (Think of the parent <-> child relationship of HTML elements!).
 
-Now, Call this function 3 times to see 3 circles appear on the screen - pretty, right? But we want to draw 100 circles! If we were to call this function 100 times in our code, it would violate the **DRY Rule: D**ont **R**epeat **Y**ourself.
+Lastly we save each new circle in an array using the `.push()` method. Doing so keeps all circles that we make together in one location which will be very useful very soon!
 
-#### TODO 3 : Draw many circles
+#### TODO 3 : Draw 3 circles!
 
-A for loop should do the job! Here is the basic outline of a for loop that runs 10 times:
+Now, Call this function 5 times to see 5 circles appear on the screen. You can call the function using the following syntax:
 
-````javascript
-for (var counter = 0; counter < 10; counter++) {
-    // do something
-}
-````
+```javascript
+functionName(argument1, argument2, ...);
+```
 
-Below **TODO 3** create a for loop that will loop 100 times and call the `drawCircle` function each time. 
-    
-#### TODO 4 : Push each circle into the circles array
+Pretty, right? But we want to draw 100 circles! If we were to call this function 100 times in our code, it would violate the **DRY Rule: D**ont **R**epeat **Y**ourself. Keep this in mind as we move on. We'll find a better way to do this!
 
-In order to keep our circles together, we can keep them stored in an array. To save each array we create in the `circles` array, we can use the `.push()` method.
+#### TODO 4 : Move your Circles!
 
-Inside the `drawCircle` function deefinition add the following code at the bottom:
+Awesome, let's do some fun stuff with our circles now.  Remember that our `update()` method is called 60 times per second, so it gives us the perfect place to update properties of our display objects in order to create the illusion of motion, otherwise known as, _animation_! To get our circles to move we will use the `physikz.updatePosition()` method which accepts a circle as an argument. 
 
-    circles.push(circle);
-    
-Now, every time a new circle is made, it will be automatically added to the array of circles!
-
-### Animate Our Circles
-
-Awesome, let's do some fun stuff with our circles now.  Remember that our `update()` method is called 60 times per second, so it gives us the perfect place to update properties of our display objects in order to create the illusion of motion, otherwise known as, _animation_!
-
-Given this, much of the work will take place within the `update()` function.  Right now, it's stubbed out like this:
-
-````javascript
-function update() {
-    for (var i = 0; i < circles.length; i++) {
-        // TODO 5 : Access one circle at time from the circles Array //
-        
-        // TODO 6 : Update the circles position //
-        
-        // TODO 7 : YOUR CODE STARTS HERE //////////////////////
-        
-        if ( / * test for right-side * / ) {
-            // your code to place circle exactly off the stage at the left-side //
-        } else if ( / * test for left-side * / ) {
-            // your code to place circle exactly off the stage at the right-side //
-        } if ( / * test for top * / ) {
-            // code to place circle exactly off the stage at the bottom //
-        } else if ( / * test for bottom * / ) {
-            // your code to place circle exactly off the stage at the top //
-        }
-        
-        // YOUR TODO 8 CODE ENDS HERE //////////////////////////
-    }
-}
-````
-
-The thing to notice here is that we are again using the `for` loop but in a different way. Instead of incrementing the value of i until it is less than 100 we are doing so until it is less than circles.length... It's time to do a little problem solving: 
-
-#### TODO 5 : Pull out one circle at a time from our array
-
-Use the Array syntax to pull out the circle at index `i`.
-
-Arrays are _zero-indexed_ lists of objects.  Basically, an Array acts as a container, into which we can throw objects, like strings, numbers, or circles. We call the things we throw into Arrays, _items_ or _elements_, as in, the _elements_ of our Array.
+Our circles are all stored in the `circles` **Array**. Arrays are _zero-indexed_ lists of objects.  Basically, an Array acts as a container, into which we can throw objects, like strings, numbers, or circles. We call the things we throw into Arrays, _items_ or _elements_, as in, the _elements_ of our Array.
 
 To retrieve an individual _element_ from an Array, we can use _Array syntax_, which uses the name of the Array, followed by square brackets that enclose a number representing the position of the element.
 
-So, if we literally created an Array like this:
+So, if we had an Array like this:
 
 ````javascript
 var friends = ['John', 'Max', 'George', 'Ben', 'Steve', 'Brian'];
@@ -313,34 +272,21 @@ console.log(name); // prints Max
 
 So, above, we used _Array syntax_ to access the second element of the `friends` Array, `friends[1]`, which equates to `Max`.  Because Arrays are _zero-indexed_, the first element is at index 0, the second element is at index 1, and so on.
 
-So, we know our that when we created our circles, each `circle` was pushed into our Array of `circles`, and we know that our `for-loop` is incrementing an index, `i` on each loop, once for each element in the `circles` Array. So, using the Array syntax we discussed earlier in the lesson, what do we need to do to pull-out and assign an individual `circle` as we loop over the Array of `circles`?
+Now, within in the `update` function, call the `physikz.updatePosition()` function on each of the five circles located in the `circles` array. Below is an example of passing the first circle in the array to the function:
 
 ````javascript
-// other code...
-
-
-// TODO 5 : Access one circle at time from the circles Array //
-circle = ???
-
-// other code...
-````
-
-#### TODO 6 : Update the Position of the Circle
-
-Okay, now we have our circle, let's use the `updatePosition()` API of the `physikz` library to update the position of the circle:
-
-````javascript
-// other code...
-
-// TODO 6 : Update the circle's position //
-physikz.updatePosition(circle)
-
-// other code...
+function update() {
+    // TODO 4 : Update the circle's position //
+    physikz.updatePosition(circles[0]);
+    // code to call the function on the other 4 circles...
+}
 ````
 
 #### Cartesian Coordinates
 
-A computer screen is nothing more than a cartesian graph with an *x-axis* and a *y-axis* measured in units of *pixels*. A computer screen may be composed of millions of pixels so understanding this coordinate system is vital to accurately place animations on the screen. 
+Our next challenge is to keep the circles in our screen. To do so we must understand the Cartesian Coordinates of a computer screen. 
+
+A computer screen is nothing more than a graph with an *x-axis* and a *y-axis* measured in units of *pixels*. A computer screen may be composed of millions of pixels so understanding this coordinate system is vital to accurately place animations on the screen. 
 
 The *origin*, where the x-axis and y-axis intersect at 0, is always located in the top left corner of the browser window. As you move accross the screen from left to right, x values of pixels increase. As you move down the screen from top to bottom, the y values of pixels increases. 
 
@@ -355,13 +301,13 @@ Good! Now that we understand how the coordinates of the screen work we have to u
 
 The `canvas` is a data type known as an Object (we'll learn more about this later) which represents the blank screen and allows us to add drawings to it. The canvas has 2 very important *properties* `.width` and `.height` that provide us with the coordinates for where the window ends. Using this data, along with the knowing where our origin is, we can easily tell whether or not an image is in view by checking the image's x/y position to see if it contained within the box (0, 0) -> (canvas.width, canvas.height). 
 
-#### TODO 7 : Keep The Current Circle Within the Bounds of the Canvas
+#### TODO 5 : Keep your circles in the screen
 
-We need to check each circle's position as we loop through the Array of `circles` to keep the circles coming back onto the `canvas`.
+We have created a function for you called `checkCircleBounds`. The function accepts a circle as an argument and uses a series of conditional statements to determine if the circle is within the bounds of the `canvas` (the variable holding the dimensions of our screen).
 
 So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border.
 
-So, write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
+Write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
 
 The best way to start this is to hack away, testing one border at a time!
 
@@ -375,40 +321,88 @@ To do this, you'll have to lean on what you know:
 
 We've _stubbed_ a chain of `if`, `else-if` statements for you, all you need to do is replace the comments between the `()` parentheses with your check for that particular border:
 
-So, for example, replace:
-
-    / * test for right-side * /
-    
-With:
-
-    circle.x > canvas.width + circle.radius
-
-So that your `if` statement looks like:
-
 ````javascript
-if (circle.x > canvas.width + circle.radius) {
-    // your code to place circle exactly off the stage at the left-side //
+function checkCircleBounds(circle) {
+    // TODO 5 : YOUR CODE STARTS HERE //////////////////////
+    if ( circle.x > canvas.width + circle.radius ) {
+        circle.x = 0 - circle.radius;
+    } else if ( / * test for left-side * / ) {
+        // your code to place circle exactly off the stage at the right-side //
+    } if ( / * test for top * / ) {
+        // code to place circle exactly off the stage at the bottom //
+    } else if ( / * test for bottom * / ) {
+        // your code to place circle exactly off the stage at the top //
+    }
+    // YOUR TODO 5 CODE ENDS HERE //////////////////////////
 }
 ````
 
-The full stub code for our `if`, `else-if` statements is here:
+#### TODO 6 : Call checkCircleBounds on each of your circles
+
+Great! Now that we have a function which will keep a circle within the screen, let's use it to continuously check our 5 circles. Within the `update` function call the `checkCircleBounds` function, passing in each of the 5 circles to the function.
+
+#### Take a Break!
+
+Congrats! You have made a beautiful program that creates 5 circles, animates them, and keeps them within the screen. Take a 10 minute break from coding and reflect on the code that you have just written. Do you understand what each component does? 
+
+When writing large programs it is a good practice to start small and work your way up to the full program. So far we have been able to create 5 circles, move them, and keep them in our screen's view. But what if we wanted our program to run with 100 circles? 
+
+#### TODO 7 : Draw 100 circles
+
+A loop should do the job! Here is the basic outline of a while loop and a for loop that each run 10 times:
 
 ````javascript
-// TODO 7 : YOUR CODE STARTS HERE //////////////////////
-
-if ( / * test for right-side * / ) {
-    // your code to place circle exactly off the stage at the left-side //
-} else if ( / * test for left-side * / ) {
-    // your code to place circle exactly off the stage at the right-side //
+var counter = 0; 
+while (counter < 10) {
+    // do something
+    counter++
 }
 
-if ( / * test for top * / ) {
-    // code to place circle exactly off the stage at the bottom //
-} else if ( / * test for bottom * / ) {
-    // your code to place circle exactly off the stage at the top //
+for (var counter = 0; counter < 10; counter++) {
+    // do something
 }
-
-// YOUR TODO 7 CODE ENDS HERE //////////////////////////
 ````
+
+Below **TODO 3** delete your calls to the `drawCircle` function and replace them with a loop that will loop **100** times and call the `drawCircle` function each time. Feel free to choose whichever loop you want!
+
+#### TODO 8 : Iterate over the array
+
+Now that we have 100 circles, we need a way to move all 100 circles and keep all 100 circles within the screen without calling on each circle individually. **Iterating** is the way to go!
+
+Iteration is the process of accessing every element in an array and performing some action with that element. In our case, we want to access every `circle` from our `circles` array and apply the `physikz.updatePosition(circle)` function on each circle. Since this is a repetitive action, a loop is involved!
+
+Imagine we had an array called `friends` and we wanted to print out each name listed in the Array. We might do something like this:
+
+```javascript
+var friends = ['John', 'Max', 'George', 'Ben', 'Steve', 'Brian'];
+var friend;
+// for loop version
+for (var i = 0; i < friends.length; i++) {
+    friend = friends[i];
+    console.log(friend);
+}
+
+// while loop version
+var i = 0;
+while (i < friends.length) {
+    friend = friends[i];
+    console.log(friend);
+    i++;
+}
+```
+How can we apply this pattern to our `circles` array?
+
+Within the `update` function, below **TODO 8**, follow the pattern above and create a loop that will iterate over the `circles` array and assign `circle` to the element at the current index `i`. 
+
+#### TODO 9 : Move all our circles and keep them all in bounds
+
+Awesome job! Now that we have our loop in place and we are iterating over our `circles` Array, let's use the `circle` that we pull out on each loop to do some cool stuff!
+
+1. Within the loop that you just created, call the `physikz.updatePosition(circle)` function.
+2. Then, call the `checkCircleBounds(circle)` function.
+3. Delete your calls to those functions from **TODO 4** and **TODO 6**
+4. Sit back and relax
+
+Congrats!
 
 &copy; Operation Spark 2015
