@@ -46,81 +46,67 @@
                 // ALL CODE GOES BELOW HERE                                   //
                 ////////////////////////////////////////////////////////////////
                 
-                // TODO 1: Declare our variables //
-                var i, circle, circles;
-                
-                // TODO 2: Initialize our variables //
-                i = 0;
-                circles = [];
-                
-                
-                while (i < 100) {
-                    // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
+                // TODO 1 : Declare and initialize our variables //
+                var circle;
+                var circles = [];
+
+                // TODO 2 : Create a function that draws a circle  //
+                var drawCircle = function() {
+                    // TODO 2: Draw a circle //
                     circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
-                    
-                    if (circle.alpha < .2) {
-                        draw.blurFilterOn(circle);
-                    }
-                    
                     physikz.addRandomVelocity(circle, canvas);
-                    circles.push(circle);
                     view.addChild(circle);
-                    
-                    // TODO 3 : YOUR CODE ENDS HERE ////////////////////////////
-                    
-                    /*
-                     * IMPORTANT NOTE: 
-                     * The statement i++; increments our counter by 1 on each loop.
-                     * If we did not do this, the conditional check of while (i < 100)
-                     * would never return false, and we would loop forever!
-                     *
-                     * Leave this as the last statement in the while loop
-                     */
-                    i++;
+                    circles.push(circle);
+                    // other code...
                 }
                 
+                // TODO 3 : Call the drawCircle function 3 times //
+                // drawCircle();
+                // drawCircle();
+                // drawCircle();
+
+                // TODO 7 : Create a Loop to call drawCircle 100 times
+                var counter = 0;
+                while (counter < 100) {
+                    drawCircle();
+                    counter++;
+                }
+
                 view.addChild(fps);
                 app.addUpdateable(fps);
 
+                function checkCircleBounds(circle) {
+                    var areaWidth = canvas.width + circle.radius;
+                    var areaHeight = canvas.height + circle.radius;
+                    // TODO 5 : YOUR CODE STARTS HERE //////////////////////
+                    if ( circle.x > areaWidth ) {
+                        circle.x = - circle.radius;
+                    } else if ( circle.x < - circle.radius ) {
+                        circle.x = areaWidth;
+                    } if ( circle.y > areaHeight ) {
+                        circle.y = - circle.radius;
+                    } else if ( circle.y < - circle.radius ) {
+                        circle.y = areaHeight;
+                    }
+                    // YOUR TODO 5 CODE ENDS HERE //////////////////////////
+                }
+
                 function update() {
+                    // TODO 4 : Update the circle's position //
+                    // physikz.updatePosition(circles[0]);
+                    // physikz.updatePosition(circles[1]);
+                    // physikz.updatePosition(circles[2]);
+                        
+                    // TODO 6 : Call checkCircleBounds on your circles.
+                    // checkCircleBounds(circles[0]);
+                    // checkCircleBounds(circles[1]);
+                    // checkCircleBounds(circles[2]);
+
+                    // TODO 8 : Iterate over the array
                     for (var i = 0; i < circles.length; i++) {
-                        ////////////////////////////////////////////////////////
-                        // ALTERNATIVELY : USE OUR LITTLE physikz LIBRARY     //
-                        //                                                    //
-                        // BUT YOU'll NEED TO REMOVE ANY OTHER FOR LOOP CODE  //
-                        ////////////////////////////////////////////////////////
-                        //physikz.updateRadialPositionInArea(circles[i], canvas);
-                        
-                        
-                        // TODO 4 : Access one circle at time from the circles Array //
-                        circle = circles[i];
-                        
-                        // TODO 5 : Update the circles position //
+                        var circle = circles[i];
                         physikz.updatePosition(circle);
-                        
-                        ////////////////////////////////////////////////////////
-                        // TODO 6 SOLUTION                                    //
-                        ////////////////////////////////////////////////////////
-                        
-                        // TODO 6 : YOUR CODE STARTS HERE //
-                        
-                        var radius = circle.radius;
-                        var areaWidth = canvas.width + radius;
-                        var areaHeight = canvas.height + radius;
-                        
-                        if (circle.x > areaWidth) {
-                            circle.x = -circle.radius;
-                        } else if (circle.x < -circle.radius) {
-                            circle.x = areaWidth;
-                        }
-                        
-                        if (circle.y > areaHeight) {
-                            circle.y = -circle.radius;
-                        } else if (circle.y < -circle.radius) {
-                            circle.y = areaHeight;
-                        }
-                        
-                        // YOUR TODO 6 CODE ENDS HERE //
+                        checkCircleBounds(circle);
                     }
                 }
                 

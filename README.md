@@ -271,9 +271,9 @@ var name = friends[1];
 console.log(name); // prints Max
 ````
 
-So, above, we used _Array syntax_ to access the second element of the `friends` Array, `friends[1]`, which equates to `Max`.  Because Arrays are _zero-indexed_, the first element is at index 0, the second element is at index 1, and so on.
+So, above, we used _Bracket Notation_ to access the second element of the `friends` Array, `friends[1]`, which equates to `Max`.  Because Arrays are _zero-indexed_, the first element is at index 0, the second element is at index 1, and so on.
 
-Now, within in the `update` function, call the `physikz.updatePosition()` function on each of the five circles located in the `circles` array. Below is an example of passing the first circle in the array to the function:
+Now, within in the `update` function, use Bracket Notation to pull out the five circles from the `circles` array and pass them to the `physikz.updatePosition()` function. Below is an example of passing the first circle in the array to the function:
 
 ````javascript
 function update() {
