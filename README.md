@@ -295,12 +295,12 @@ The *origin*, where the x-axis and y-axis intersect at 0, is always located in t
 
 Imagine you had two images: Image-A is located at x/y position (100, 500) and Image-B is located at x/y position (300, 200). Where are they positioned relative to each other? Image-A has a smaller x-value so it would be to the left of Image-B. However, it has the larger y-value, therefore it will be below Image-B. 
 
-Good! Now that we understand how the coordinates of the screen work we have to understand one more concept: where the window ends! It wouldn't be particularly interesting if we perfectly set up our images relative to each other but half of them aren't even in view. However, since the size of a browser window can be resized this value will never be the same. Therefore, we must use a *variable*! In our program we have done this for you by providing the values: 
+Good! Now that we understand how the coordinates of the screen work we have to understand one more concept: how big the window is! Since the size of a browser window can be resized this value will never be the same. Therefore, we must use a *variable*! In our program we have done this for you by providing the values: 
  
     canvas.width    // The the width of our canvas.
     canvas.height   // The height of our canvas.
 
-The `canvas` is a data type known as an Object (we'll learn more about this later) which represents the blank screen and allows us to add drawings to it. The canvas has 2 very important *properties* `.width` and `.height` that provide us with the coordinates for where the window ends. Using this data, along with the knowing where our origin is, we can easily tell whether or not an image is in view by checking the image's x/y position to see if it contained within the box (0, 0) -> (canvas.width, canvas.height). 
+The `canvas` is a data type known as an Object (we'll learn more about this later) which represents the blank screen and allows us to add drawings to it. The canvas has 2 very important *properties* `.width` and `.height` that provide us with size of the window. Using this data, along with the knowing where our origin is, we can easily tell whether or not an image is in view by checking the image's x/y position to see if it contained within the box (0, 0) -> (canvas.width, canvas.height). 
 
 #### TODO 5 : Keep your circles in the screen
 
@@ -320,7 +320,7 @@ To do this, you'll have to lean on what you know:
     circle.y        // The circle's position along the y-axis, good for testing the top and bottom borders.
     circle.radius   // Each circle is of a different size, so the radius will provide this information to you. ALSO, the circle is centered around its own x and y position, so we can find where its outer edges are located within the canvas by adding or subtracting its radius from its own x or y value.  But you'll see this as you hack away to acheive the expected results.
 
-We've _stubbed_ a chain of `if`, `else-if` statements for you, all you need to do is replace the comments between the `()` parentheses with your check for that particular border:
+We've _stubbed_ a chain of `if`, `else-if` statements for you, all you need to do is replace the comments between the `()` parentheses with your check for that particular border and then determine where to place the circle if that particular condition is met. 
 
 ````javascript
 function checkCircleBounds(circle) {
