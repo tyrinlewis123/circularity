@@ -1,6 +1,6 @@
 "use strict"
 
-mocha.setup('bdd');
+// mocha.setup('bdd');
 const window = require('../test/windowMock.js');
 const draw = window.opspark.draw;
 const physikz = window.opspark.racket.physikz;
