@@ -1,15 +1,10 @@
 "use strict"
 
 mocha.setup('bdd');
-const jsdom = require("jsdom");
 const window = require('../test/windowMock.js');
 const draw = window.opspark.draw;
 const physikz = window.opspark.racket.physikz;
 const view = window.opspark.view;
-const { JSDOM } = jsdom;
-const dom = new jsdom(``, {
-  
-});
 
 const assert = window.assert = chai.assert;
 const expect = window.expect = chai.expect;
