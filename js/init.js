@@ -50,7 +50,7 @@ var init = function (window) {
         view.addChild(fps);
         app.addUpdateable(fps);
     
-        function checkCircleBounds(circle) {
+        runner.checkCircleBounds = function(circle) {
             var areaWidth = canvas.width + circle.radius;
             var areaHeight = canvas.height + circle.radius;
             // TODO 5 : YOUR CODE STARTS HERE //////////////////////
@@ -78,11 +78,11 @@ var init = function (window) {
             physikz.updatePosition(circles[4]);
             
             // TODO 6 : Call checkCircleBounds on your circles.
-            checkCircleBounds(circles[0]);
-            checkCircleBounds(circles[1]);
-            checkCircleBounds(circles[2]);
-            checkCircleBounds(circles[3]);
-            checkCircleBounds(circles[4]);
+            runner.checkCircleBounds(circles[0]);
+            runner.checkCircleBounds(circles[1]);
+            runner.checkCircleBounds(circles[2]);
+            runner.checkCircleBounds(circles[3]);
+            runner.checkCircleBounds(circles[4]);
     
             // TODO 8 : Iterate over the array
             // for (var i = 0; i < circles.length; i++) {
@@ -96,10 +96,9 @@ var init = function (window) {
         // NO CODE BELOW HERE                                             //
         ////////////////////////////////////////////////////////////////////
         
-        window.opspark.runner.circle = circle;
+        runner.circle = circle;
         runner.circles = circles;
         runner.drawCircle = drawCircle;
-        runner.checkCircleBounds = checkCircleBounds;
         runner.update = update;
         
         app.addUpdateable(window.opspark.runner);
