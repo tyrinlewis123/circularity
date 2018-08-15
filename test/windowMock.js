@@ -16,6 +16,9 @@ const windowMock = {
     getCircleID: function() {
         return circleID;
     },
+    setCircleID: function(x) {
+        circleID = x;
+    },
     opspark: {
         draw: {
             randomCircleInArea: function(area, randomizeAlpha, addCross, borderColor, borderThickness) {

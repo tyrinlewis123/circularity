@@ -41,11 +41,11 @@ var init = function (window) {
         drawCircle();
 
         // TODO 7 : Create a Loop to call drawCircle 100 times
-        // var counter = 0;
-        // while (counter < 100) {
-        //     drawCircle();
-        //     counter++;
-        // }
+        var counter = 0;
+        while (counter < 100) {
+            drawCircle();
+            counter++;
+        }
     
         view.addChild(fps);
         app.addUpdateable(fps);

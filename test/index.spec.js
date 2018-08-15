@@ -51,6 +51,7 @@ describe('Circularity', function() {
             currentCircleID = window.getCircleID();
             if (typeof drawCircle === "function") {
                 drawCircle();
+                console.log("drawCircle:",circles);
             }
         });
 
@@ -58,7 +59,10 @@ describe('Circularity', function() {
             draw.randomCircleInArea.restore();
             physikz.addRandomVelocity.restore();
             view.addChild.restore();
+            
+            // after testing drawCircle, remove the added circle from the circles array and decrement the circleID
             circles.pop();
+            window.setCircleID(currentCircleID - 1);
         });
 
         it('should assign drawCircle to a function', function() {
@@ -134,7 +138,7 @@ describe('Circularity', function() {
                     circlesMoved++;
                 }
             }
-            expect(circlesMoved).to.be.at.least(circles.length);
+            expect(circlesMoved).to.be.at.least(5);
         });
     });
 
@@ -167,8 +171,6 @@ describe('Circularity', function() {
 
     describe('TODO 6: Call checkCircleBounds on each of your circles', function() {
         before(function() {
-            // i can confirm that the function is called 5 times, but this spy doesn't seem to be
-            // spying on the correct function. callCount always shows 0...
             sinon.spy(runner, 'checkCircleBounds');
         });
 
@@ -182,10 +184,23 @@ describe('Circularity', function() {
             expect(runner.checkCircleBounds.callCount).to.be.at.least(5);
         });
 
-        // it('should call checkCircleBounds on 5 different circles', function() {
-        //     for (var i = 0; i < 5; i++) {
-        //         expect(circleBoundsSpy.getCall(i).args[0].id === i).to.be.true;
-        //     }
-        // });
+        it('should call checkCircleBounds on 5 different circles', function() {
+            // every circle has an id number starting at 0
+            for (var i = 0; i < 5; i++) {
+                expect(runner.checkCircleBounds.getCall(i).args[0].id === i).to.be.true;
+            }
+        });
+    });
+    
+    describe('TODO 7: Create a loop to draw 100 circles', function() {
+        it('should call the drawCircle function at least 100 times', function() {
+            expect(circles.length).to.be.at.least(100);
+        });
+        
+        it('should not repetitively call the drawCircle function', function() {
+            var updateString = update.toString().replace(/\s+/g, '');
+            var count = (updateString.match(/drawCircle()/g) || []).length;
+            console.log(count);
+        });
     });
 });
