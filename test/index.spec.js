@@ -13,8 +13,6 @@ const chai = require('chai'),
     canvas = opspark.canvas,
     init = require('../js/init.js');
 
-
-
 describe('Circularity', function() {
     let runner, circle, circles, update, drawCircle, checkCircleBounds;
 
@@ -51,7 +49,6 @@ describe('Circularity', function() {
             currentCircleID = window.getCircleID();
             if (typeof drawCircle === "function") {
                 drawCircle();
-                console.log("drawCircle:",circles);
             }
         });
 
@@ -70,8 +67,10 @@ describe('Circularity', function() {
         });
 
         it("should call the draw.randomCircleInArea function to create a circle object", function() {
-            // draw.randomCircleInArea should be called correctly
+            // draw.randomCircleInArea should be called within drawCircle
             expect(draw.randomCircleInArea.calledOnce).to.be.true;
+
+            // draw.randomCircleInArea should be called with the correct arguments
             var randomCircleArgs = draw.randomCircleInArea.firstCall.args;
             expect(randomCircleArgs.length).to.be.at.least(1, "should call randomCircleInArea with canvas as the first argument");
             expect(randomCircleArgs[0].name === 'canvas', 'the first argument of randomCircleInArea should be the canvas').to.be.true;
@@ -80,6 +79,7 @@ describe('Circularity', function() {
         it("should call the physikz.addRandomVelocity function", function() {
             // physikz.addRandomVelocity should be called correctly
             expect(physikz.addRandomVelocity.calledOnce).to.be.true;
+
             var addRandomVelocityArgs = physikz.addRandomVelocity.firstCall.args;
             expect(addRandomVelocityArgs.length).to.equal(2, "should call addRandomVelocity with 2 arguments");
             expect(addRandomVelocityArgs[0].id === currentCircleID &&
@@ -193,14 +193,72 @@ describe('Circularity', function() {
     });
     
     describe('TODO 7: Create a loop to draw 100 circles', function() {
+        var isRepetitive;
+        before(function() {
+            var makeRunnerString = opspark.makeRunner.toString().replace(/\s+/g, '');
+            var drawCircleCount = (makeRunnerString.match(/drawCircle\(\)/g) || []).length;
+
+            // I use 6 here because the student may have commented out their previous 5 drawCircle() calls rather than deleting them. Thus there should be at most 6 occurances of "drawCircle()"
+            isRepetitive = drawCircleCount > 6;
+        });
+
         it('should call the drawCircle function at least 100 times', function() {
             expect(circles.length).to.be.at.least(100);
         });
         
         it('should not repetitively call the drawCircle function', function() {
-            var updateString = update.toString().replace(/\s+/g, '');
-            var count = (updateString.match(/drawCircle()/g) || []).length;
-            console.log(count);
+            expect(isRepetitive, 'drawCircle() should not appear repetitively throughout your code').to.be.false;
+        });
+    });
+
+    describe('TODO 8: Iterate over the Array', function() {
+        var iterates;
+        before(function() {
+            var updateString = runner.update.toString().replace(/\s+/g, '');
+            iterates = updateString.includes('varcircle=circles[i]');
+        });
+
+        it('should iterate over the circles Array and assign each element to the variable circle', function() {
+            expect(iterates).to.be.true;
+        });
+    });
+
+    describe('TODO 9: update the position of every circle and check their bounds', function() {
+        var iterates;
+        var circlesMoved = 0;
+        var initialXY = [];
+        
+        before(function() {
+            sinon.spy(physikz, "updatePosition");
+            sinon.spy(runner, 'checkCircleBounds');
+
+            // loop through circles and store the starting x/y positions
+            for (var i = 0; i < circles.length; i++) {
+                initialXY.push({ x: circles[i].x, y: circles[i].y });
+            }
+            update();
+        });
+        
+        after(function(done) {
+            runner.checkCircleBounds.restore();
+            physikz.updatePosition.restore();
+            done();
+        });
+
+        it('should call physikz.updatePosition on every circle in the circles Array', function() {
+            expect(physikz.updatePosition.callCount).to.equal(circles.length);
+
+            // loop through again and check to see if the x/y positions have changed
+            for (var i = 0; i < circles.length; i++) {
+                if (initialXY[i].x !== circles[i].x || initialXY[i].y !== circles[i].y) {
+                    circlesMoved++;
+                }
+            }
+            expect(circlesMoved === circles.length);
+        });
+
+        it('should call runner.checkCircleBounds on every circle in the circles Array', function() {
+            expect(runner.checkCircleBounds.callCount).to.equal(circles.length);
         });
     });
 });
