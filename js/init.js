@@ -4,22 +4,95 @@ var init = function (window) {
         draw = window.opspark.draw,
         physikz = window.opspark.racket.physikz,
         
-        app = window.opspark.makeApp({update: update}),
+        app = window.opspark.makeApp(),
         canvas = app.canvas, 
         view = app.view,
         fps = draw.fps('#000');
+        
     
-    ////////////////////////////////////////////////////////////////
-    // ALL CODE GOES BELOW HERE                                   //
-    ////////////////////////////////////////////////////////////////
+    window.opspark.makeRunner = function() {
+        
+        window.opspark.runner = {};
+        var runner = window.opspark.runner;
+        
+        ////////////////////////////////////////////////////////////////
+        // ALL CODE GOES BELOW HERE                                   //
+        ////////////////////////////////////////////////////////////////
+        
+        // TODO 1 : Declare and initialize our variables //
+        var circle;
+        var circles = [];
     
-    // TODO 1 : Declare and initialize our variables //
+        // TODO 2 : Create a function that draws a circle  //
+        var drawCircle = function() {
+            // TODO 2: Draw a circle //
+            circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
+            physikz.addRandomVelocity(circle, canvas);
+            view.addChild(circle);
+            circles.push(circle);
+            // other code...
+        }
+        
+        // TODO 3 : Call the drawCircle function 3 times //
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
+
+        // TODO 7 : Create a Loop to call drawCircle 100 times
+        // var counter = 0;
+        // while (counter < 100) {
+        //     drawCircle();
+        //     counter++;
+        // }
     
-    // TODO 2 : Create a function that draws a circle  //
-    var drawCircle;
+        view.addChild(fps);
+        app.addUpdateable(fps);
     
+        function checkCircleBounds(circle) {
+            var areaWidth = canvas.width + circle.radius;
+            var areaHeight = canvas.height + circle.radius;
+            // TODO 5 : YOUR CODE STARTS HERE //////////////////////
+            if ( circle.x > areaWidth ) {
+                circle.x = - circle.radius;
+            } 
+            else if ( circle.x < - circle.radius ) {
+                circle.x = areaWidth;
+            } 
+            if ( circle.y > areaHeight ) {
+                circle.y = - circle.radius;
+            } 
+            else if ( circle.y < - circle.radius ) {
+                circle.y = areaHeight;
+            }
+            // YOUR TODO 5 CODE ENDS HERE //////////////////////////
+        }
     
-    // TODO 3 : Call the drawCircle function 3 times //
+<<<<<<< HEAD
+        function update() {
+            // TODO 4 : Update the circle's position //
+            physikz.updatePosition(circles[0]);
+            physikz.updatePosition(circles[1]);
+            physikz.updatePosition(circles[2]);
+            physikz.updatePosition(circles[3]);
+            physikz.updatePosition(circles[4]);
+            
+            // TODO 6 : Call checkCircleBounds on your circles.
+            checkCircleBounds(circles[0]);
+            checkCircleBounds(circles[1]);
+            checkCircleBounds(circles[2]);
+            checkCircleBounds(circles[3]);
+            checkCircleBounds(circles[4]);
+    
+            // TODO 8 : Iterate over the array
+            // for (var i = 0; i < circles.length; i++) {
+            //     var circle = circles[i];
+            //     physikz.updatePosition(circle);
+            //     checkCircleBounds(circle);
+            // }
+=======
+    // TODO 3 : Call the drawCircle function 5 times //
 
     // TODO 7 : Create a Loop to call drawCircle 100 times
 
@@ -37,22 +110,21 @@ var init = function (window) {
             // code to place circle exactly off the stage at the bottom //
         } else if ( / * test for bottom * / ) {
             // your code to place circle exactly off the stage at the top //
+>>>>>>> 7b261fd2a319a11ed97d2bb1251b2c2eb2a1d7aa
         }
-        // YOUR TODO 5 CODE ENDS HERE //////////////////////////
-    }
-
-    function update() {
-        // TODO 4 : Update the circle's position //
-
-        // TODO 6 : Call checkCircleBounds on your circles.
-
-        // TODO 8 : Iterate over the array
-    }
         
-    ////////////////////////////////////////////////////////////////////
-    // NO CODE BELOW HERE                                             //
-    ////////////////////////////////////////////////////////////////////
-
+        ////////////////////////////////////////////////////////////////////
+        // NO CODE BELOW HERE                                             //
+        ////////////////////////////////////////////////////////////////////
+        
+        window.opspark.runner.circle = circle;
+        runner.circles = circles;
+        runner.drawCircle = drawCircle;
+        runner.checkCircleBounds = checkCircleBounds;
+        runner.update = update;
+        
+        app.addUpdateable(window.opspark.runner);
+    }
 };
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////

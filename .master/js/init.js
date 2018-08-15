@@ -5,7 +5,7 @@ var init = function (window) {
         draw = window.opspark.draw,
         physikz = window.opspark.racket.physikz,
         
-        app = window.opspark.makeApp({update: update}),
+        app = window.opspark.makeApp(),
         canvas = app.canvas, 
         view = app.view,
         fps = draw.fps('#000');
@@ -83,7 +83,7 @@ var init = function (window) {
             checkCircleBounds(circle);
         }
     }
-        
+    app.addUpdateable({update: update});
     ////////////////////////////////////////////////////////////////////
     // NO CODE BELOW HERE                                             //
     ////////////////////////////////////////////////////////////////////

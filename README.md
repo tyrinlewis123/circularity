@@ -94,11 +94,7 @@ Note that **this app will run _in a web browser_**, preferably Chrome.
 
 ## Lesson Steps
 
-All of our coding will happen in the and write your code in the `<script id="motion-poem">` tag located at the bottom of the `index.html` file.
-
-So, open the file at:
-
-    index.html
+To run the program open the file `index.html` and press "Run". All of our coding will happen in the `js/init.js` file.
 
 ***
 
@@ -198,6 +194,8 @@ As the value of `i` changes within the loop, so too will the value of `name` as 
 ### TODOs
 
 #### TODO 1 : Declare Our Variables
+
+Start by opening the `js/init.js` file. We will do all our coding in this file. Then, find TODO 1.
 
 The goal of this project is to create 100 animated circles. Before we get ahead of ourselves, let's create one circle. Declare a variable to hold that circle (we will deal with initializing it later). Also we want to create an empty array to hold our circles, more on that later:
 
