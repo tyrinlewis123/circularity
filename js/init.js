@@ -69,7 +69,6 @@ var init = function (window) {
             // YOUR TODO 5 CODE ENDS HERE //////////////////////////
         }
     
-<<<<<<< HEAD
         function update() {
             // TODO 4 : Update the circle's position //
             physikz.updatePosition(circles[0]);
@@ -91,26 +90,6 @@ var init = function (window) {
             //     physikz.updatePosition(circle);
             //     checkCircleBounds(circle);
             // }
-=======
-    // TODO 3 : Call the drawCircle function 5 times //
-
-    // TODO 7 : Create a Loop to call drawCircle 100 times
-
-
-    view.addChild(fps);
-    app.addUpdateable(fps);
-
-    function checkCircleBounds(circle) {
-        // TODO 5 : YOUR CODE STARTS HERE //////////////////////
-        if ( circle.x > canvas.width + circle.radius ) {
-            circle.x = 0 - circle.radius;
-        } else if ( / * test for left-side * / ) {
-            // your code to place circle exactly off the stage at the right-side //
-        } if ( / * test for top * / ) {
-            // code to place circle exactly off the stage at the bottom //
-        } else if ( / * test for bottom * / ) {
-            // your code to place circle exactly off the stage at the top //
->>>>>>> 7b261fd2a319a11ed97d2bb1251b2c2eb2a1d7aa
         }
         
         ////////////////////////////////////////////////////////////////////
