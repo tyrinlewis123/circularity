@@ -1,0 +1,34 @@
+{
+  "name": "circularity",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Poetry in Motion",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.0",
+    "sinon": "^3.3.0"
+  },
+  "scripts": {
+    "pretest": "npm install",
+    "test": "mocha ./test/index.spec.js || :"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benspector3/circularity.git"
+  },
+  "keywords": [
+    "runtime",
+    "phaser.js"
+  ],
+  "author": "jfraboni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/benspector3/circularity/issues"
+  },
+  "homepage": "https://github.com/benspector3/circularity#readme"
+}
