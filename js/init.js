@@ -42,16 +42,16 @@ var init = function (window) {
             if ( circle.x > canvas.width + circle.radius ) {
                 circle.x = 0 - circle.radius;
             } 
-            // if the circle has gone out of the left side of the screen then place it off-screen right
+            // TODO 5a) if the circle has gone out of the left side of the screen then place it off-screen right
             else if ( / * Fill me in! * / ) {
                 
             } 
 
-            // if the circle has gone out of the top side of the screen then place it off-screen bottom
+            // TODO 5b) if the circle has gone out of the top side of the screen then place it off-screen bottom
             if ( / * Fill me in! * / ) {
                 
             }
-            // if the circle has gone out of the bottom side of the screen then place it off-screen top 
+            // TODO 5c) if the circle has gone out of the bottom side of the screen then place it off-screen top 
             else if ( / * Fill me in! * / ) {
             
             }
@@ -64,7 +64,7 @@ var init = function (window) {
             
             // TODO 6 : Call checkCircleBounds on your circles.
            
-            
+
             // TODO 8 : Iterate over the array
            
 

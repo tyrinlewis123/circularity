@@ -24,7 +24,7 @@ Also at: http://bit.ly/op-spark-circularity
       - [TODO 4 : Move your Circles!](#todo-4--move-your-Circles!)
     - [Animate Our Circles](#animate-our-circles)
       - [TODO 5 : Keep your circles in the screen](#todo-5--keep-your-circles-in-the-screen)
-      - [TODO 6 : Call checkCircleBounds on each of your circles](#todo-6--call-checkCircleBounds-on-each-of-your-circles)
+      - [TODO 6 : Call runner.checkCircleBounds on each of your circles](#todo-6--call-runner.checkCircleBounds-on-each-of-your-circles)
       - [TODO 7 : Draw 100 circles](#todo-7--draw-100-circles)
       - [TODO 8 : Iterate over the array](#todo-8--Iterate-over-the-array)
       - [TODO 9 : Move all our circles and keep them all in bounds](#todo-9--move-all-our-circles-and-keep-them-all-in-bounds)
@@ -213,7 +213,9 @@ var circles = [];
 
 #### TODO 2 : Create a function to draw a circle
 
-We will want to draw many circles in this project so putting the code to draw one circle inside a **function** will make the code much more re-usable! We've created the a variable for you called `drawCircle` to hold our function. Modify the code under **TODO: 2** and assign `drawCircle` to a function with the following code block:
+We will want to draw many circles in this project so putting the code to draw one circle inside a **function** will make the code much more re-usable! We've created a variable for you called `drawCircle` to hold our function. 
+
+Modify the code under **TODO: 2** and assign `drawCircle` to a function with the following code block:
 
 ````javascript
 var drawCircle = function() {
@@ -228,7 +230,7 @@ var drawCircle = function() {
 
 ##### What does this function actually do?
 
-`draw` is a library of functions that allow us to draw various shapes on our `canvas`. This method, `draw.randomCircleInArea` will draw a circle of random size, color, and location within the screen along with a few other settings. Check out the API:
+First we call a function from the `draw` library: a collection of functions that allow us to draw various shapes on our `canvas`. This method, `draw.randomCircleInArea` will draw a circle of random size, color, and location within the screen along with a few other settings. Check out the parameters of the function below:
 
     randomCircleInArea(area, randomizeAlpha, addCross, borderColor, borderThickness, randomRadialProps)
     
@@ -238,7 +240,7 @@ To get the circle to appear on the screen we add the circle as a *child* of `vie
 
 Lastly we save each new circle in an array using the `.push()` method. Doing so keeps all circles that we make together in one location which will be very useful very soon!
 
-#### TODO 3 : Draw 3 circles!
+#### TODO 3 : Draw 5 circles!
 
 Now, Call this function 5 times to see 5 circles appear on the screen. You can call the function using the following syntax:
 
@@ -302,9 +304,7 @@ The `canvas` is a data type known as an Object (we'll learn more about this late
 
 #### TODO 5 : Keep your circles in the screen
 
-We have created a function for you called `checkCircleBounds`. The function accepts a circle as an argument and uses a series of conditional statements to determine if the circle is within the bounds of the `canvas` (the variable holding the dimensions of our screen).
-
-So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border.
+We have created a function for you called `runner.checkCircleBounds`. The function accepts a circle as an argument and uses a series of conditional statements to determine if the circle is within the bounds of the `canvas`. If a circle leaves the bounds of the screen it will appear on the opposite side of where it exited. So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border.
 
 Write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
 
@@ -318,27 +318,9 @@ To do this, you'll have to lean on what you know:
     circle.y        // The circle's position along the y-axis, good for testing the top and bottom borders.
     circle.radius   // Each circle is of a different size, so the radius will provide this information to you. ALSO, the circle is centered around its own x and y position, so we can find where its outer edges are located within the canvas by adding or subtracting its radius from its own x or y value.  But you'll see this as you hack away to acheive the expected results.
 
-We've _stubbed_ a chain of `if`, `else-if` statements for you, all you need to do is replace the comments between the `()` parentheses with your check for that particular border and then determine where to place the circle if that particular condition is met. 
+#### TODO 6 : Call runner.checkCircleBounds on each of your circles
 
-````javascript
-function checkCircleBounds(circle) {
-    // TODO 5 : YOUR CODE STARTS HERE //////////////////////
-    if ( circle.x > canvas.width + circle.radius ) {
-        circle.x = 0 - circle.radius;
-    } else if ( / * test for left-side * / ) {
-        // your code to place circle exactly off the stage at the right-side //
-    } if ( / * test for top * / ) {
-        // code to place circle exactly off the stage at the bottom //
-    } else if ( / * test for bottom * / ) {
-        // your code to place circle exactly off the stage at the top //
-    }
-    // YOUR TODO 5 CODE ENDS HERE //////////////////////////
-}
-````
-
-#### TODO 6 : Call checkCircleBounds on each of your circles
-
-Great! Now that we have a function which will keep a circle within the screen, let's use it to continuously check our 5 circles. Within the `update` function call the `checkCircleBounds` function, passing in each of the 5 circles to the function.
+Great! Now that we have a function which will keep a circle within the screen, let's use it to continuously check our 5 circles. Within the `update` function call the `runner.checkCircleBounds` function, passing in each of the 5 circles to the function.
 
 #### Take a Break!
 
@@ -398,7 +380,7 @@ Within the `update` function, below **TODO 8**, follow the pattern above and cre
 Awesome job! Now that we have our loop in place and we are iterating over our `circles` Array, let's use the `circle` that we pull out on each loop to do some cool stuff!
 
 1. Within the loop that you just created, call the `physikz.updatePosition(circle)` function.
-2. Then, call the `checkCircleBounds(circle)` function.
+2. Then, call the `runner.checkCircleBounds(circle)` function.
 3. Delete your calls to those functions from **TODO 4** and **TODO 6**
 4. Sit back and relax
 
